@@ -17,20 +17,20 @@ body {background:#fff; font:11px Verdana, Arial, Helvetica, sans-serif; color:#3
 #topbar {background:url(../images/topbar.jpg) no-repeat; height:37px;}
 #header {background:url(../images/headerbg.jpg) repeat-x; height:128px; margin:0 2px 0 2px;}
 #content {padding:0 2px 0 2px;}
-#home_main, #main {width:545px; float:left; margin-bottom:8px;}
+#home_main, #main {width:545px; float:left; margin-bottom:8px;} 
 #home_sidebar, #sidebar { width:390px; float:right; margin-bottom:8px;}
 h1#logo { font: bold 44px Tahoma, Geneva, sans-serif; color:#368291;}
 #content #sidebar {
 	background: url(../images/hotbg.jpg) repeat;
 }
 
-#search {background:url(../images/searchbg.jpg); height:301px;}
+#search {background:url(../images/searchbg.jpg); height:255px;} /*height:301px;*/
 .hot {background:url(../images/hotbg.jpg); height:301px;}
 
 #topcategorieslink {background:url(../images/categoriesbg.jpg); height:44px; margin-bottom:8px;}
 #search .container {
 	background:#E3F6FC url(../images/searchbottom.jpg) left bottom no-repeat;
-	height:255px;
+	height:200px; /*height:255px;*/
 	width: 530px;
 	margin-right: auto;
 	margin-left: auto;

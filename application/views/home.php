@@ -23,11 +23,10 @@
             <div id="topbar">
                 <ul>    <li class="current"><a href="#">Inicio</a></li>
 
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact us</a></li>
-                    <li><a href="#">Free Signup</a></li>
-                    <li><a href="#">Customer Login</a></li>
-                    <li><a href="#">Help &amp; Support</a></li>
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><a href="#">Contáctanos</a></li>
+                    <li><a href="#">Mi Cuenta</a></li>
+                    <li><a href="#">Ayuda &amp; Soporte</a></li>
                     <li></li>
                 </ul>
             </div>
@@ -45,7 +44,7 @@
                         <div id="loginform">
                             <?php echo form_open('perfil'); ?> <!--<form action="#"> -->
                                 <div class="formblock">
-                                    <input type="image" src="images/g+32.png" name="button" id="button" value="Submit" />
+                                    <input type="image" rc="images/g+32.png" name="button" id="button" value="Submit" />
                                 </div>
                                 
                                 <div class="clear">&nbsp;</div>
@@ -59,76 +58,53 @@
             <div id="content">
                 <div id="home_main"><div id="search"> 
                         <div class="tab">
-                            <h2>Search Property To Buy / Rent</h2>
+                            <h2>Buscar productos</h2>
                         </div>
                         <div class="container">
                             <form id="form1" action="#">
                                 <table class="search_form" style="width:100%; border:none;">
                                     <tr>
-                                        <td class="label">Address</td>
+                                        <td class="label">Buscar</td>
                                         <td colspan="3"><label>
                                                 <input type="text" name="textfield" id="textfield" class="text longfield" />
                                             </label></td>
                                     </tr>
                                     <tr>
                                         <td class="label">&nbsp;</td>
-                                        <td colspan="3">Example : City, State / or use Zip Code - 123456</td>
+                                        <td colspan="3">Ejemplo: Sillas para bebe / Perfume Dior </td>
                                     </tr>
                                     <tr>
-                                        <td class="label">Type</td>
+                                        <td class="label">Estado</td>
                                         <td><label>
                                                 <select name="select" id="select" class="select_field">
-                                                    <option>Flat</option>
-                                                    <option>Apartment</option>
-                                                    <option>House</option>
-                                                    <option>Villa</option>
-                                                    <option>Land</option>
-                                                    <option>Estate</option>
+                                                    <option>Nuevo</option>
+                                                    <option>Usado</option>
                                                 </select>
                                             </label></td>
-                                        <td class="label">Minimum Price Rs.</td>
-                                        <td><input type="text" name="textfield4" id="textfield4" class="text" /></td>
+                                        <td class="label">Precio Mín.</td>
+                                        <td><input type="text" name="textfield4" id="textfield4" class="text smalltextarea" /></td>
                                     </tr>
                                     <tr>
-                                        <td class="label">To</td>
+                                        <td class="label">Categorías</td>
                                         <td><label>
                                                 <select name="select2" id="select2" class="select_field">
                                                     <option selected="selected">Buy</option>
                                                     <option>Rent</option>
                                                     <option>Search Both</option>
+                                                    <option>Rent</option>
+                                                    <option>Search Both</option>
+                                                    <option>Rent</option>
+                                                    <option>Search Both</option>
                                                 </select>
                                             </label></td>
-                                        <td class="label">Maximum Price Rs.</td>
-                                        <td><input type="text" name="textfield2" id="textfield2" class="text" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label">Bed Rooms</td>
-                                        <td><label>
-                                                <input type="text" name="textfield5" id="textfield5" class="text smalltextarea" />
-                                            </label></td>
-                                        <td class="label">Bathrooms</td>
-                                        <td><input type="text" name="textfield3" id="textfield3" class="text" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label">Lot Size</td>
-                                        <td><label></label>
-                                            <input type="text" name="textfield7" id="textfield7" class="text" /></td>
-                                        <td class="label">UOM</td>
-                                        <td><input name="" type="radio" value="" />
-                                            <label>Cents / 
-                                                <input name="" type="radio" value="" />
-                                            </label>
-                                            Acres 
-                                            /
-                                            <input name="" type="radio" value="" />
-                                            Sq. Ft.</td>
-                                    </tr>
+                                        <td class="label">Precio Máx.</td>
+                                        <td><input type="text" name="textfield2" id="textfield2" class="text smalltextarea" /></td>
+                                    </tr>                                    
                                     <tr>
                                         <td class="label">&nbsp;</td>
                                         <td>&nbsp;</td>
                                         <td colspan="2" class="label"><label>
-                                                <input type="image" src="images/searchbtn.gif" alt="search
-                                                       " name="button2" id="button2" value="Submit" />
+                                                <input type="image" src="images/searchbtn.gif" alt="search" name="button2" id="button2" value="Submit" />
                                             </label></td>
                                     </tr>
                                 </table>
