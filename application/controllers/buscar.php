@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
-class Home extends CI_Controller {
+class Buscar extends CI_Controller {
  
 
     function __construct() {
@@ -12,9 +12,9 @@ class Home extends CI_Controller {
     public function index() {
         
         $this->load->helper(array('form'));
-
+        
         $data['categorias'] = $this->categoria->obtener_categorias(); 
-        $this->load->view('home', $data);
+        $this->load->view('buscar', $data);
             
         
     }

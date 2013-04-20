@@ -2,12 +2,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Compra los mejores Productos | AmazonAS Venezuela </title>
+        <title>Compra los mejores Productos | AmazonAS Venezuela</title>
         <link href="css/layout.css" rel="stylesheet" type="text/css" />
         <link href="css/forms.css" rel="stylesheet" type="text/css" />
-
-
-
+        <script src="js/jquery.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+	  
+                $('#searchdiv').hide();
+   
+                $('a').click(function(){
+			
+                    $('#searchdiv').fadeIn('slow');
+   
+                });
+   
+                $('a#close').click(function(){
+                    $('#searchdiv').fadeOut('slow');
+                })
+   
+            });
+        </script>
 
         <!--
         This CSS template is released under Creative Commons Attribution license. You shall not remove the link back to ramblingsoul.com from the pages.
@@ -18,6 +33,7 @@
 
 
     </head>
+
     <body>
         <?php $this->load->helper('html'); ?>
         <div id="wrap">
@@ -57,7 +73,25 @@
                 </div>
             </div>
             <div id="content">
-                <div id="home_main"><div id="search"> 
+
+                <div id="topcategorieslink" class="clear">
+                    <h2>Filtar Resultados</h2>
+                    <ul>
+                        <li><a href="#">Por Precio</a> </li>
+
+                        <li><a href="##">Por Estado </a> </li>
+                        
+                        <li><a href="##">Por Categoría </a> </li>
+
+                        <li><a class="highlight" href="#" id="click">Buscar otra vez</a> </li>
+
+                    </ul>
+                </div>
+                <div class="clear">&nbsp;</div>
+
+                <div id="main">
+                    <div id="searchdiv"> 
+                        <div id="home_main"><div id="search"> 
                         <div class="tab">
                             <h2>Buscar productos</h2>
                         </div>
@@ -111,9 +145,301 @@
 
                         </div>
                     </div></div>
+                        <div class="clear">&nbsp;</div>
+                    </div>
 
+                    <h1>1- 15 of 124 Listings Found</h1>
+                    <ul class="listing">
+                        <li>
+                            <div class="listinfo">
+                                <img src="images/imageholder.jpg" alt="Listing Image" class="listingimage" />
+                                <h3>5 Room Villa at PlaceName</h3>
+                                <p>
+                                    Lorem Ipsum Dolor Sit Amet</p>
+                                <span class="price">Rs. 500,000  </span>
+                                <span class="media"> <img src="images/icon_img.jpg" alt="Images" width="19" height="15" /> 12 Images <img src="images/videos_icon.jpg" alt="Videos" width="21" height="18" /></span> 1 Video</div>
+                            <div class="listingbtns">
+                                <span class="listbuttons">
+                                    <a href="#">Ver Detalle</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Compartir</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Añadir al carrito</a></span></div>
+                            <div class="clear">&nbsp;</div>
+                        </li>
 
-                <div id="home_sidebar"><div class="hot">
+                        <li>
+                            <div class="listinfo">
+                                <img src="images/imageholder.jpg" alt="Listing Image" class="listingimage" />
+                                <h3>5 Room Villa at PlaceName</h3>
+                                <p>
+                                    Lorem Ipsum Dolor Sit Amet</p>
+                                <span class="price">Rs. 500,000  </span>
+                                <span class="media"> <img src="images/icon_img.jpg" alt="Images" width="19" height="15" /> 12 Images <img src="images/videos_icon.jpg" alt="Videos" width="21" height="18" /></span> 1 Video</div>
+                            <div class="listingbtns">
+                                <span class="listbuttons">
+                                    <a href="#">View Details</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Add To Favorites</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Contact Seller</a></span></div>
+                            <div class="clear">&nbsp;</div>
+                        </li>
+
+                        <li>
+                            <div class="listinfo">
+                                <img src="images/imageholder.jpg" alt="Listing Image" class="listingimage" />
+                                <h3>5 Room Villa at PlaceName</h3>
+                                <p>
+                                    Lorem Ipsum Dolor Sit Amet</p>
+                                <span class="price">Rs. 500,000  </span>
+                                <span class="media"> <img src="images/icon_img.jpg" alt="Images" width="19" height="15" /> 12 Images <img src="images/videos_icon.jpg" alt="Videos" width="21" height="18" /></span> 1 Video</div>
+                            <div class="listingbtns">
+                                <span class="listbuttons">
+                                    <a href="#">View Details</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Add To Favorites</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Contact Seller</a></span></div>
+                            <div class="clear">&nbsp;</div>
+                        </li>
+
+                        <li>
+                            <div class="listinfo">
+                                <img src="images/imageholder.jpg" alt="Listing Image" class="listingimage" />
+                                <h3>5 Room Villa at PlaceName</h3>
+                                <p>
+                                    Lorem Ipsum Dolor Sit Amet</p>
+                                <span class="price">Rs. 500,000  </span>
+                                <span class="media"> <img src="images/icon_img.jpg" alt="Images" width="19" height="15" /> 12 Images <img src="images/videos_icon.jpg" alt="Videos" width="21" height="18" /></span> 1 Video</div>
+                            <div class="listingbtns">
+                                <span class="listbuttons">
+                                    <a href="#">View Details</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Add To Favorites</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Contact Seller</a></span></div>
+                            <div class="clear">&nbsp;</div>
+                        </li>
+
+                        <li>
+                            <div class="listinfo">
+                                <img src="images/imageholder.jpg" alt="Listing Image" class="listingimage" />
+                                <h3>5 Room Villa at PlaceName</h3>
+                                <p>
+                                    Lorem Ipsum Dolor Sit Amet</p>
+                                <span class="price">Rs. 500,000  </span>
+                                <span class="media"> <img src="images/icon_img.jpg" alt="Images" width="19" height="15" /> 12 Images <img src="images/videos_icon.jpg" alt="Videos" width="21" height="18" /></span> 1 Video</div>
+                            <div class="listingbtns">
+                                <span class="listbuttons">
+                                    <a href="#">View Details</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Add To Favorites</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Contact Seller</a></span></div>
+                            <div class="clear">&nbsp;</div>
+                        </li>
+                        <li>
+                            <div class="listinfo">
+                                <img src="images/imageholder.jpg" alt="Listing Image" class="listingimage" />
+                                <h3>5 Room Villa at PlaceName</h3>
+                                <p>
+                                    Lorem Ipsum Dolor Sit Amet</p>
+                                <span class="price">Rs. 500,000  </span>
+                                <span class="media"> <img src="images/icon_img.jpg" alt="Images" width="19" height="15" /> 12 Images <img src="images/videos_icon.jpg" alt="Videos" width="21" height="18" /></span> 1 Video</div>
+                            <div class="listingbtns">
+                                <span class="listbuttons">
+                                    <a href="#">View Details</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Add To Favorites</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Contact Seller</a></span></div>
+                            <div class="clear">&nbsp;</div>
+                        </li>
+
+                        <li>
+                            <div class="listinfo">
+                                <img src="images/imageholder.jpg" alt="Listing Image" class="listingimage" />
+                                <h3>5 Room Villa at PlaceName</h3>
+                                <p>
+                                    Lorem Ipsum Dolor Sit Amet</p>
+                                <span class="price">Rs. 500,000  </span>
+                                <span class="media"> <img src="images/icon_img.jpg" alt="Images" width="19" height="15" /> 12 Images <img src="images/videos_icon.jpg" alt="Videos" width="21" height="18" /></span> 1 Video</div>
+                            <div class="listingbtns">
+                                <span class="listbuttons">
+                                    <a href="#">View Details</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Add To Favorites</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Contact Seller</a></span></div>
+                            <div class="clear">&nbsp;</div>
+                        </li>
+
+                        <li>
+                            <div class="listinfo">
+                                <img src="images/imageholder.jpg" alt="Listing Image" class="listingimage" />
+                                <h3>5 Room Villa at PlaceName</h3>
+                                <p>
+                                    Lorem Ipsum Dolor Sit Amet</p>
+                                <span class="price">Rs. 500,000  </span>
+                                <span class="media"> <img src="images/icon_img.jpg" alt="Images" width="19" height="15" /> 12 Images <img src="images/videos_icon.jpg" alt="Videos" width="21" height="18" /></span> 1 Video</div>
+                            <div class="listingbtns">
+                                <span class="listbuttons">
+                                    <a href="#">View Details</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Add To Favorites</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Contact Seller</a></span></div>
+                            <div class="clear">&nbsp;</div>
+                        </li>
+                        <li>
+                            <div class="listinfo">
+                                <img src="images/imageholder.jpg" alt="Listing Image" class="listingimage" />
+                                <h3>5 Room Villa at PlaceName</h3>
+                                <p>
+                                    Lorem Ipsum Dolor Sit Amet</p>
+                                <span class="price">Rs. 500,000  </span>
+                                <span class="media"> <img src="images/icon_img.jpg" alt="Images" width="19" height="15" /> 12 Images <img src="images/videos_icon.jpg" alt="Videos" width="21" height="18" /></span> 1 Video</div>
+                            <div class="listingbtns">
+                                <span class="listbuttons">
+                                    <a href="#">View Details</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Add To Favorites</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Contact Seller</a></span></div>
+                            <div class="clear">&nbsp;</div>
+                        </li>
+                        <li>
+                            <div class="listinfo">
+                                <img src="images/imageholder.jpg" alt="Listing Image" class="listingimage" />
+                                <h3>5 Room Villa at PlaceName</h3>
+                                <p>
+                                    Lorem Ipsum Dolor Sit Amet</p>
+                                <span class="price">Rs. 500,000  </span>
+                                <span class="media"> <img src="images/icon_img.jpg" alt="Images" width="19" height="15" /> 12 Images <img src="images/videos_icon.jpg" alt="Videos" width="21" height="18" /></span> 1 Video</div>
+                            <div class="listingbtns">
+                                <span class="listbuttons">
+                                    <a href="#">View Details</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Add To Favorites</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Contact Seller</a></span></div>
+                            <div class="clear">&nbsp;</div>
+                        </li>
+                        <li>
+                            <div class="listinfo">
+                                <img src="images/imageholder.jpg" alt="Listing Image" class="listingimage" />
+                                <h3>5 Room Villa at PlaceName</h3>
+                                <p>
+                                    Lorem Ipsum Dolor Sit Amet</p>
+                                <span class="price">Rs. 500,000  </span>
+                                <span class="media"> <img src="images/icon_img.jpg" alt="Images" width="19" height="15" /> 12 Images <img src="images/videos_icon.jpg" alt="Videos" width="21" height="18" /></span> 1 Video</div>
+                            <div class="listingbtns">
+                                <span class="listbuttons">
+                                    <a href="#">View Details</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Add To Favorites</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Contact Seller</a></span></div>
+                            <div class="clear">&nbsp;</div>
+                        </li>
+                        <li>
+                            <div class="listinfo">
+                                <img src="images/imageholder.jpg" alt="Listing Image" class="listingimage" />
+                                <h3>5 Room Villa at PlaceName</h3>
+                                <p>
+                                    Lorem Ipsum Dolor Sit Amet</p>
+                                <span class="price">Rs. 500,000  </span>
+                                <span class="media"> <img src="images/icon_img.jpg" alt="Images" width="19" height="15" /> 12 Images <img src="images/videos_icon.jpg" alt="Videos" width="21" height="18" /></span> 1 Video</div>
+                            <div class="listingbtns">
+                                <span class="listbuttons">
+                                    <a href="#">View Details</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Add To Favorites</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Contact Seller</a></span></div>
+                            <div class="clear">&nbsp;</div>
+                        </li>
+                        <li>
+                            <div class="listinfo">
+                                <img src="images/imageholder.jpg" alt="Listing Image" class="listingimage" />
+                                <h3>5 Room Villa at PlaceName</h3>
+                                <p>
+                                    Lorem Ipsum Dolor Sit Amet</p>
+                                <span class="price">Rs. 500,000  </span>
+                                <span class="media"> <img src="images/icon_img.jpg" alt="Images" width="19" height="15" /> 12 Images <img src="images/videos_icon.jpg" alt="Videos" width="21" height="18" /></span> 1 Video</div>
+                            <div class="listingbtns">
+                                <span class="listbuttons">
+                                    <a href="#">View Details</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Add To Favorites</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Contact Seller</a></span></div>
+                            <div class="clear">&nbsp;</div>
+                        </li>
+                        <li>
+                            <div class="listinfo">
+                                <img src="images/imageholder.jpg" alt="Listing Image" class="listingimage" />
+                                <h3>5 Room Villa at PlaceName</h3>
+                                <p>
+                                    Lorem Ipsum Dolor Sit Amet</p>
+                                <span class="price">Rs. 500,000  </span>
+                                <span class="media"> <img src="images/icon_img.jpg" alt="Images" width="19" height="15" /> 12 Images <img src="images/videos_icon.jpg" alt="Videos" width="21" height="18" /></span> 1 Video</div>
+                            <div class="listingbtns">
+                                <span class="listbuttons">
+                                    <a href="#">View Details</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Add To Favorites</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Contact Seller</a></span></div>
+                            <div class="clear">&nbsp;</div>
+                        </li>
+                        <li>
+                            <div class="listinfo">
+                                <img src="images/imageholder.jpg" alt="Listing Image" class="listingimage" />
+                                <h3>5 Room Villa at PlaceName</h3>
+                                <p>
+                                    Lorem Ipsum Dolor Sit Amet</p>
+                                <span class="price">Rs. 500,000  </span>
+                                <span class="media"> <img src="images/icon_img.jpg" alt="Images" width="19" height="15" /> 12 Images <img src="images/videos_icon.jpg" alt="Videos" width="21" height="18" /></span> 1 Video</div>
+                            <div class="listingbtns">
+                                <span class="listbuttons">
+                                    <a href="#">View Details</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Add To Favorites</a></span>
+                                <span class="listbuttons">
+                                    <a href="#">Contact Seller</a></span></div>
+                            <div class="clear">&nbsp;</div>
+                        </li>
+                    </ul>
+                    <div id="paginations">
+                        <ul>
+                            <li><a href="#">&laquo;</a></li>
+
+                            <li class="current"><a href="#">1</a></li>
+
+                            <li><a href="http://localhost/amazonAS/buscar###">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">6</a></li>
+                            <li><a href="#">7</a></li>
+                            <li><a href="#">8</a></li>
+                            <li><a href="#">0</a></li>
+                            <li><a href="#">10</a></li>
+                            <li><a href="#">&raquo;</a></li>
+
+                        </ul>
+                        <div class="clear">&nbsp;</div>
+                    </div>
+                </div>
+
+                <div id="home_sidebar">
+                    <div class="block smsalert">
+                        <p>Create a SMS Alert Filter and we will send you SMS alerts whenever a new lsting match your criteria. What are you waiting for ? It is <strong>absolutely FREE</strong>! Start saving time now!</p>
+                        <p><a href="#"><img src="images/smsbutton.gif" alt="SMS Alerts" /></a></p>
+                    </div>
+                    <div class="hot">
                         <h2 class="sidebar_head"><span class="h2link"><a href="#">View More</a></span> Hot Properties </h2>
                         <ul>
                             <li><span class="imageholder">
@@ -148,176 +474,6 @@
                             </li>
                         </ul>
                     </div></div>
-                
-                <div id="topcategorieslink" class="clear">
-                    <h2>Categorías</h2>
-                    <ul>
-                        <li><a href="#">Villas</a> </li>
-
-                        <li><a href="#">Houses</a> </li>
-
-                        <li><a href="#">Flats</a> </li>
-
-                        <li><a href="#">Apartments</a> </li>
-
-                        <li><a href="#">Raw Land</a> </li>
-
-                        <li><a href="#">Estates</a> </li>
-
-                        <li><a href="#">Shop / OFfice</a> </li>
-                        <li><a href="#">For Rent</a> </li>
-                    </ul>
-                </div>
-                <div class="clear">&nbsp;</div>
-                <div id="main"> 
-                    <h1>Featured Listing</h1>
-                    <ul class="listing">
-                        <li>
-                            <div class="listinfo">
-                                <img src="images/imageholder.jpg" alt="Listing Image" class="listingimage" />
-                                <h3>5 Room Villa at PlaceName</h3>
-                                <p>
-                                    Lorem Ipsum Dolor Sit Amet</p>
-                                <span class="price">Rs. 500,000  </span>
-                                <span class="media"> <img src="images/icon_img.jpg" alt="Images" width="19" height="15" /> 12 Images <img src="images/videos_icon.jpg" alt="Videos" width="21" height="18" /></span> 1 Video</div>
-                            <div class="listingbtns">
-                                <span class="listbuttons">
-                                    <a href="#">View Details</a></span>
-                                <span class="listbuttons">
-                                    <a href="#">Add To Favorites</a></span>
-                                <span class="listbuttons">
-                                    <a href="#">Contact Seller</a></span></div>
-                            <div class="clear">&nbsp;</div>
-                        </li>
-
-                        <li>
-                            <div class="listinfo">
-                                <img src="images/imageholder.jpg" alt="Listing Image" class="listingimage" />
-                                <h3>5 Room Villa at PlaceName</h3>
-                                <p>
-                                    Lorem Ipsum Dolor Sit Amet</p>
-                                <span class="price">Rs. 500,000  </span>
-                                <span class="media"> <img src="images/icon_img.jpg" alt="Images" width="19" height="15" /> 12 Images <img src="images/videos_icon.jpg" alt="Videos" width="21" height="18" /></span> 1 Video</div>
-                            <div class="listingbtns">
-                                <span class="listbuttons">
-                                    <a href="#">View Details</a></span>
-                                <span class="listbuttons">
-                                    <a href="#">Add To Favorites</a></span>
-                                <span class="listbuttons">
-                                    <a href="#">Contact Seller</a></span></div>
-                            <div class="clear">&nbsp;</div>
-                        </li>
-
-                        <li>
-                            <div class="listinfo">
-                                <img src="images/imageholder.jpg" alt="Listing Image" class="listingimage" />
-                                <h3>5 Room Villa at PlaceName</h3>
-                                <p>
-                                    Lorem Ipsum Dolor Sit Amet</p>
-                                <span class="price">Rs. 500,000  </span>
-                                <span class="media"> <img src="images/icon_img.jpg" alt="Images" width="19" height="15" /> 12 Images <img src="images/videos_icon.jpg" alt="Videos" width="21" height="18" /></span> 1 Video</div>
-                            <div class="listingbtns">
-                                <span class="listbuttons">
-                                    <a href="#">View Details</a></span>
-                                <span class="listbuttons">
-                                    <a href="#">Add To Favorites</a></span>
-                                <span class="listbuttons">
-                                    <a href="#">Contact Seller</a></span></div>
-                            <div class="clear">&nbsp;</div>
-                        </li>
-
-                        <li>
-                            <div class="listinfo">
-                                <img src="images/imageholder.jpg" alt="Listing Image" class="listingimage" />
-                                <h3>5 Room Villa at PlaceName</h3>
-                                <p>
-                                    Lorem Ipsum Dolor Sit Amet</p>
-                                <span class="price">Rs. 500,000  </span>
-                                <span class="media"> <img src="images/icon_img.jpg" alt="Images" width="19" height="15" /> 12 Images <img src="images/videos_icon.jpg" alt="Videos" width="21" height="18" /></span> 1 Video</div>
-                            <div class="listingbtns">
-                                <span class="listbuttons">
-                                    <a href="#">View Details</a></span>
-                                <span class="listbuttons">
-                                    <a href="#">Add To Favorites</a></span>
-                                <span class="listbuttons">
-                                    <a href="#">Contact Seller</a></span></div>
-                            <div class="clear">&nbsp;</div>
-                        </li>
-
-                        <li>
-                            <div class="listinfo">
-                                <img src="images/imageholder.jpg" alt="Listing Image" class="listingimage" />
-                                <h3>5 Room Villa at PlaceName</h3>
-                                <p>
-                                    Lorem Ipsum Dolor Sit Amet</p>
-                                <span class="price">Rs. 500,000  </span>
-                                <span class="media"> <img src="images/icon_img.jpg" alt="Images" width="19" height="15" /> 12 Images <img src="images/videos_icon.jpg" alt="Videos" width="21" height="18" /></span> 1 Video</div>
-                            <div class="listingbtns">
-                                <span class="listbuttons">
-                                    <a href="#">View Details</a></span>
-                                <span class="listbuttons">
-                                    <a href="#">Add To Favorites</a></span>
-                                <span class="listbuttons">
-                                    <a href="#">Contact Seller</a></span></div>
-                            <div class="clear">&nbsp;</div>
-                        </li>
-                        <li>
-                            <div class="listinfo">
-                                <img src="images/imageholder.jpg" alt="Listing Image" class="listingimage" />
-                                <h3>5 Room Villa at PlaceName</h3>
-                                <p>
-                                    Lorem Ipsum Dolor Sit Amet</p>
-                                <span class="price">Rs. 500,000  </span>
-                                <span class="media"> <img src="images/icon_img.jpg" alt="Images" width="19" height="15" /> 12 Images <img src="images/videos_icon.jpg" alt="Videos" width="21" height="18" /></span> 1 Video</div>
-                            <div class="listingbtns">
-                                <span class="listbuttons">
-                                    <a href="#">View Details</a></span>
-                                <span class="listbuttons">
-                                    <a href="#">Add To Favorites</a></span>
-                                <span class="listbuttons">
-                                    <a href="#">Contact Seller</a></span></div>
-                            <div class="clear">&nbsp;</div>
-                        </li>
-
-                        <li>
-                            <div class="listinfo">
-                                <img src="images/imageholder.jpg" alt="Listing Image" class="listingimage" />
-                                <h3>5 Room Villa at PlaceName</h3>
-                                <p>
-                                    Lorem Ipsum Dolor Sit Amet</p>
-                                <span class="price">Rs. 500,000  </span>
-                                <span class="media"> <img src="images/icon_img.jpg" alt="Images" width="19" height="15" /> 12 Images <img src="images/videos_icon.jpg" alt="Videos" width="21" height="18" /></span> 1 Video</div>
-                            <div class="listingbtns">
-                                <span class="listbuttons">
-                                    <a href="#">View Details</a></span>
-                                <span class="listbuttons">
-                                    <a href="#">Add To Favorites</a></span>
-                                <span class="listbuttons">
-                                    <a href="#">Contact Seller</a></span></div>
-                            <div class="clear">&nbsp;</div>
-                        </li>
-
-                        <li>
-                            <div class="listinfo">
-                                <img src="images/imageholder.jpg" alt="Listing Image" class="listingimage" />
-                                <h3>5 Room Villa at PlaceName</h3>
-                                <p>
-                                    Lorem Ipsum Dolor Sit Amet</p>
-                                <span class="price">Rs. 500,000  </span>
-                                <span class="media"> <img src="images/icon_img.jpg" alt="Images" width="19" height="15" /> 12 Images <img src="images/videos_icon.jpg" alt="Videos" width="21" height="18" /></span> 1 Video</div>
-                            <div class="listingbtns">
-                                <span class="listbuttons">
-                                    <a href="#">View Details</a></span>
-                                <span class="listbuttons">
-                                    <a href="#">Add To Favorites</a></span>
-                                <span class="listbuttons">
-                                    <a href="#">Contact Seller</a></span></div>
-                            <div class="clear">&nbsp;</div>
-                        </li>
-                    </ul>
-                </div>
-
-
                 <div id="sidebar">
                     <div class="block advert">
                         <img src="images/advertisehere.jpg" alt="Advertise Here" />
@@ -360,5 +516,3 @@
         </div>
     </body>
 </html>
-
-
