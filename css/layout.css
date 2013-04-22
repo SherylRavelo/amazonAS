@@ -164,12 +164,13 @@ h1#logo { font: bold 44px Tahoma, Geneva, sans-serif; color:#368291;}
 	margin-bottom: 10px;
 }
 .listingbtns .listbuttons {
-	background: url(../images/listingbuttons.jpg) no-repeat;
+	/*background: url(../images/listingbuttons.jpg) no-repeat;
 	display: block;
 	height: 18px;
 	width: 121px;
 	padding-top: 4px;
-	text-align: center;
+	text-align: center; */
+        padding-top: 4px;
 	margin-bottom: 5px;
 }
 .listingbtns .listbuttons a {
@@ -408,8 +409,8 @@ a.highlight {
 	display: inline;
 }
 #wrap #content #main #paginations a {
-	display: block;
-	float: left;
+	display: inline-block;
+	float: none;
 	text-align: center;
 	height: 20px;
 	width: 25px;
@@ -428,7 +429,7 @@ a.highlight {
 	background: #000000;
 }
 #wrap #content #main #paginations a:hover {
-	color: #FFFFFF;
+	color: #000000;
 	background: #000000;
 }
 #main #single_item_details {

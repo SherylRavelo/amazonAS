@@ -1,7 +1,7 @@
 <?php
 Class Categoria extends CI_Model
 {
- function obtener_categorias()
+ function getCategorias()
  {
    $this -> db -> select('id_categoria, nombre, descripcion, tipo_categoria');
    $this -> db -> from('categoria');
