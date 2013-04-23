@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -24,13 +25,21 @@
             });
         </script>
 
+        <!--
+        This CSS template is released under Creative Commons Attribution license. You shall not remove the link back to ramblingsoul.com from the pages.
+        
+        Designed by - Roshan M. Ravi
+        URL - www.ramblingsoul.com
+        -->
+
+
     </head>
 
     <body>
         <?php $this->load->helper('html'); ?>
         <div id="wrap">
             <div id="topbar">
-                <ul>    <li class="current"><?php echo anchor('homeusuario/index/' . $idUsuario, "Inicio", array('title' => 'Inicio')); ?></li>
+                <ul>    <li class="current"><a href="#">Inicio</a></li>
 
                     <li><a href="#">Sobre Nosotros</a></li>
                     <li><a href="#">Contáctanos</a></li>
@@ -49,26 +58,20 @@
                         <h2><img src="images/create_indi_usr.jpg" alt="Individual User" width="25" height="22" /> Opciones de Usuario</h2>   
                     </div>
                     <div >
-                        <?php //echo anchor('usuario/index/' . $idUsuario . '/modificar', 'Modificar Datos de Usuario', array('title' => 'Modificar')); ?>
+                        <?php echo anchor('usuario/index/' . $idUsuario . '/modificar', 'Modificar Datos de Usuario', array('title' => 'Modificar')); ?>
 
                     </div>
                 </div>
-
+                
             </div>
-
-
+            
+            
+            
+            
             <?php
-            $attributes = array('id' => 'form_modificar');
-            echo form_open('/usuario/modificarUsuario/' . $idUsuario, $attributes);
+            echo $mensaje;
             ?>
-            <fieldset>
-                <label>Nombre</label>
-                    <input name='nombre_new'  id='nombre_new' type='text' class='text' title='Ingrese su nombre' value='<?php echo $nombre; ?>' />
-
-                <p><input type="submit" value="Modify" name="submit" id="submit" /></p>
-            </fieldset>
-            <?php echo form_close(); ?>
-
+            
             <div id="footer">
                 <div id="upperfooter"> <a href="#">Inicio</a> | <a href="#">Search</a> | <a href="#">Register</a> | <a href="#">Pro Agent Account</a> | <a href="#">About Us</a> | <a href="#">Contact Us</a> |<a href="#"> Privacy Policy</a> <a href="#">Terms Of Use</a> | <a href="#">Advertise With Us</a> </div>
                 <div id="lowerfooter"> <span class="backtotop"> <a href="#">Volver arriba</a> </span>
