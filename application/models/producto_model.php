@@ -1,5 +1,5 @@
 <?php
-Class Producto extends CI_Model {
+Class Producto_Model extends CI_Model {
 
     function __construct() {
         parent::__construct();
@@ -102,6 +102,15 @@ Class Producto extends CI_Model {
         $query = $this->db->query($sql,array($cat));
         
         return $query->num_rows();
+    }
+    
+    function getProductosById($idProducto) {
+        $sql = "SELECT id_producto, nombre, descripcion, detalle, stock, precio_unit, cantidad, estado_producto, id_detalle, color, marca, modelo, peso, largo, ancho, alto ";
+        $sql .= "FROM producto, detalle_producto ";
+        $sql .= "WHERE id_producto = fk_producto and id_producto = ? ";
+        $query = $this->db->query($sql,array((int)$idProducto));
+        
+        return $query->result(); 
     }
     
 }

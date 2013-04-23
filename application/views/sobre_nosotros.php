@@ -48,59 +48,24 @@
             <div id="content">
                 <div id="home_main"><div id="search"> 
                         <div class="tab">
-                            <h2>Buscar productos</h2>
+                            <h2>Sobre Nosotros</h2>
                         </div>
+                        
                         <div class="container">
-                            <?php 
-                            $atributos = array('id' => 'form1');
-                            echo form_open('buscar', $atributos);
-                            ?>
-                                <table class="search_form" style="width:100%; border:none;">
-                                    <tr>
-                                        <td class="label">Buscar</td>
-                                        <td colspan="3"><label>
-                                                <input type="text" name="palabra_clave" id="textfield" class="text longfield" />
-                                            </label></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label">&nbsp;</td>
-                                        <td colspan="3">Ejemplo: Sillas para bebe / Perfume Dior </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label">Estado</td>
-                                        <td><label>
-                                                <select name="select_estado" id="select" class="select_field">
-                                                    <option selected="selected" value="0">Seleccione</option>
-                                                    <option value="1">Nuevo</option>
-                                                    <option value="2">Usado</option>
-                                                </select>
-                                            </label></td>
-                                        <td class="label">Precio Mín. Bs.F</td>
-                                        <td><input type="text" name="precio_min" id="textfield4" class="text smalltextarea" maxlength="7" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label">Categorías</td>
-                                        <td>
-                                            <?php echo form_dropdown('id_categoria',$categorias,0); ?>
-                                        </td>
-                                        <td class="label">Precio Máx. Bs.F</td>
-                                        <td><input type="text" name="precio_max" id="textfield2" class="text smalltextarea" maxlength="7" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" /></td>
-                                    </tr>                                    
-                                    <tr>
-                                        <td class="label">&nbsp;</td>
-                                        <td>&nbsp;</td>
-                                        <td colspan="2" class="label"><label>
-                                                <input type="image" src="/amazonAS/images/searchbtn.png" alt="search" name="button2" id="button2" value="Submit" />
-                                            </label></td>
-                                    </tr>
-                                </table>
-
-
-
-                            <?php echo form_close(); ?>
-
+                            <p>  Somos un equipo de desarrolladores conformado por:</p>
+                            <br />
+                            <p>  Alberyl Martínez <br />
+                                 Cel: 0426 - 4132065 <br />
+                                 Correo: alberlymartinez@gmail.com 
+                            </p>
+                            <br /><br />
+                            <p>  Sheryl Ravelo <br />
+                                 Cel: 0414 - 2122941 <br />
+                                 Correo: sheryl.ravelo@gmail.com <br />
+                            </p>
+                            
                         </div>
-                    </div></div>
+                 </div></div>
 
 <!--
                 <div id="home_sidebar"><div class="hot">

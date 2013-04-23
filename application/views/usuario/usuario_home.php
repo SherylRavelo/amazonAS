@@ -5,13 +5,24 @@
         <title>Compra los mejores Productos | AmazonAS Venezuela </title>
         <link href="/amazonAS/css/layout.css" rel="stylesheet" type="text/css" />
         <link href="/amazonAS/css/forms.css" rel="stylesheet" type="text/css" />
+
+
+
+
+        <!--
+        This CSS template is released under Creative Commons Attribution license. You shall not remove the link back to ramblingsoul.com from the pages.
         
+        Designed by - Roshan M. Ravi
+        URL - www.ramblingsoul.com
+        -->
+
+
     </head>
     <body>
         <?php $this->load->helper('html'); ?>
         <div id="wrap">
             <div id="topbar">
-                <ul>    <li class="current"><?php echo anchor('home/index/', "Inicio", array('title' => 'Inicio')); ?></li>
+                <ul>    <li class="current"><?php echo anchor('homeusuario/index/' . $idUsuario, "Inicio", array('title' => 'Inicio')); ?></li>
 
                     <li><?php echo anchor('home/sobre_nosotros', 'Sobre Nosotros', array('title' => 'Sobre Nosotros')); ?></li>
                     
@@ -34,7 +45,7 @@
                         <div id="loginform">
                             <?php echo form_open('perfil'); ?> <!--<form action="#"> -->
                                 <div class="formblock">
-                                    <input type="image" src="/amazonAS/images/g+32.png" name="button" id="button" value="Submit" />
+                                    <input type="image" src="images/g+32.png" name="button" id="button" value="Submit" />
                                 </div>
                                 
                                 <div class="clear">&nbsp;</div>
@@ -102,7 +113,7 @@
                         </div>
                     </div></div>
 
-<!--
+
                 <div id="home_sidebar"><div class="hot">
                         <h2 class="sidebar_head"><span class="h2link"><a href="#">View More</a></span> Hot Properties </h2>
                         <ul>
@@ -138,7 +149,6 @@
                             </li>
                         </ul>
                     </div></div>
-                
                 
                 <div id="topcategorieslink" class="clear">
                     <h2>Categorías</h2>
@@ -335,11 +345,8 @@
                     <div class="block"><img src="/amazonAS/images/dreamcar.jpg" alt="Own Your Dream Car" /></div>
                     <div class="block"><img src="/amazonAS/images/dreamcar.jpg" alt="Own Your Dream Car" /></div>
                 </div>
-                -->
 
                 <div class="clear">&nbsp;</div>
-                
-                
             </div>
             <div id="footer">
                 <div id="upperfooter"> <a href="#">Inicio</a> | <a href="#">Search</a> | <a href="#">Register</a> | <a href="#">Pro Agent Account</a> | <a href="#">About Us</a> | <a href="#">Contact Us</a> |<a href="#"> Privacy Policy</a> <a href="#">Terms Of Use</a> | <a href="#">Advertise With Us</a> </div>

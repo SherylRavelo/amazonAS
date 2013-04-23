@@ -38,9 +38,9 @@
         <?php $this->load->helper('html'); ?>
         <div id="wrap">
             <div id="topbar">
-                <ul>    <li class="current"><a href="#">Inicio</a></li>
+                <ul>    <li class="current"><?php echo anchor('home/index/', "Inicio", array('title' => 'Inicio')); ?></li>
 
-                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><?php echo anchor('home/sobre_nosotros', 'Sobre Nosotros', array('title' => 'Sobre Nosotros')); ?></li>
                     <li><a href="#">Contáctanos</a></li>
                     <li><a href="#">Mi Cuenta</a></li>
                     <li><a href="#">Ayuda &amp; Soporte</a></li>
@@ -149,32 +149,27 @@
                         <div class="clear">&nbsp;</div>
                     </div>
 
-                    <?php 
-                        //$atributos = array('id' => 'form1');
-                        echo form_open('producto');
-                    ?>
-                    <h1><?php echo $start."-".$hasta; ?> de <?php echo $cantProductos; ?> Productos encontrados</h1>
+                    <h1><?php echo $start . "-" . $hasta; ?> de <?php echo $cantProductos; ?> Productos encontrados</h1>
                     <ul class="listing">
                         <?php foreach ($lista as $fila) : ?>
-                        <li>
-                            <div class="listinfo">
-                                <img src="/amazonAS/images/imageholder.jpg" alt="Listing Image" class="listingimage" />
-                                <h3><?php echo $fila->nombre; ?></h3>
-                                <p><?php echo $fila->detalle; ?></p>
-                                <span class="price">Bs.F <?php echo $fila->precio_unit; ?></span>
-                                <span class="media"> <img src="/amazonAS/images/icon_img.jpg" alt="Images" width="19" height="15" /> <?php echo $fila->cant_imagen; ?> imágenes </span></div>
-                            <div class="listingbtns">
-                                <span class="listbuttons">
-                                    <input type="image" src="/amazonAS/images/detailsbuttons.jpg" alt="search" name="button9" id="button9" value="Submit" /> </span><!-- <a href="#">Ver Detalle</a></span>-->
-                                <span class="listbuttons">
-                                    <input type="image" src="/amazonAS/images/sharebuttons.jpg" alt="search" name="button10" id="button10" value="Submit" /> </span>
-                                <span class="listbuttons">
-                                    <input type="image" src="/amazonAS/images/addtocarbuttons.jpg" alt="search" name="button11" id="button11" value="Submit" /> </span></div>
-                            <div class="clear">&nbsp;</div>                              
-                        </li>
+                            <li>
+                                <div class="listinfo">
+                                    <img src="/amazonAS/images/imageholder.jpg" alt="Listing Image" class="listingimage" />
+                                    <h3><?php echo $fila->nombre; ?></h3>
+                                    <p><?php echo $fila->detalle; ?></p>
+                                    <span class="price">Bs.F <?php echo $fila->precio_unit; ?></span>
+                                    <span class="media"> <img src="/amazonAS/images/icon_img.jpg" alt="Images" width="19" height="15" /> <?php echo $fila->cant_imagen; ?> imágenes </span></div>
+                                <div class="listingbtns">
+                                    <span class="listbuttons">
+                                        <?php echo anchor('producto/viewProducto/'.$fila->nombre.'/'.$fila->id_producto, "Ver Detalles", array('title' => 'Detalles')); ?></span>
+                                    <span class="listbuttons">
+                                        <a href="#">Add To Favorites</a></span>
+                                    <span class="listbuttons">
+                                        <a href="#">Contact Seller</a></span></div>
+                                <div class="clear">&nbsp;</div>                              
+                            </li>
                         <?php endforeach; ?>                        
                     </ul>
-                        </form>
                     <div id="paginations">
                         <ul>
                             <!-- <li><a href="#">&laquo;</a></li> -->
@@ -227,6 +222,7 @@
                             </li>
                         </ul>
                     </div></div>
+                <!--
                 <div id="sidebar">
                     <div class="block advert">
                         <img src="/amazonAS/images/advertisehere.jpg" alt="Advertise Here" />
@@ -253,6 +249,7 @@
                     <div class="block"><img src="/amazonAS/images/dreamcar.jpg" alt="Own Your Dream Car" /></div>
                     <div class="block"><img src="/amazonAS/images/dreamcar.jpg" alt="Own Your Dream Car" /></div>
                 </div>
+                -->
 
                 <div class="clear">&nbsp;</div>
             </div>

@@ -44,6 +44,12 @@ h1#logo { font: bold 44px Tahoma, Geneva, sans-serif; color:#368291;}
 	text-transform: uppercase;
 }
 
+.container p {
+        height:30px;
+	padding:5px 20px 0 10px;
+	font: bold 12px "Trebuchet MS", Verdana, Arial, sans-serif;
+}
+
 .tab ul {}
 .tab li {display:inline;}
 .tab a {display:block; background:url(../images/searchtab_normal.jpg) repeat-x; height:20px; padding:5px 10px 0 10px; margin:0 2px 0 2px; float:left; font:bold 14px Arial, Helvetica, sans-serif; text-transform:uppercase; text-decoration:none; color:#e2f6fc;}
@@ -164,12 +170,12 @@ h1#logo { font: bold 44px Tahoma, Geneva, sans-serif; color:#368291;}
 	margin-bottom: 10px;
 }
 .listingbtns .listbuttons {
-	/*background: url(../images/listingbuttons.jpg) no-repeat;
+	background: url(../images/listingbuttons.jpg) no-repeat;
 	display: block;
 	height: 18px;
 	width: 121px;
 	padding-top: 4px;
-	text-align: center; */
+	text-align: center; 
         padding-top: 4px;
 	margin-bottom: 5px;
 }

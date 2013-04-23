@@ -8,7 +8,7 @@ class Buscar extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('categoria');
-        $this->load->model('producto');
+        $this->load->model('producto_model');
         $this->load->model('multimedia');
         
         $this->load->helper(array('form'));
@@ -89,14 +89,14 @@ class Buscar extends CI_Controller {
         $opciones['last_link'] = '>>';
         
         //var_dump($this->producto->getNumProducto());
-        $cant_productos = $this->producto->getNumProducto();
+        $cant_productos = $this->producto_model->getNumProducto();
         $opciones['total_rows'] = $cant_productos;
         $opciones['uri_segment'] = 3;
 
         $this->pagination->initialize($opciones);
 
         //var_dump($this->producto->getProductos($opciones['per_page'], $desde));
-        $data['lista'] = $this->producto->getProductos($opciones['per_page'], $desde);
+        $data['lista'] = $this->producto_model->getProductos($opciones['per_page'], $desde);
         $data['paginacion'] = $this->pagination->create_links();
 
         $data['categorias'] = $this->categoria->getCategorias();
@@ -155,13 +155,13 @@ class Buscar extends CI_Controller {
         $opciones['first_link'] = '<<';
         $opciones['last_link'] = '>>';
         
-        $cant_productos = $this->producto->getNumProductoByEstado($aux_estado);
+        $cant_productos = $this->producto_model->getNumProductoByEstado($aux_estado);
         $opciones['total_rows'] = $cant_productos;
         $opciones['uri_segment'] = 3;
 
         $this->pagination->initialize($opciones);
 
-        $data['lista'] = $this->producto->getProductosByEstado($opciones['per_page'], $desde, $aux_estado);
+        $data['lista'] = $this->producto_model->getProductosByEstado($opciones['per_page'], $desde, $aux_estado);
         
         $data['paginacion'] = $this->pagination->create_links();
 
@@ -216,7 +216,7 @@ class Buscar extends CI_Controller {
         $opciones['last_link'] = '>>';
         
         //var_dump($this->producto->getNumProducto());
-        $cant_productos = $this->producto->getNumProductoByPrecio($minimo,$maximo);
+        $cant_productos = $this->producto_model->getNumProductoByPrecio($minimo,$maximo);
         $opciones['total_rows'] = $cant_productos;
         $opciones['uri_segment'] = 3;
 
@@ -228,7 +228,7 @@ class Buscar extends CI_Controller {
         $this->pagination->initialize($opciones);
 
         //var_dump($this->producto->getProductos($opciones['per_page'], $desde));
-        $data['lista'] = $this->producto->getProductosByPrecioMinMax($opciones['per_page'], $desde, $minimo, $maximo);
+        $data['lista'] = $this->producto_model->getProductosByPrecioMinMax($opciones['per_page'], $desde, $minimo, $maximo);
         //$data['lista'] = $this->producto->getProductosByEstado($opciones['per_page'], $desde);
         $data['paginacion'] = $this->pagination->create_links();
 
@@ -285,7 +285,7 @@ class Buscar extends CI_Controller {
         $opciones['last_link'] = '>>';
         
         //var_dump($this->producto->getNumProducto());
-        $cant_productos = $this->producto->getNumProductoByCategoria($cat);
+        $cant_productos = $this->producto_model->getNumProductoByCategoria($cat);
         $opciones['total_rows'] = $cant_productos;
         $opciones['uri_segment'] = 3;
 
@@ -297,7 +297,7 @@ class Buscar extends CI_Controller {
         $this->pagination->initialize($opciones);
 
         //var_dump($this->producto->getProductos($opciones['per_page'], $desde));
-        $data['lista'] = $this->producto->getProductosByCategoria($opciones['per_page'], $desde, $cat);
+        $data['lista'] = $this->producto_model->getProductosByCategoria($opciones['per_page'], $desde, $cat);
         //$data['lista'] = $this->producto->getProductosByEstado($opciones['per_page'], $desde);
         $data['paginacion'] = $this->pagination->create_links();
 
