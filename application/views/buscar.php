@@ -115,6 +115,7 @@
                                         <td class="label">Estado</td>
                                         <td><label>
                                                 <select name="select" id="select" class="select_field">
+                                                    <option selected="selected">Seleccione</option>
                                                     <option>Nuevo</option>
                                                     <option>Usado</option>
                                                 </select>

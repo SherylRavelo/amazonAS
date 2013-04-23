@@ -15,6 +15,7 @@ class Perfil extends CI_Controller {
 
     function __construct() {
         parent::__construct();
+        $this->load->model('usuario_model');
     }
 
     function index() {
@@ -53,11 +54,21 @@ class Perfil extends CI_Controller {
         $me = $this->service->people->get('me');
         $minombre = $me['displayName'];
         $this->session->set_userdata('minombre', $minombre);
+        
+        /* Obtener datos del usuario por correo si esta registrado */
+        
+        $array_user = array();
+        $array_user = $this->usuario_model->getUsuarioByEmail($this->session->userdata('email'));
+        
+        $data['idUsuario'] = $array_user[0]->id_usuario;
+        var_dump($array_user[0]->id_usuario);
 
         /* Pasar los datos a la vista */
         $data['token'] = $this->session->userdata('access_token');
         $data['minombre'] = $this->session->userdata('minombre');
         $data['email'] = $this->session->userdata('email');
+        
+              
         $this->load->view('perfil', $data);
     }
 

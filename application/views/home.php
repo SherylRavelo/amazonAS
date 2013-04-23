@@ -70,7 +70,7 @@
                                     <tr>
                                         <td class="label">Buscar</td>
                                         <td colspan="3"><label>
-                                                <input type="text" name="textfield" id="textfield" class="text longfield" />
+                                                <input type="text" name="palabra_clave" id="textfield" class="text longfield" />
                                             </label></td>
                                     </tr>
                                     <tr>
@@ -80,21 +80,22 @@
                                     <tr>
                                         <td class="label">Estado</td>
                                         <td><label>
-                                                <select name="select" id="select" class="select_field">
-                                                    <option>Nuevo</option>
-                                                    <option>Usado</option>
+                                                <select name="select_estado" id="select" class="select_field">
+                                                    <option selected="selected" value="0">Seleccione</option>
+                                                    <option value="1">Nuevo</option>
+                                                    <option value="2">Usado</option>
                                                 </select>
                                             </label></td>
                                         <td class="label">Precio Mín. Bs.F</td>
-                                        <td><input type="text" name="textfield4" id="textfield4" class="text smalltextarea" maxlength="7" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" /></td>
+                                        <td><input type="text" name="precio_min" id="textfield4" class="text smalltextarea" maxlength="7" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" /></td>
                                     </tr>
                                     <tr>
                                         <td class="label">Categorías</td>
                                         <td>
-                                            <?php echo form_dropdown('id_categoria',$categorias); ?>
-                                                </td>
+                                            <?php echo form_dropdown('id_categoria',$categorias,0); ?>
+                                        </td>
                                         <td class="label">Precio Máx. Bs.F</td>
-                                        <td><input type="text" name="textfield2" id="textfield2" class="text smalltextarea" maxlength="7" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" /></td>
+                                        <td><input type="text" name="precio_max" id="textfield2" class="text smalltextarea" maxlength="7" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" /></td>
                                     </tr>                                    
                                     <tr>
                                         <td class="label">&nbsp;</td>
@@ -107,7 +108,7 @@
 
 
 
-                            </form>
+                            <?php echo form_close(); ?>
 
                         </div>
                     </div></div>
