@@ -13,6 +13,7 @@ class Home extends CI_Controller {
     public function index() {
         
 
+        $this->session->unset_userdata('idUsuario');
         $data['categorias'] = $this->categoria->getCategorias(); 
         $this->load->view('home', $data);
             

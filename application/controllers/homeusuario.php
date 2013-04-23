@@ -20,6 +20,7 @@ class Homeusuario extends CI_Controller {
         $data['idUsuario'] = $idUsuario;
         
         $data['nombreUser'] = $nombreU.' '.$apellidoU;
+        $data['apellido'] = $apellidoU;
         $data['categorias'] = $this->categoria->getCategorias(); 
         $this->load->view('/usuario/usuario_home', $data);
             

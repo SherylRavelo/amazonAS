@@ -1,5 +1,3 @@
-
-
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 session_start(); 
 
@@ -14,11 +12,11 @@ class Perfil extends CI_Controller {
 
     private $client;
     private $service;
-    
 
     function __construct() {
         parent::__construct();
         $this->load->model('usuario_model');
+        $this->load->model('lugar_model');
     }
 
     
@@ -53,14 +51,6 @@ class Perfil extends CI_Controller {
         $datos = json_decode($cod);
         $email = $datos->email;
         $this->session->set_userdata('email', $email);
-        
-        
-        
-        
-        
-        
-        
-        
 
         if ($this->client->createAuthUrl()) {
 
@@ -89,8 +79,7 @@ class Perfil extends CI_Controller {
     }
 
     function index() {
-        
-        
+
         $autenticacion_gmail = $this->autenticacion();
 
 
@@ -102,20 +91,39 @@ class Perfil extends CI_Controller {
 
             if ($query == 1) { // if the user's credentials validated...
 
+
+
+
+
                 $array_user = array();
                 $array_user = $this->usuario_model->getUsuarioByEmail($this->session->userdata('email'));
 
+
+
                 $data['idUsuario'] = $array_user[0]->id_usuario;
-                var_dump($array_user[0]->id_usuario);
+                //var_dump($array_user[0]->id_usuario);
+
 
                 /* Pasar los datos a la vista */
+
                 $data['minombre'] = $this->session->userdata('minombre');
                 $data['email'] = $this->session->userdata('email');
                 $array_user = array();
                 $array_user = $this->usuario_model->getUsuarioByEmail($this->session->userdata('email'));
                 $data['idUsuario'] = $array_user[0]->id_usuario;
-                
                 $data['nombreUser'] = $array_user[0]->nombre;
+                
+                $data['apellido'] = $array_user[0]->apellido;
+                
+                $data['fechaNac'] = $array_user[0]->fecha_nac;
+                $data['fechaRegistro'] = $array_user[0]->fecha_registro;
+                $data['direccion'] = $array_user[0]->direccion;
+                $data['zonaPostal'] = $array_user[0]->zona_postal;
+                
+                //Obtener Ciudad, Estado y Pais
+                //$lugar = $this->lugar_model->getPaisEstadoCiudadByFkCiudad($array_user[0]->fk_lugar);
+                //$data['lugar'] = $lugar[0]->ciudad.", edo. ".$lugar[0]->estado.". ".$lugar[0]->pais;
+
                 $data['valor_mensaje'] = 1;
 
                 $this->load->view('perfil', $data);
@@ -123,18 +131,18 @@ class Perfil extends CI_Controller {
 
 
                 if ($query == 0) {
-                        
-                    
                     $this->load->helper(array('form'));
                     $this->load->model('categoria');
                     $data['categorias'] = $this->categoria->getCategorias();
-                    $data['mensaje'] = "Su cuenta no ha sido activada, por favor verifique su correo para activarla.";
+                    $data['mensaje'] = "Su cuenta no ha sido activada, por favor verifique su correo para activarla";
                     $this->load->view('error_login', $data);
                 } else {
+                    $this->load->helper(array('form'));
+                    $this->load->model('categoria');
+                    $data['categorias'] = $this->categoria->getCategorias();
+                    $data['valor_mensaje'] = 2;
                     $data['mensaje'] = "¡Usted no se encuentra registrado!";
-                    $data['valor_mensaje'] = 2;  
                     $this->load->view('registro', $data);
-                    
                 }
             }
         }
@@ -147,7 +155,32 @@ class Perfil extends CI_Controller {
       redirect('home', 'refresh');
       } */
     
-    }
+    function miCuenta($idUsuario) {
 
+        $array_user = array();
+        $usuario = new Usuario_Model();
+        $usuario = $this->usuario_model->getUser($idUsuario);
+        $data['idUsuario'] = $idUsuario;
+
+        $data['nombreUser'] = $this->usuario_model->getNombre().' '.$this->usuario_model->getApellido();
+        $data['nombre'] = $this->usuario_model->getNombre();
+        $data['apellido'] = $this->usuario_model->getApellido();
+        $data['email'] = $this->usuario_model->getCorreo();
+        $data['fechaNac'] = $this->usuario_model->getFechaNac();
+        $data['fechaRegistro'] = $this->usuario_model->getFechaRegistro();
+        $data['direccion'] = $this->usuario_model->getDireccion();
+        $data['zonaPostal'] = $this->usuario_model->getZonaPostal();
+
+        //Obtener Ciudad, Estado y Pais
+        //$lugar = $this->lugar_model->getPaisEstadoCiudadByFkCiudad($this->usuario_model->getFkLugar());
+        //$data['lugar'] = $lugar[0]->ciudad . ", edo. " . $lugar[0]->estado . ". " . $lugar[0]->pais;
+
+        $data['valor_mensaje'] = 1;
+
+        $this->load->view('perfil', $data);
+
+        //   
+    }
+}
 
 ?>

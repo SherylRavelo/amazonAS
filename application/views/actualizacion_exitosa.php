@@ -37,22 +37,18 @@
     <body>
         <?php $this->load->helper('html'); ?>
         <div id="wrap">
-            
-            
             <div id="topbar">
                 <ul>    
-                    <li class="current"><?php echo anchor('home/index/', "Inicio", array('title' => 'Inicio')); ?></li>
-
-                    <li><?php echo anchor('home/sobre_nosotros', 'Sobre Nosotros', array('title' => 'Sobre Nosotros')); ?></li>
+                     <li class="current"><?php echo anchor('homeusuario/index/' . $idUsuario, "Inicio", array('title' => 'Inicio')); ?></li>
+                    <li><?php echo anchor('home/sobre_nosotros/'.$idUsuario.'/'.$nombre, 'Sobre Nosotros', array('title' => 'Sobre Nosotros')); ?></li>
+                    
                     
                     <li><a href="#">Mi Cuenta</a></li>
                     <li><a href="#">Ayuda &amp; Soporte</a></li>
+                    
                     <li></li>
                 </ul>
             </div>
-            
-            
-            
             <div id="header">
                 <div id="sitename">
                     <h1 id="logo">AmazonAS</h1>
@@ -60,13 +56,13 @@
                 <div id="shoutout"><img src="/amazonAS/images/joinnow_shoutout.jpg" alt="Join Now! It's Free" width="168" height="126" /></div>
                 <div id="useractions">
                     <div id="headings"> 
-                        <h2><img src="images/create_indi_usr.jpg" alt="Individual User" width="25" height="22" /> Opciones de Usuario</h2>   
+                        <h2><img src="/amazonAS/images/create_indi_usr.jpg" alt="Individual User" width="25" height="22" /> Opciones de Usuario</h2>   
                     </div>
                     <div >
                         <?php echo anchor('usuario/index/' . $idUsuario . '/modificar', 'Modificar Datos de Usuario', array('title' => 'Modificar')); ?>
                         <br></br>
                         
-                        <?php echo anchor('usuario/registrarFormaDePago' . $idUsuario  , 'Registrar Forma de Pago'); ?>
+                        <?php echo anchor('usuario/registrarFormaDePago/' . $idUsuario , 'Registrar Forma de Pago'); ?>
 
                     </div>
                 </div>
@@ -77,23 +73,10 @@
             
             ?>
 
-            
             <h3>Un correo ha sido enviado con la actualización de sus datos. </h3>
-            
-            
-            
             <br />
             
-            <div id="footer">
-                <div id="upperfooter"> <a href="#">Inicio</a> | <a href="#">Search</a> | <a href="#">Register</a> | <a href="#">Pro Agent Account</a> | <a href="#">About Us</a> | <a href="#">Contact Us</a> |<a href="#"> Privacy Policy</a> <a href="#">Terms Of Use</a> | <a href="#">Advertise With Us</a> </div>
-                <div id="lowerfooter"> <span class="backtotop"> <a href="#">Volver arriba</a> </span>
-
-                    <!-- Removing this link back to Ramblingsoul.com will be violation of the Creative Commons Attribution 3.0 Unported License, under which this template is released for download -->
-                    <a href="http://ramblingsoul.com" title="Download High Quality CSS Layouts">CSS Layout</a> by RamblingSoul.com | Programming by Alberly Martínez & Sheryl Ravelo
-                    <!-- Copyright - Ramblingsoul.com -->
-
-                </div>
-            </div>
+            <?php include 'includes/footer.php';?>
         </div>
     </body>
 </html>

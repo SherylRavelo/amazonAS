@@ -43,6 +43,16 @@ class Producto extends CI_Controller {
         
         $data['numFotos'] = $this->multimedia->getNumImagenes($id);
         
+        $multimedia = $this->multimedia->getImagen($id);
+        if ($multimedia != null) {
+                $nombre_imagen = $multimedia[0]->nombre;
+                $tipo_imagen = $multimedia[0]->tipo;
+
+                $data['imagen'] = $nombre_imagen.".".$tipo_imagen;
+        } else {
+            $data['imagen'] = 'img_no_available.jpg';
+        }
+        
         $data['idUsuario'] = $idUsuario;
         $data['nombreUser'] = $nombreUser;
         

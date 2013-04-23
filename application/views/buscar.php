@@ -42,15 +42,15 @@
                     <?php if ($idUsuario != null) {?>
                     <li class="current"><?php echo anchor('homeusuario/index/' . $idUsuario, "Inicio", array('title' => 'Inicio')); ?></li>
                     <li><?php echo anchor('home/sobre_nosotros/'.$idUsuario.'/'.$nombreUser, 'Sobre Nosotros', array('title' => 'Sobre Nosotros')); ?></li>
-                    
+                    <li><?php echo anchor('perfil/miCuenta/'.$idUsuario, 'Mi Cuenta', array('title' => 'Mi Cuenta')); ?></li>
                         
                     <?php }  else { ?>
                     <li class="current"><?php echo anchor('home/index/', "Inicio", array('title' => 'Inicio')); ?></li>
                     <li><?php echo anchor('home/sobre_nosotros', 'Sobre Nosotros', array('title' => 'Sobre Nosotros')); ?></li>
+                    
                     <?php }?>
                     
                     
-                    <li><a href="#">Mi Cuenta</a></li>
                     <li><a href="#">Ayuda &amp; Soporte</a></li>
                     <li></li>
                 </ul>
@@ -172,7 +172,8 @@
                         <?php foreach ($lista as $fila) : ?>
                             <li>
                                 <div class="listinfo">
-                                    <img src="/amazonAS/images/imageholder.jpg" alt="Listing Image" class="listingimage" />
+                                    <!--<img src="/amazonAS/images/imageholder.jpg" alt="Listing Image" class="listingimage" />-->
+                                    <img src="<?php echo '/amazonAS/images/images_productos/'.$fila->foto; ?>" alt="Listing Image" width="100" height="100" class="listingimage" />
                                     <h3><?php echo $fila->nombre; ?></h3>
                                     <p><?php echo $fila->detalle; ?></p>
                                     <span class="price">Bs.F <?php echo $fila->precio_unit; ?></span>
@@ -211,9 +212,10 @@
 
                 <div id="home_sidebar">
                     <div class="block smsalert">
-                        <p>Create a SMS Alert Filter and we will send you SMS alerts whenever a new lsting match your criteria. What are you waiting for ? It is <strong>absolutely FREE</strong>! Start saving time now!</p>
-                        <p><a href="#"><img src="/amazonAS/images/smsbutton.gif" alt="SMS Alerts" /></a></p>
+                        <p>Si deseas conocer sobre el equipo de amazonAS, te invitamos a visitar la sección  <strong>Sobre Nosotros</strong>! y podrás ponerte en contacto!</p>
+                        <p align ="center"><a href="#"><img src="/amazonAS/images/searchbtn.png" alt="SMS Alerts" /></a></p>
                     </div>
+                    <!--
                     <div class="hot">
                         <h2 class="sidebar_head"><span class="h2link"><a href="#">View More</a></span> Hot Properties </h2>
                         <ul>
@@ -248,7 +250,10 @@
                                 <div class="clear">&nbsp;</div>
                             </li>
                         </ul>
-                    </div></div>
+                    </div>
+                    -->
+                </div>
+                    
                 <!--
                 <div id="sidebar">
                     <div class="block advert">
@@ -280,16 +285,7 @@
 
                 <div class="clear">&nbsp;</div>
             </div>
-            <div id="footer">
-                <div id="upperfooter"> <a href="#">Inicio</a> | <a href="#">Search</a> | <a href="#">Register</a> | <a href="#">Pro Agent Account</a> | <a href="#">About Us</a> | <a href="#">Contact Us</a> |<a href="#"> Privacy Policy</a> <a href="#">Terms Of Use</a> | <a href="#">Advertise With Us</a> </div>
-                <div id="lowerfooter"> <span class="backtotop"> <a href="#">Volver arriba</a> </span>
-
-                    <!-- Removing this link back to Ramblingsoul.com will be violation of the Creative Commons Attribution 3.0 Unported License, under which this template is released for download -->
-                    <a href="http://ramblingsoul.com" title="Download High Quality CSS Layouts">CSS Layout</a> by RamblingSoul.com | Programming by Alberly Martínez & Sheryl Ravelo
-                    <!-- Copyright - Ramblingsoul.com -->
-
-                </div>
-            </div>
+            <?php include 'includes/footer.php';?>
         </div>
     </body>
 </html>

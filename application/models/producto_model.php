@@ -104,6 +104,7 @@ Class Producto_Model extends CI_Model {
         return $query->num_rows();
     }
     
+    
     function getProductosById($idProducto) {
         $sql = "SELECT id_producto, nombre, descripcion, detalle, stock, precio_unit, cantidad, estado_producto, id_detalle, color, marca, modelo, peso, largo, ancho, alto ";
         $sql .= "FROM producto, detalle_producto ";
@@ -111,6 +112,41 @@ Class Producto_Model extends CI_Model {
         $query = $this->db->query($sql,array((int)$idProducto));
         
         return $query->result(); 
+    }
+    
+    
+    function getProductosByPalabra($limit, $start, $words) {
+        $sql = "SELECT id_producto, nombre, descripcion, detalle, stock, precio_unit, cantidad, estado_producto, id_detalle, color, marca, modelo, peso, largo, ancho, alto ";
+        $sql .= "FROM producto as p, detalle_producto ";
+        $sql .= "WHERE id_producto = fk_producto and (nombre like '%$words[0]%'";
+        foreach ($words as $i => $word) {
+            $k = (int)$i;
+            if ($k > 0) {
+                $sql .= " || nombre like '%$word%' ";
+            }
+        }
+        $sql .= ") LIMIT ? , ? ";
+
+        $query = $this->db->query($sql,array((int)$start,$limit));
+        
+        return $query->result(); 
+    }
+    
+    function getNumProductoByPalabra($words) {
+        $sql = "SELECT id_producto ";
+        $sql .= "FROM producto as p, detalle_producto ";
+        $sql .= "WHERE id_producto = fk_producto and (nombre like '%$words[0]%'";
+        foreach ($words as $i => $word) {
+            $k = (int)$i;
+            if ($k > 0) {
+                $sql .= " || nombre like '%$word%' ";
+            }
+        }
+        $sql .= ") ";
+        
+        $query = $this->db->query($sql);
+        
+        return $query->num_rows();
     }
     
 }

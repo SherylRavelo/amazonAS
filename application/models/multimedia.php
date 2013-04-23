@@ -14,7 +14,13 @@ Class Multimedia extends CI_Model {
         
         return $query->num_rows();
     }
-
+    
+    function getImagen($idProducto) {
+        $sql = "select nombre,tipo,archivo from multimedia where fk_producto=? and principal = 'si'";
+        $query = $this->db->query($sql,array($idProducto));
+        
+        return $query->result_object();
+    }
 }
 
 ?>

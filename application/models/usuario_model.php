@@ -13,6 +13,7 @@ Class Usuario_Model extends CI_Model {
     private $id_usuario = '';
     private $correo = '';
     private $estado_usuario = '';
+    private $fk_lugar = '';
     
     function __construct() {
         parent::__construct();
@@ -52,8 +53,6 @@ Class Usuario_Model extends CI_Model {
         $this->correo = $correo;
     }
     
-    
-   
 
     public function getDireccion() {
         return $this->direccion;
@@ -105,6 +104,14 @@ Class Usuario_Model extends CI_Model {
         $this->estado_usuario = $estado_usuario;
     }
 
+    public function getFkLugar() {
+        return $this->fk_lugar;
+    }
+
+    public function setFkLugar($fk_lugar) {
+        $this->fk_lugar = $fk_lugar;
+    }
+    
     /*
     function login($username, $password) {
         $this->db->select('id_usuario, username, password');
@@ -138,23 +145,10 @@ Class Usuario_Model extends CI_Model {
         $this->setDireccion($row2->direccion);
         $this->setZonaPostal($row2->zona_postal);
         $this->setEstadoUsuario($row2->estado_usuario);
+        $this->setFkLugar($row2->fk_lugar);
 
         return $row2;
     }
-    
-    function getEmailById($id) {
-        $sql = "SELECT correo ";
-        $sql .= "FROM usuario ";
-        $sql .= "WHERE id_usuario = $id ";
-        $query = $this->db->query($sql,array($id));
-        
-        return $query->result(); 
-    
-        
-    }
-    
-    
-    
     
     function getUsuarioByEmail($mail) {
         $sql = "SELECT id_usuario, nombre, apellido, correo, fecha_nac, fecha_registro, direccion, estado_usuario, zona_postal, fk_lugar ";
@@ -177,20 +171,14 @@ Class Usuario_Model extends CI_Model {
             'direccion' => $this->input->post('nuevo_direccion')
        );
                     
-              	$this->db->where ('id_usuario', $idUsuario);
-                $this->db->update('usuario', $data);
-       return true;
+        $this->db->where ('id_usuario', $idUsuario);
+        $this->db->update('usuario', $data);
+        log_message('info', 'Se ha realizado una modificacion de datos');
+            return true;
               
-		}
+}
                 
-                
-                
-                
-                
-                
-                
-                
-                
+                               
     function registrar_pago($idUsuario){
         
 		$this->load->helper('string');
@@ -203,14 +191,14 @@ Class Usuario_Model extends CI_Model {
                         'documento_identidad' => $this->input->post('textfield_documento'),
                         'fk_usuario' => $idUsuario
                  );
+           
                 
-                
+ 
 		$this->db->insert('forma_de_pago', $forma_de_pago);
+                log_message('info', 'Se ha registrado una nueva forma de pago');
+                
 		return true;
         
     }
                 
     }
-
-
-

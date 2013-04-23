@@ -23,13 +23,14 @@ class Buscar extends CI_Controller {
         $this->session->unset_userdata('categoria');
         $this->session->unset_userdata('min');
         $this->session->unset_userdata('max');
+        $this->session->unset_userdata('palabra');
         
         /* Cliente */
         $this->session->set_userdata('idUsuario', $this->input->post('idUsuario'));
         $this->session->set_userdata('nombreUser', $this->input->post('nombreUser'));
         //var_dump("ID USER = ".$this->input->post('idUsuario'));
         
-        $palabra_clave = explode(' ', $this->input->post('palabra_clave'));
+        $palabra_clave = $this->input->post('palabra_clave');
         $estado_producto = $this->input->post('select_estado');
         $categoria = $this->input->post('id_categoria');
         $precio_min = $this->input->post('precio_min');
@@ -50,6 +51,10 @@ class Buscar extends CI_Controller {
         if ($precio_max != '') {
             $this->session->set_userdata('max', $precio_max);
             $opcion = 3;
+        }        
+        if ($palabra_clave != '') {
+            $this->session->set_userdata('palabra', $palabra_clave);
+            $opcion = 4;
         }
         
         switch ($opcion) {
@@ -66,7 +71,7 @@ class Buscar extends CI_Controller {
                 $this->productos_por_precio();
                 break;
             case 4:
-                $this->productos_por_estado();
+                $this->productos_por_palabra();
                 break;
             default:
                 break;
@@ -101,6 +106,7 @@ class Buscar extends CI_Controller {
 
         //var_dump($this->producto->getProductos($opciones['per_page'], $desde));
         $data['lista'] = $this->producto_model->getProductos($opciones['per_page'], $desde);
+        
         $data['paginacion'] = $this->pagination->create_links();
 
         $data['categorias'] = $this->categoria->getCategorias();
@@ -125,6 +131,17 @@ class Buscar extends CI_Controller {
         $cont = 0;
         foreach ($data['lista'] as $value) {
             $value->cant_imagen = $this->multimedia->getNumImagenes($data['lista'][$cont]->id_producto);
+            
+            $multimedia = $this->multimedia->getImagen($data['lista'][$cont]->id_producto);
+            if ($multimedia != null) {
+                $nombre_imagen = $multimedia[0]->nombre;
+                $tipo_imagen = $multimedia[0]->tipo;
+
+                $value->foto = $nombre_imagen.".".$tipo_imagen;
+            } else {
+                $value->foto = 'img_no_available.jpg';
+            }
+            
             $cont = $cont +1;
             //var_dump($cont);
         }
@@ -197,6 +214,18 @@ class Buscar extends CI_Controller {
         $cont = 0;
         foreach ($data['lista'] as $value) {
             $value->cant_imagen = $this->multimedia->getNumImagenes($data['lista'][$cont]->id_producto);
+            
+            $multimedia = $this->multimedia->getImagen($data['lista'][$cont]->id_producto);
+            if ($multimedia != null) {
+                $nombre_imagen = $multimedia[0]->nombre;
+                $tipo_imagen = $multimedia[0]->tipo;
+
+                $value->foto = $nombre_imagen.".".$tipo_imagen;
+            } else {
+                $value->foto = 'img_no_available.jpg';
+            }
+            
+            
             $cont = $cont +1;
             //var_dump($cont);
         }
@@ -268,6 +297,17 @@ class Buscar extends CI_Controller {
         $cont = 0;
         foreach ($data['lista'] as $value) {
             $value->cant_imagen = $this->multimedia->getNumImagenes($data['lista'][$cont]->id_producto);
+            
+            $multimedia = $this->multimedia->getImagen($data['lista'][$cont]->id_producto);
+            if ($multimedia != null) {
+                $nombre_imagen = $multimedia[0]->nombre;
+                $tipo_imagen = $multimedia[0]->tipo;
+
+                $value->foto = $nombre_imagen.".".$tipo_imagen;
+            } else {
+                $value->foto = 'img_no_available.jpg';
+            }
+            
             $cont = $cont +1;
             //var_dump($cont);
         }
@@ -339,6 +379,17 @@ class Buscar extends CI_Controller {
         $cont = 0;
         foreach ($data['lista'] as $value) {
             $value->cant_imagen = $this->multimedia->getNumImagenes($data['lista'][$cont]->id_producto);
+            
+            $multimedia = $this->multimedia->getImagen($data['lista'][$cont]->id_producto);
+            if ($multimedia != null) {
+                $nombre_imagen = $multimedia[0]->nombre;
+                $tipo_imagen = $multimedia[0]->tipo;
+
+                $value->foto = $nombre_imagen.".".$tipo_imagen;
+            } else {
+                $value->foto = 'img_no_available.jpg';
+            }
+            
             $cont = $cont +1;
             //var_dump($cont);
         }
@@ -347,5 +398,97 @@ class Buscar extends CI_Controller {
         $data['nombreUser'] = $this->session->userdata('nombreUser');
         $this->load->view('buscar', $data);
     }
+    
+    
+    
+    public function productos_por_palabra()
+    {
+        $palabras_clave = $this->session->userdata('palabra');
+        
+        $palabras = preg_split("/[\s,]+/",$palabras_clave);
+        //var_dump("CAT = ".$cat);
+        
+        
+        //$hey = $this->producto_model->getProductosByPalabra(10, 0, $palabras);
+        
+        $opciones = array();
+        $desde = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
+        //var_dump($this->uri->segment(3));
+        $opciones['per_page'] = 10;
+        $opciones['base_url'] = base_url().'buscar/productos_por_palabra';
+        $opciones['num_links'] = 5;
+        $opciones['cur_tag_open'] = "<b>";
+        $opciones['cur_tag_close'] = '</b>';
+        $opciones['next_link'] = '&gt';
+        $opciones['first_link'] = '<<';
+        $opciones['last_link'] = '>>';
+        
+        //var_dump($this->producto->getNumProducto());
+        $cant_productos = $this->producto_model->getNumProductoByPalabra($palabras);
+        $opciones['total_rows'] = $cant_productos;
+        $opciones['uri_segment'] = 3;
+
+        /*
+        var_dump("Cant producto = ".$cant_productos);
+        var_dump("Estado = ".$this->aux_estado);
+        */
+        
+        $this->pagination->initialize($opciones);
+
+        //var_dump($this->producto->getProductos($opciones['per_page'], $desde));
+        $data['lista'] = $this->producto_model->getProductosByPalabra($opciones['per_page'], $desde, $palabras);
+        //$data['lista'] = $this->producto->getProductosByEstado($opciones['per_page'], $desde);
+        $data['paginacion'] = $this->pagination->create_links();
+
+        $data['categorias'] = $this->categoria->getCategorias();
+        $data['cantProductos'] = $cant_productos;
+        
+        //var_dump($this->uri->segment(3));
+        //var_dump($cant_productos- $this->uri->segment(3));
+        if ($this->uri->segment(3) == false) {
+            $data['start'] = 1;
+            if ($cant_productos < $opciones['per_page']) {
+                $data['hasta'] = $cant_productos;
+            } else {
+                $data['hasta'] = $opciones['per_page'];
+            }
+            
+        } else {
+            $data['start'] = $this->uri->segment(3) + 1;
+            if (($cant_productos- $this->uri->segment(3)) < $opciones['per_page'])
+            {
+                $data['hasta'] = $cant_productos;
+            } else {
+                $data['hasta'] = $opciones['per_page'] + $this->uri->segment(3);
+            }
+            
+        }
+        
+        $cont = 0;
+        foreach ($data['lista'] as $value) {
+            $value->cant_imagen = $this->multimedia->getNumImagenes($data['lista'][$cont]->id_producto);
+            
+            $multimedia = $this->multimedia->getImagen($data['lista'][$cont]->id_producto);
+            if ($multimedia != null) {
+                $nombre_imagen = $multimedia[0]->nombre;
+                $tipo_imagen = $multimedia[0]->tipo;
+
+                $value->foto = $nombre_imagen.".".$tipo_imagen;
+            } else {
+                $value->foto = 'img_no_available.jpg';
+            }
+            
+            $cont = $cont +1;
+            //var_dump($cont);
+        }
+        
+        $data['idUsuario'] = $this->session->userdata('idUsuario');
+        $data['nombreUser'] = $this->session->userdata('nombreUser');
+        $this->load->view('buscar', $data);
+    }
+    
+    
 }
+
+

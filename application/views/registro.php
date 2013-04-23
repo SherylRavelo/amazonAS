@@ -9,13 +9,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Compra los mejores Productos | AmazonAS Venezuela </title>
 
-        
         <link href="/amazonAS/css/layoutregistro.css" rel="stylesheet" type="text/css" />
         <link href="/amazonAS/css/forms.css" rel="stylesheet" type="text/css" />
         <script src="/amazonAS/js/jquery.js" type="text/javascript"></script>
 
 
-        
 
 
         <link rel="stylesheet" href="/amazonAS/css/jquery-ui.css" />
@@ -26,7 +24,7 @@
 
 
 
-
+        
 
         <script>
             $(function() {
@@ -36,8 +34,18 @@
 
             });
         </script>
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
-
+            
+        
 
         <!--
         This CSS template is released under Creative Commons Attribution license. You shall not remove the link back to ramblingsoul.com from the pages.
@@ -51,12 +59,12 @@
     <body>
         <?php $this->load->helper('html'); ?>
         <div id="wrap">
-            
-            
-             <div id="topbar">
-                <ul>    
-                    <li class="current"><?php echo anchor('home/index/', "Inicio", array('title' => 'Inicio')); ?></li>
-                    <li><?php echo anchor('home/sobre_nosotros', 'Sobre Nosotros', array('title' => 'Sobre Nosotros')); ?></li>
+            <div id="topbar">
+                <ul>    <li class="current"><a href="#">Inicio</a></li>
+
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><a href="#">ContÃ¡ctanos</a></li>
+                    <li><a href="#">Mi Cuenta</a></li>
                     <li><a href="#">Ayuda &amp; Soporte</a></li>
                     <li></li>
                 </ul>
@@ -268,16 +276,7 @@ echo form_open('registro/create_member', $atributos);
 
                 <div class="clear">&nbsp;</div>
             </div>
-            <div id="footer">
-                <div id="upperfooter"> <a href="#">Inicio</a> | <a href="#">Search</a> | <a href="#">Register</a> | <a href="#">Pro Agent Account</a> | <a href="#">About Us</a> | <a href="#">Contact Us</a> |<a href="#"> Privacy Policy</a> <a href="#">Terms Of Use</a> | <a href="#">Advertise With Us</a> </div>
-                <div id="lowerfooter"> <span class="backtotop"> <a href="#">Volver arriba</a> </span>
-
-                    <!-- Removing this link back to Ramblingsoul.com will be violation of the Creative Commons Attribution 3.0 Unported License, under which this template is released for download -->
-                    <a href="http://ramblingsoul.com" title="Download High Quality CSS Layouts">CSS Layout</a> by RamblingSoul.com | Programming by Alberly MartÃ­nez & Sheryl Ravelo
-                    <!-- Copyright - Ramblingsoul.com -->
-
-                </div>
-            </div>
+            <?php include 'includes/footer.php';?>
         </div>
     </body>
 </html>

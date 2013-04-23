@@ -10,6 +10,25 @@
         <link href="/amazonAS/css/forms.css" rel="stylesheet" type="text/css" />
         <script src="/amazonAS/js/jquery.js" type="text/javascript"></script>
 
+        
+        <script type="text/javascript">
+            $(document).ready(function(){
+	  
+                $('#searchdiv').hide();
+   
+                $('a').click(function(){
+			
+                    $('#searchdiv').fadeIn('slow');
+   
+                });
+   
+                $('a#close').click(function(){
+                    $('#searchdiv').fadeOut('slow');
+                })
+   
+            });
+        </script>
+
 
 
 
@@ -26,12 +45,14 @@
         <?php $this->load->helper('html'); ?>
         <div id="wrap">
             <div id="topbar">
-                <ul>    <li class="current"><a href="#">Inicio</a></li>
-
-                    <li><a href="#">Sobre Nosotros</a></li>
-                    <li><a href="#">ContActanos</a></li>
-                    <li><a href="#">Mi Cuenta</a></li>
+                <ul>    
+                    <li class="current"><?php echo anchor('homeusuario/index/' . $idUsuario, "Inicio", array('title' => 'Inicio')); ?></li>
+                    <li><?php echo anchor('home/sobre_nosotros/'.$idUsuario.'/'.$nombreUser, 'Sobre Nosotros', array('title' => 'Sobre Nosotros')); ?></li>
+                    
+                    
+                    <li><?php echo anchor('perfil/miCuenta/'.$idUsuario, 'Mi Cuenta', array('title' => 'Mi Cuenta')); ?></li>
                     <li><a href="#">Ayuda &amp; Soporte</a></li>
+                    
                     <li></li>
                 </ul>
             </div>
@@ -41,27 +62,11 @@
                 <div id="sitename">
                     <h1 id="logo">AmazonAS</h1>
                 </div>
-                <div id="shoutout"><img src="images/joinnow_shoutout.jpg" alt="Join Now! It's Free" width="168" height="126" /></div>
+                <div id="shoutout"><img src="/amazonAS/images/joinnow_shoutout.jpg" alt="Join Now! It's Free" width="168" height="126" /></div>
                 <div id="useractions">
                     <div id="headings"> 
-                        <h2><img src="images/create_indi_usr.jpg" alt="Individual User" width="25" height="22" /> 
-                            <a href='registro'>Crear cuenta</a> </h2>   
-                    </div>
-                    <div id="login">
-
-
-                        <p><strong> ¿Ya estás registrado en AmazonAS?</strong> Ingresa aquí­ con tu cuenta Google</p>
-                        <div id="loginform">
-                            <?php echo form_open('perfil'); ?> <!--<form action="#"> -->
-                            <div class="formblock">
-                                <input type="image" src="images/g+32.png" name="button" id="button" value="Submit" />
-                            </div>
-
-                            <div class="clear">&nbsp;</div>
-
-                            </form>
-                        </div>
-
+                        <h2><img src="/amazonAS/images/create_indi_usr.jpg" alt="Individual User" width="25" height="22" /> 
+                            <?php echo "$nombreUser $apellido"; ?> </h2>   
                     </div>
                 </div>
             </div>
@@ -176,7 +181,7 @@
                                     <td class="label">&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td colspan="2" class="label"><label>
-                                            <input type="image" src="images/offersubmit.gif" alt="search" name="button2" id="button2" value="Submit" />
+                                            <input type="image" src="/amazonAS/images/offersubmit.gif" alt="search" name="button2" id="button2" value="Submit" />
                                         </label></td>
                                 </tr>
                             </table>
@@ -241,16 +246,7 @@
 
                 <div class="clear">&nbsp;</div>
             </div>
-            <div id="footer">
-                <div id="upperfooter"> <a href="#">Inicio</a> | <a href="#">Search</a> | <a href="#">Register</a> | <a href="#">Pro Agent Account</a> | <a href="#">About Us</a> | <a href="#">Contact Us</a> |<a href="#"> Privacy Policy</a> <a href="#">Terms Of Use</a> | <a href="#">Advertise With Us</a> </div>
-                <div id="lowerfooter"> <span class="backtotop"> <a href="#">Volver arriba</a> </span>
-
-                    <!-- Removing this link back to Ramblingsoul.com will be violation of the Creative Commons Attribution 3.0 Unported License, under which this template is released for download -->
-                    <a href="http://ramblingsoul.com" title="Download High Quality CSS Layouts">CSS Layout</a> by RamblingSoul.com | Programming by Alberly MartÃ­nez & Sheryl Ravelo
-                    <!-- Copyright - Ramblingsoul.com -->
-
-                </div>
-            </div>
+            <?php include '/../includes/footer.php';?>
         </div>
     </body>
 </html>

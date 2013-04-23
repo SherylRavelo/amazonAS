@@ -44,10 +44,10 @@ class Registro extends CI_Controller {
             //$this->index();
         } else {
             $this->load->model('registro_model');
-            //$email = $this->input->post('email_address');
+            
 
             if ($query = $this->registro_model->create_member()) {
-
+                
                 $this->sendmeail();
             } else {
                 $this->load->view('perfil');

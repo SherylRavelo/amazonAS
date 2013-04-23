@@ -33,12 +33,12 @@ class Usuario extends CI_Controller {
         switch ($opcion) {
             case 'modificar':
                 $this->viewModificarUsuario($idUsuario);
-                var_dump("ID = ".$idUsuario);
-                var_dump("OPCION = ". $opcion);
                 break;
             case 'changePassword':
                 $this->loadChangePasswordView($idUsuario);
                 break;
+            case 'pago':
+                $this->cargar_view_pago($idUsuario);
         };
     }
     
@@ -50,6 +50,7 @@ class Usuario extends CI_Controller {
         $usuario = new Usuario_Model();
         $usuario = $this->usuario_model->getUser($idUsuario);
         $data['nombre'] = $this->usuario_model->getNombre();
+        $data['nombreUser'] = $this->usuario_model->getNombre();
         $data['apellido'] = $this->usuario_model->getApellido();
         $data['correo'] = $this->usuario_model->getCorreo();
         $data['estado_usuario'] = $this->usuario_model->getEstadoUsuario();
@@ -68,14 +69,22 @@ class Usuario extends CI_Controller {
     function modificarUsuario($idUsuario) {
 
         $booleano = $this->usuario_model->modificar($idUsuario);
-        if ($booleano == true) {
-           
+        
+        $data = array();
+        $data['idUsuario'] = $idUsuario;
+        
+        
+        $usuario = new Usuario_Model();
+        $usuario = $this->usuario_model->getUser($idUsuario);
+        $data['nombreUser'] = $this->usuario_model->getNombre();
+        $data['apellido'] = $this->usuario_model->getApellido();
+        
+        if ($booleano == true) {    
             $this->sendmeail($idUsuario);
         } else
         {
-            $this->load->view ('usuario_modificar');
+            $this->load->view('usuario_modificar',$data);
         }
-      
     }
     
     
@@ -89,7 +98,9 @@ class Usuario extends CI_Controller {
        $fecha_registro = $this->input->post('nuevo_fregistro');
        $zona_postal = $this->input->post('nuevo_codigo');
        $direccion = $this->input->post('nuevo_direccion');
+
        $data['idUsuario'] = $idUsuario;
+       $data['nombre'] = $nombre;
                   				
         $config = Array(
             'protocol' => 'smtp',
@@ -125,21 +136,30 @@ class Usuario extends CI_Controller {
         );
 
         if ($this->email->send()) {
-            
-            $this->load->view('actualizacion_exitosa', $data);
+        
+            $this->load->view('actualizacion_exitosa',$data);
         } else {
             show_error($this->email->print_debugger());
         }
         
     }
     
-    
-    
     function cargar_view_pago($idUsuario){
-       
-        
+           
        $data['idUsuario'] = $idUsuario;
        $data['marca'] = $this->input->post('textfield_marca');
+       
+       
+       
+       
+         $usuario = new Usuario_Model();
+        $usuario = $this->usuario_model->getUser($idUsuario);
+        $data['nombreUser'] = $this->usuario_model->getNombre();
+        $data['apellido'] = $this->usuario_model->getApellido();
+       
+       $data['email'] = $this->usuario_model->getCorreo();
+       
+       
        $this->load->view('forma_de_pago', $data);
        
     }
@@ -148,27 +168,19 @@ class Usuario extends CI_Controller {
         
         $data['idUsuario'] = $idUsuario;
         $this->load->model('usuario_model');
-        $booleano = $this->usuario_model->registrar_pago($idUsuario);
-       
-        
+        $this->usuario_model->registrar_pago($idUsuario);
         $this->load->view('forma_de_pago_registrada', $data);
-        //$this->send_mail_pago($idUsuario);
-        
-        
-        
+        $this->send_mail_pago($idUsuario);
         
     }
     
-  
-    
-    
-
     function send_mail_pago($idUsuario){
         
+        $usuario = new Usuario_Model();
+        $usuario = $this->usuario_model->getUser($idUsuario);
+        $emailUsuario = $this->usuario_model->getCorreo();
         
-       //$correo = $this->usuario_model->getEmailById($idUsuario);
-       
-       
+            
        $num_tarjeta_credito = $this->input->post('textfield_numero');
        $fecha_venc = $this->input->post('datepicker');
        $marca = $this->input->post('textfield_marca');
@@ -190,7 +202,7 @@ class Usuario extends CI_Controller {
         $this->email->set_newline("\r\n");
 
         $this->email->from('tiendavirtualamazonas@gmail.com', 'amazonAS');
-        $this->email->to('tiendavirtualamazonas@gmail.com');
+        $this->email->to($emailUsuario);
         $this->email->subject('Nueva forma de pago registrada');
         //$this->email->message('Thank you for registering. To activate you\'re account go to this url ' . base_url() . 'login/account_activation/' . $nick . '/'. $activation_code);
 
@@ -211,6 +223,9 @@ class Usuario extends CI_Controller {
         $this->email->send();
         
     }
+    
+    
+
 }
 
 ?>

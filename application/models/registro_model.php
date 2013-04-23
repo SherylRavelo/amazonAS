@@ -87,7 +87,16 @@ class Registro_model extends CI_Model {
 		);
 		$insert = $this->db->insert('usuario', $new_member_insert_data);
                 
-                //log_message("error", "User Already Exists");
+                
+                $nombrelog = $this->input->post('textfield_nombre');
+                $apellidolog = $this->input->post('textfield_apellido');
+                
+                
+                
+                log_message('info', 'Se ha registrado un nuevo usuario en el sistema: '.$nombrelog.' '.$apellidolog);
+                
+            
+                
 		return $insert;
 	}
 	
@@ -139,7 +148,7 @@ class Registro_model extends CI_Model {
 			$this->db->where('nombre', $nombre);
 			$this->db->update('usuario', $data); 
                         
-                        log_message('info', 'El '.$codigo_activacion.' actializó el usuario '. $nombre.' correctamente.');
+                        log_message('info', 'Con el codigo '.$codigo_activacion.' se confirmo el usuario '.$nombre.' correctamente.');
                         
 			return true;
 		}

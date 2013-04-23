@@ -58,18 +58,21 @@
                     <h1 id="logo">AmazonAS</h1>
                 </div>
                 <div id="shoutout"><img src="/amazonAS/images/joinnow_shoutout.jpg" alt="Join Now! It's Free" width="168" height="126" /></div>
+                
                 <div id="useractions">
                     <div id="headings"> 
-                        <h2><img src="images/create_indi_usr.jpg" alt="Individual User" width="25" height="22" /> Opciones de Usuario</h2>   
+                        <h2><img src="/amazonAS/images/create_indi_usr.jpg" alt="Individual User" width="25" height="22" /> Opciones de Usuario</h2>   
                     </div>
                     <div >
-                        <?php echo anchor('usuario/index/' . $idUsuario . '/modificar', 'Modificar Datos de Usuario', array('title' => 'Modificar')); ?>
+                       <?php echo anchor('usuario/index/' . $idUsuario . '/modificar', 'Modificar Datos de Usuario', array('title' => 'Modificar')); ?>
                         <br></br>
-                        
-                        <?php echo anchor('usuario/registrarFormaDePago' . $idUsuario  , 'Registrar Forma de Pago'); ?>
+                         <?php echo anchor('usuario/index/' . $idUsuario . '/pago', 'Registrar Forma de Pago', array('title' => 'Forma de Pago')); ?>
+                        <br></br>
+                        <li class="current"><?php echo anchor('home/index/', "Cerrar Sesión", array('title' => 'Logout')); ?></li>
 
                     </div>
                 </div>
+                
                 
             </div>
             <?php

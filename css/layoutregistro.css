@@ -24,13 +24,13 @@ h1#logo { font: bold 44px Tahoma, Geneva, sans-serif; color:#368291;}
 	background: url(../images/hotbg.jpg) repeat;
 }
 
-#search {background:url(../images/searchbg.jpg); height:500px;/*255px;*/} /*height:301px;*/
-.hot {background:url(../images/hotbg.jpg); height:500px;/*301px;*/}
+#search {background:url(../images/searchbg.jpg); height:600px;/*255px;*/} /*height:301px;*/
+.hot {background:url(../images/hotbg.jpg); height:300px;/*301px;*/}
 
 #topcategorieslink {background:url(../images/categoriesbg.jpg); height:44px; margin-bottom:8px;}
 #search .container {
 	background:#E3F6FC url(../images/searchbottom.jpg) left bottom no-repeat;
-	height: 450px;/*200px;*/ /*height:255px;*/
+	height: 200px;/*200px;*/ /*height:255px;*/
 	width:  530px;
 	margin-right: auto;
 	margin-left: auto;
