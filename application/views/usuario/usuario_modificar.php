@@ -30,7 +30,7 @@
         <?php $this->load->helper('html'); ?>
         <div id="wrap">
             <div id="topbar">
-                <ul>    <li class="current"><?php echo anchor('homeusuario/index/' . $idUsuario, "Inicio", array('title' => 'Inicio')); ?></li>
+                <ul>    <li class="current"><a href="#">Inicio</a></li>
 
                     <li><a href="#">Sobre Nosotros</a></li>
                     <li><a href="#">Contáctanos</a></li>

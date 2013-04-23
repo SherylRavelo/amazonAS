@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -58,21 +59,18 @@
                     </div>
                     <div >
                         <?php echo anchor('usuario/index/' . $idUsuario . '/modificar', 'Modificar Datos de Usuario', array('title' => 'Modificar')); ?>
-                        <br></br>
-                        
-                        <?php echo anchor('usuario/registrarFormaDePago/' . $idUsuario , 'Registrar Forma de Pago'); ?>
 
                     </div>
                 </div>
                 
             </div>
+            
+            
+            
+            
             <?php
-            //$this->load->helper('html');
-            echo heading('Perfil del usuario', 1);
+            echo $mensaje;
             ?>
-
-            <h2>Bienvenido <?php echo $minombre; ?>!</h2>
-            <br />
             
             <div id="footer">
                 <div id="upperfooter"> <a href="#">Inicio</a> | <a href="#">Search</a> | <a href="#">Register</a> | <a href="#">Pro Agent Account</a> | <a href="#">About Us</a> | <a href="#">Contact Us</a> |<a href="#"> Privacy Policy</a> <a href="#">Terms Of Use</a> | <a href="#">Advertise With Us</a> </div>

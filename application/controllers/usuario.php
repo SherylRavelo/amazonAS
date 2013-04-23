@@ -26,6 +26,8 @@ class Usuario extends CI_Controller {
      * @param string $idUsuario usuario 
      * @param string $opcion nombre de funcion index a llamar 
      */
+    
+    
     function index($idUsuario, $opcion) {
 
         switch ($opcion) {
@@ -77,6 +79,21 @@ class Usuario extends CI_Controller {
             echo "esta repedito";
         */
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    function registrarFormaDePago($idUsuario){
+        
+        
+    }
+    
+    
+    
 
 }
 

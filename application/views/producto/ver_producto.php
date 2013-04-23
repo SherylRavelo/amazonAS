@@ -11,7 +11,6 @@
         <script type="text/javascript" src="/amazonAS/jqueryui/development-bundle/ui/effects.highlight.js"></script>
         <script type="text/javascript" src="/amazonAS/jqueryui/development-bundle/ui/ui.tabs.js"></script>
 
-        
         <script type="text/javascript">
             $(function() {
                 $("#tabs").tabs({
@@ -46,17 +45,25 @@
         </script>
 
         <link href="/amazonAS/css/ajaxui.css" rel="stylesheet" type="text/css" />
-    
+
+        <!--
+        This CSS template is released under Creative Commons Attribution license. You shall not remove the link back to ramblingsoul.com from the pages.
+        
+        Designed by - Roshan M. Ravi
+        URL - www.ramblingsoul.com
+        -->
+
+
     </head>
 
     <body>
         <?php $this->load->helper('html'); ?>
         <div id="wrap">
             <div id="topbar">
-                <ul>    <li class="current"><?php echo anchor('home/index/', "Inicio", array('title' => 'Inicio')); ?></li>
+                <ul>    <li class="current"><a href="#">Inicio</a></li>
 
-                    <li><?php echo anchor('home/sobre_nosotros', 'Sobre Nosotros', array('title' => 'Sobre Nosotros')); ?></li>
-                    
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><a href="#">Contáctanos</a></li>
                     <li><a href="#">Mi Cuenta</a></li>
                     <li><a href="#">Ayuda &amp; Soporte</a></li>
                     <li></li>
@@ -88,7 +95,7 @@
                 </div>
             </div>
             <div id="content">
-                <!--
+
                 <div id="topcategorieslink" class="clear">
                     <h2>Filtar Resultados</h2>
                     <ul>
@@ -102,28 +109,23 @@
 
                     </ul>
                 </div>
-                -->
                 <div class="clear">&nbsp;</div>
 
                 <div id="main">
-                    <h1><?php echo $nombreProducto; ?></h1>
+                    <h1>5 Room Villa at PlaceName</h1>
                     <div id="single_item_details">
-                        <div id="leftcolumn"><img src="/amazonAS/images/imageholder_detailspage.jpg" alt="Image" width="220" height="220" class="previewimg" />
+                        <div id="leftcolumn"><img src="images/imageholder_detailspage.jpg" alt="Image" width="220" height="220" class="previewimg" />
 
 
                         </div>
 
                         <div id="rightcolumn">
-                            <h2><?php echo $detalle; ?></h2>
-                            <p class="user"><img src="/amazonAS/images/usericon.gif" alt="user" /> Ver Calificaciones <a href="#">Aquí</a></p>
-                            <p>Id #<?php echo $idProducto; ?> <br />
-                                Estado: <?php echo $estado; ?>
-                            </p>
+                            <h2>New Condo house, modern light &amp; garden. 50 Acres</h2>
+                            <p class="user"><img src="images/usericon.gif" alt="user" /> Posted by <a href="#">Chris002</a></p>
+                            <p>Ref# :CO1 <br />
+                                Posted On : Thursday 05th of February 2009</p>
                             <p>&nbsp;</p>
-                            <p class="price">Precio: Bs.F <?php echo $precio; ?></p>
-                            <br />
-                            <div class="listingbtns"> <span class="listbuttons"> <a href="#">Añadir al carrito</a></span> </div>
-                            <!--
+                            <p class="price">Offered at: $225,000</p>
                             <div id="tabs">
                                 <ul>
                                     <li><a href="#tabs-1">Save This</a></li>
@@ -132,29 +134,28 @@
                                     <li><a href="#tabs-3">Report This</a></li>
                                 </ul>
                                 <div id="tabs-1" class="hiddentab">
-                                    <p><img src="/amazonAS/images/fav.gif" alt="FAv" width="18" height="13" />&nbsp;<a href="#">To My Favorites</a></p>
-                                    <p><img src="/amazonAS/images/emailalert.gif" alt="email" width="18" height="15" />&nbsp;<a href="#">To Email Alerts</a></p>
-                                    <p><img src="/amazonAS/images/sms.gif" alt="sms" width="18" height="16" />&nbsp;<a href="#">To SMS Alerts</a></p>
+                                    <p><img src="images/fav.gif" alt="FAv" width="18" height="13" />&nbsp;<a href="#">To My Favorites</a></p>
+                                    <p><img src="images/emailalert.gif" alt="email" width="18" height="15" />&nbsp;<a href="#">To Email Alerts</a></p>
+                                    <p><img src="images/sms.gif" alt="sms" width="18" height="16" />&nbsp;<a href="#">To SMS Alerts</a></p>
                                 </div>
                                 <div id="tabs-2" class="hiddentab">
-                                    <p><img src="/amazonAS/images/emailalert.gif" alt="email" width="18" height="15" />&nbsp;<a href="#">By Email</a></p>
-                                    <p><img src="/amazonAS/images/sms.gif" alt="sms" width="18" height="16" />&nbsp;<a href="#">By SMS</a></p>
+                                    <p><img src="images/emailalert.gif" alt="email" width="18" height="15" />&nbsp;<a href="#">By Email</a></p>
+                                    <p><img src="images/sms.gif" alt="sms" width="18" height="16" />&nbsp;<a href="#">By SMS</a></p>
                                 </div>
                                 <div id="tabs-3" class="hiddentab">
-                                    <p><img src="/amazonAS/images/emailalert.gif" alt="email" width="18" height="15" />&nbsp;<a href="#">Report Spam</a></p>
+                                    <p><img src="images/emailalert.gif" alt="email" width="18" height="15" />&nbsp;<a href="#">Report Spam</a></p>
                                 </div>
 
                             </div>
-                            -->
 
                         </div>
 
                         <div class="clear">&nbsp;</div>
                     </div>
                     <div id="midraw_details">
-                        
+                        <div class="listingbtns"> <span class="listbuttons"> <a href="#">Make An Offer</a></span> <span class="listbuttons"> <a href="#">Request Details</a></span> <span class="listbuttons"> <a href="#">Contact Seller</a></span></div>
                         <div id="imagesgallerylisting">
-                            <div class="imagegallink"><a href="#">Ver imágenes</a> <span><?php echo $numFotos; ?> Imágenes Cargadas</span></div>
+                            <div class="imagegallink"><a href="#">view  Image Gallery</a> <span>12 Images Submitted</span></div>
                         </div>
                         <div class="clear">&nbsp;</div>
                     </div>
@@ -162,22 +163,48 @@
                         <div id="listing_details">
                             <table cellspacing="0" cellpadding="0">
                                 <tr>
-                                    <td><h3>Descripción y Características</h3></td>
+                                    <td><h3>Property Features</h3></td>
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td><ul>
-                                        
-                                            <li><?php echo $descripcion; ?></li>
-                                            <?php if ($marca != null) {?><li>Marca: <?php echo $marca; ?></li> <?php }?>
-                                            <?php if ($modelo != null) {?><li>Modelo: <?php echo $modelo; ?></li> <?php }?>
-                                            <?php if ($color != null) {?><li>Color: <?php echo $color; ?></li> <?php }?>
-                                            <?php if ($peso != null) {?><li>Peso: <?php echo $peso; ?></li> <?php }?>
-                                            <?php if ($alto != null) {?><li>Alto: <?php echo $alto; ?></li> <?php }?>
-                                            <?php if ($ancho != null) {?><li>Ancho: <?php echo $ancho; ?></li> <?php }?>
-                                            <?php if ($largo != null) {?><li>Largo: <?php echo $largo; ?></li> <?php }?>
-                                            
-                                      </ul></td>
+
+                                            <li>Status:  Active-Exclusive Right</li>
+                                            <li>County:  Clark</li>
+                                            <li>Community Name:  Southern Highlands</li>
+                                            <li>Year Built: 2005</li>
+                                            <li>3 total bedroom(s)</li>
+                                            <li>4 total bath(s)</li>
+                                            <li>1 total full bath(s)</li>
+                                            <li>2 total three-quarter bath(s)</li>
+                                            <li>1 total half bath(s)</li>
+                                            <li>Approximately 3220 sq. ft.</li>
+                                            <li>Master bedroom is 18X15</li>
+                                            <li>Dining room is 14X13</li>
+                                            <li>2 fireplaces</li>
+                                            <li>Fireplace features:  Gas, In Living/Great room, On Courtyard patio</li>
+                                            <li>4 or more car garage</li>
+                                        </ul>          </td>
+                                    <td><ul>
+                                            <li>Attached parking</li>
+                                            <li>Heating features:  2+ units, Central, Gas</li>
+                                            <li>Central air conditioning</li>
+                                            <li>Roofing:  Tile like</li>
+                                            <li>Lot is 12632 sq. ft.</li>
+                                            <li>Approximately 0.29 acre(s)</li>
+                                            <li>Lot size is less than 1/2 acre</li>
+                                            <li>Elementary School:  Frias Charles &amp; Phyllis</li>
+                                            <li>Jr. High School:  Lawrence</li>
+                                            <li>High School:  Sierra Vista High</li>
+                                        </ul>
+                                        <ul>
+                                            <li>Two story</li>
+                                            <li>Master bedroom</li>
+                                            <li>Dining room</li>
+                                            <li>Bathroom(s) on main floor</li>
+                                            <li>Bedroom(s) on main floor</li>
+
+                                        </ul></td>
                                 </tr>
                             </table>
                         </div>
@@ -185,7 +212,6 @@
 
                     </div>
                     <p>&nbsp;</p>
-                    <!--
                     <h1>Similar Items</h1>
                     <ul class="listing"><li>
                             <div class="listinfo">
@@ -241,18 +267,17 @@
                             <div class="clear">&nbsp;</div>
                         </li>
                     </ul>
-                    -->
 
                 </div>
                 <div id="home_sidebar">
                     <div class="block smsalert">
                         <p>Create a SMS Alert Filter and we will send you SMS alerts whenever a new lsting match your criteria. What are you waiting for ? It is <strong>absolutely FREE</strong>! Start saving time now!</p>
-                        <p><a href="#"><img src="/amazonAS/images/smsbutton.gif" alt="SMS Alerts" /></a></p>
+                        <p><a href="#"><img src="images/smsbutton.gif" alt="SMS Alerts" /></a></p>
                     </div>
                 </div>
                 <div id="sidebar">
                     <div class="block advert">
-                        <img src="/amazonAS/images/advertisehere.jpg" alt="Advertise Here" />
+                        <img src="images/advertisehere.jpg" alt="Advertise Here" />
                     </div>
                     <div class="menulist block">
                         <h2 class="sidebar_head">Quick Links</h2>
@@ -270,11 +295,11 @@
                         <div class="clear">&nbsp;</div>
                     </div>
                     <div class="block">
-                        <img src="/amazonAS/images/dreamcar.jpg" alt="Own Your Dream Car" />
+                        <img src="images/dreamcar.jpg" alt="Own Your Dream Car" />
 
                     </div>
-                    <div class="block"><img src="/amazonAS/images/dreamcar.jpg" alt="Own Your Dream Car" /></div>
-                    <div class="block"><img src="/amazonAS/images/dreamcar.jpg" alt="Own Your Dream Car" /></div>
+                    <div class="block"><img src="images/dreamcar.jpg" alt="Own Your Dream Car" /></div>
+                    <div class="block"><img src="images/dreamcar.jpg" alt="Own Your Dream Car" /></div>
                 </div>
 
                 <div class="clear">&nbsp;</div>
