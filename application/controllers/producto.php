@@ -21,12 +21,12 @@ class Producto extends CI_Controller {
         
     }
     
-    public function viewProducto($name_producto,$id) {
+    public function viewProducto($id, $idUsuario=null, $nombreUser=null) {
          
         //$array_producto = new Producto_Model();
         $array_producto = $this->producto_model->getProductosById($id);
         $data = array();
-        $data['nombreProducto'] = $name_producto;
+        $data['nombreProducto'] = $array_producto[0]->nombre;
         $data['idProducto'] = $id;
         $data['descripcion'] = $array_producto[0]->descripcion;
         $data['detalle'] = $array_producto[0]->detalle;
@@ -43,11 +43,15 @@ class Producto extends CI_Controller {
         
         $data['numFotos'] = $this->multimedia->getNumImagenes($id);
         
+        $data['idUsuario'] = $idUsuario;
+        $data['nombreUser'] = $nombreUser;
         
         $this->load->view('producto/ver_producto',$data);
             
         
     }
+    
+    
     
 
 }

@@ -53,8 +53,15 @@
         <?php $this->load->helper('html'); ?>
         <div id="wrap">
             <div id="topbar">
-                <ul>    <li class="current"><?php echo anchor('home/index/', "Inicio", array('title' => 'Inicio')); ?></li>
+                <ul>  
+                    <?php if ($idUsuario != null) {?>
+                    <li class="current"><?php echo anchor('homeusuario/index/' . $idUsuario, "Inicio", array('title' => 'Inicio')); ?></li>
 
+                    <?php }  else { ?>
+                    <li class="current"><?php echo anchor('home/index/', "Inicio", array('title' => 'Inicio')); ?></li>
+                   <?php }?>
+                    
+                    
                     <li><?php echo anchor('home/sobre_nosotros', 'Sobre Nosotros', array('title' => 'Sobre Nosotros')); ?></li>
                     
                     <li><a href="#">Mi Cuenta</a></li>
@@ -67,6 +74,14 @@
                     <h1 id="logo">AmazonAS</h1>
                 </div>
                 <div id="shoutout"><img src="/amazonAS/images/joinnow_shoutout.jpg" alt="Join Now! It's Free" width="168" height="126" /></div>
+                
+                <?php if ($idUsuario != null) {?>
+                <div id="useractions">
+                    <div id="headings"> 
+                        <h2><img src="/amazonAS/images/create_indi_usr.jpg" alt="Individual User" width="25" height="22" /> <?php echo $nombreUser; ?></h2>   
+                    </div>
+                </div>
+                <?php }  else { ?>
                 <div id="useractions">
                     <div id="headings"> 
                         <h2><img src="/amazonAS/images/create_indi_usr.jpg" alt="Individual User" width="25" height="22" /> <a href="#">Crear cuenta</a> </h2>   
@@ -86,6 +101,7 @@
 
                     </div>
                 </div>
+                <?php }?>
             </div>
             <div id="content">
                 <!--

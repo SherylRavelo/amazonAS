@@ -24,6 +24,10 @@ class Buscar extends CI_Controller {
         $this->session->unset_userdata('min');
         $this->session->unset_userdata('max');
         
+        /* Cliente */
+        $this->session->set_userdata('idUsuario', $this->input->post('idUsuario'));
+        $this->session->set_userdata('nombreUser', $this->input->post('nombreUser'));
+        var_dump("ID USER = ".$this->input->post('idUsuario'));
         
         $palabra_clave = explode(' ', $this->input->post('palabra_clave'));
         $estado_producto = $this->input->post('select_estado');
@@ -123,7 +127,10 @@ class Buscar extends CI_Controller {
             $value->cant_imagen = $this->multimedia->getNumImagenes($data['lista'][$cont]->id_producto);
             $cont = $cont +1;
             //var_dump($cont);
-        } 
+        }
+        
+        $data['idUsuario'] = $this->session->userdata('idUsuario');
+        $data['nombreUser'] = $this->session->userdata('nombreUser');
         $this->load->view('buscar', $data);
 
     }
@@ -194,6 +201,8 @@ class Buscar extends CI_Controller {
             //var_dump($cont);
         }
         
+        $data['idUsuario'] = $this->session->userdata('idUsuario');
+        $data['nombreUser'] = $this->session->userdata('nombreUser');
         $this->load->view('buscar', $data);
     }
     
@@ -263,6 +272,8 @@ class Buscar extends CI_Controller {
             //var_dump($cont);
         }
         
+        $data['idUsuario'] = $this->session->userdata('idUsuario');
+        $data['nombreUser'] = $this->session->userdata('nombreUser');
         $this->load->view('buscar', $data);
     }
     
@@ -332,6 +343,8 @@ class Buscar extends CI_Controller {
             //var_dump($cont);
         }
         
+        $data['idUsuario'] = $this->session->userdata('idUsuario');
+        $data['nombreUser'] = $this->session->userdata('nombreUser');
         $this->load->view('buscar', $data);
     }
 

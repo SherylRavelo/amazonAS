@@ -38,8 +38,14 @@
         <?php $this->load->helper('html'); ?>
         <div id="wrap">
             <div id="topbar">
-                <ul>    <li class="current"><?php echo anchor('home/index/', "Inicio", array('title' => 'Inicio')); ?></li>
+                <ul> 
+                    <?php if ($idUsuario != null) {?>
+                    <li class="current"><?php echo anchor('homeusuario/index/' . $idUsuario, "Inicio", array('title' => 'Inicio')); ?></li>
 
+                    <?php }  else { ?>
+                    <li class="current"><?php echo anchor('home/index/', "Inicio", array('title' => 'Inicio')); ?></li>
+                   <?php }?>
+                    
                     <li><?php echo anchor('home/sobre_nosotros', 'Sobre Nosotros', array('title' => 'Sobre Nosotros')); ?></li>
                     <li><a href="#">Contáctanos</a></li>
                     <li><a href="#">Mi Cuenta</a></li>
@@ -52,6 +58,14 @@
                     <h1 id="logo">AmazonAS</h1>
                 </div>
                 <div id="shoutout"><img src="/amazonAS/images/joinnow_shoutout.jpg" alt="Join Now! It's Free" width="168" height="126" /></div>
+                
+                <?php if ($idUsuario != null) {?>
+                <div id="useractions">
+                    <div id="headings"> 
+                        <h2><img src="/amazonAS/images/create_indi_usr.jpg" alt="Individual User" width="25" height="22" /> <?php echo $nombreUser; ?></h2>   
+                    </div>
+                </div>
+                <?php }  else { ?>
                 <div id="useractions">
                     <div id="headings"> 
                         <h2><img src="/amazonAS/images/create_indi_usr.jpg" alt="Individual User" width="25" height="22" /> <a href="#">Crear cuenta</a> </h2>   
@@ -71,6 +85,7 @@
 
                     </div>
                 </div>
+                <?php }?>
             </div>
             <div id="content">
 
@@ -79,9 +94,9 @@
                     <ul>
                         <li><a href="#">Por Precio</a> </li>
 
-                        <li><a href="##">Por Estado </a> </li>
+                        <li><a href="#">Por Estado </a> </li>
                         
-                        <li><a href="##">Por Categoría </a> </li>
+                        <li><a href="#">Por Categoría </a> </li>
 
                         <li><a class="highlight" href="#" id="click">Buscar otra vez</a> </li>
 
@@ -98,13 +113,14 @@
                         <div class="container">
                             <?php 
                             $atributos = array('id' => 'form1');
-                            echo form_open('buscar', $atributos);
+                            $oculto = array('idUsuario' => $idUsuario,'nombreUser' => $nombreUser);
+                            echo form_open('buscar', $atributos,$oculto);
                             ?>
                                 <table class="search_form" style="width:100%; border:none;">
                                     <tr>
                                         <td class="label">Buscar</td>
                                         <td colspan="3"><label>
-                                                <input type="text" name="textfield" id="textfield" class="text longfield" />
+                                                <input type="text" name="palabra_clave" id="textfield" class="text longfield" />
                                             </label></td>
                                     </tr>
                                     <tr>
@@ -114,22 +130,22 @@
                                     <tr>
                                         <td class="label">Estado</td>
                                         <td><label>
-                                                <select name="select" id="select" class="select_field">
-                                                    <option selected="selected">Seleccione</option>
-                                                    <option>Nuevo</option>
-                                                    <option>Usado</option>
+                                                <select name="select_estado" id="select" class="select_field">
+                                                    <option selected="selected" value="0">Seleccione</option>
+                                                    <option value="1">Nuevo</option>
+                                                    <option value="2">Usado</option>
                                                 </select>
                                             </label></td>
                                         <td class="label">Precio Mín. Bs.F</td>
-                                        <td><input type="text" name="textfield4" id="textfield4" class="text smalltextarea" maxlength="7" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" /></td>
+                                        <td><input type="text" name="precio_min" id="textfield4" class="text smalltextarea" maxlength="7" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" /></td>
                                     </tr>
                                     <tr>
                                         <td class="label">Categorías</td>
                                         <td>
-                                            <?php echo form_dropdown('id_categoria',$categorias); ?>
-                                                </td>
+                                            <?php echo form_dropdown('id_categoria',$categorias,0); ?>
+                                        </td>
                                         <td class="label">Precio Máx. Bs.F</td>
-                                        <td><input type="text" name="textfield2" id="textfield2" class="text smalltextarea" maxlength="7" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" /></td>
+                                        <td><input type="text" name="precio_max" id="textfield2" class="text smalltextarea" maxlength="7" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" /></td>
                                     </tr>                                    
                                     <tr>
                                         <td class="label">&nbsp;</td>
@@ -142,7 +158,7 @@
 
 
 
-                            </form>
+                            <?php echo form_close();?>
 
                         </div>
                     </div></div>
@@ -159,13 +175,22 @@
                                     <p><?php echo $fila->detalle; ?></p>
                                     <span class="price">Bs.F <?php echo $fila->precio_unit; ?></span>
                                     <span class="media"> <img src="/amazonAS/images/icon_img.jpg" alt="Images" width="19" height="15" /> <?php echo $fila->cant_imagen; ?> imágenes </span></div>
-                                <div class="listingbtns">
+                                <div class="listingbtns"> 
+                                    <?php if ($idUsuario != null) {?>
                                     <span class="listbuttons">
-                                        <?php echo anchor('producto/viewProducto/'.$fila->nombre.'/'.$fila->id_producto, "Ver Detalles", array('title' => 'Detalles')); ?></span>
+                                        <?php echo anchor('producto/viewProducto/'.$fila->id_producto.'/'.$idUsuario.'/'.$nombreUser, "Ver Detalles", array('title' => 'Detalles')); ?></span>
+                                    <?php } else {?>
+                                    <span class="listbuttons">
+                                        <?php echo anchor('producto/viewProducto/'.$fila->id_producto, "Ver Detalles", array('title' => 'Detalles')); ?></span>
+                                    
+                                    <?php }?>
+                                    <!--
                                     <span class="listbuttons">
                                         <a href="#">Add To Favorites</a></span>
                                     <span class="listbuttons">
-                                        <a href="#">Contact Seller</a></span></div>
+                                        <a href="#">Contact Seller</a></span>
+                                    -->
+                                    </div>
                                 <div class="clear">&nbsp;</div>                              
                             </li>
                         <?php endforeach; ?>                        
