@@ -27,7 +27,7 @@ class Buscar extends CI_Controller {
         /* Cliente */
         $this->session->set_userdata('idUsuario', $this->input->post('idUsuario'));
         $this->session->set_userdata('nombreUser', $this->input->post('nombreUser'));
-        var_dump("ID USER = ".$this->input->post('idUsuario'));
+        //var_dump("ID USER = ".$this->input->post('idUsuario'));
         
         $palabra_clave = explode(' ', $this->input->post('palabra_clave'));
         $estado_producto = $this->input->post('select_estado');
