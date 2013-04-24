@@ -11,7 +11,8 @@
         <?php $this->load->helper('html'); ?>
         <div id="wrap">
             <div id="topbar">
-                <ul>    <li class="current"><?php echo anchor('home/index/', "Inicio", array('title' => 'Inicio')); ?></li>
+                <ul>    
+                    <li class="current"><?php echo anchor('home/index/', "Inicio", array('title' => 'Inicio')); ?></li>
 
                     <li><?php echo anchor('home/sobre_nosotros', 'Sobre Nosotros', array('title' => 'Sobre Nosotros')); ?></li>
                     
@@ -27,7 +28,7 @@
                 <div id="shoutout"><img src="/amazonAS/images/joinnow_shoutout.jpg" alt="Join Now! It's Free" width="168" height="126" /></div>
                 <div id="useractions">
                     <div id="headings"> 
-                        <h2><img src="/amazonAS/images/create_indi_usr.jpg" alt="Individual User" width="25" height="22" /> <a href="#">Crear cuenta</a> </h2>   
+                        <h2><img src="/amazonAS/images/create_indi_usr.jpg" alt="Individual User" width="25" height="22" /> <?php echo anchor('registro', "Crear Cuenta", array('title' => 'registro')); ?></h2>   
                     </div>
                     <div id="login">
                         <p><strong> ¿Ya estás registrado en AmazonAS?</strong> Ingresa aquí con tu cuenta Google</p>

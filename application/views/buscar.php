@@ -41,12 +41,15 @@
                 <ul> 
                     <?php if ($idUsuario != null) {?>
                     <li class="current"><?php echo anchor('homeusuario/index/' . $idUsuario, "Inicio", array('title' => 'Inicio')); ?></li>
-
+                    <li><?php echo anchor('home/sobre_nosotros/'.$idUsuario.'/'.$nombreUser, 'Sobre Nosotros', array('title' => 'Sobre Nosotros')); ?></li>
+                    
+                        
                     <?php }  else { ?>
                     <li class="current"><?php echo anchor('home/index/', "Inicio", array('title' => 'Inicio')); ?></li>
-                   <?php }?>
-                    
                     <li><?php echo anchor('home/sobre_nosotros', 'Sobre Nosotros', array('title' => 'Sobre Nosotros')); ?></li>
+                    <?php }?>
+                    
+                    
                     <li><a href="#">Contáctanos</a></li>
                     <li><a href="#">Mi Cuenta</a></li>
                     <li><a href="#">Ayuda &amp; Soporte</a></li>

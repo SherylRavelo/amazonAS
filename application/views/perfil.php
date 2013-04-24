@@ -38,9 +38,16 @@
         <?php $this->load->helper('html'); ?>
         <div id="wrap">
             <div id="topbar">
-                <ul>    <li class="current"><?php echo anchor('homeusuario/index/' . $idUsuario, "Inicio", array('title' => 'Inicio')); ?></li>
+                <ul>    
+                    <?php if ($idUsuario != null) {?>
+                    <li class="current"><?php echo anchor('homeusuario/index/' . $idUsuario, "Inicio", array('title' => 'Inicio')); ?></li>
 
+                    <li><?php echo anchor('home/sobre_nosotros/'.$idUsuario.'/'.$nombreUser, 'Sobre Nosotros', array('title' => 'Sobre Nosotros')); ?></li>
+                    <?php }  else { ?>
+                    <li class="current"><?php echo anchor('home/index/', "Inicio", array('title' => 'Inicio')); ?></li>
                     <li><?php echo anchor('home/sobre_nosotros', 'Sobre Nosotros', array('title' => 'Sobre Nosotros')); ?></li>
+                   <?php }?>
+                    
                     <li><a href="#">Mi Cuenta</a></li>
                     <li><a href="#">Ayuda &amp; Soporte</a></li>
                     <li></li>
@@ -68,8 +75,7 @@
             ?>
 
             <h2>Welcome <?php echo $minombre; ?>!</h2>
-            <br />
-            <?php echo "TOKEN = " . $token; ?>
+            
             <br />
             <?php echo "  El correo es   =  " . $email; ?>
             <div id="footer">

@@ -117,7 +117,7 @@ echo form_open('registro/create_member', $atributos);
                                 <tr>
                                     <td class="label">Nombre</td>
                                     <td colspan="3"><label>
-                                            <input type="text" name="textfield_nombre" id="textfield_nombre" class="text longfield" />
+                                            <input type="text" name="textfield_nombre" id="textfield_nombre" class="text longfield" maxlength="40" />
                                         </label></td>
                                 </tr>
 
@@ -126,7 +126,7 @@ echo form_open('registro/create_member', $atributos);
                                 <tr>
                                     <td class="label">Apellido</td>
                                     <td colspan="3"><label>
-                                            <input type="text" name="textfield_apellido" id="textfield_apellido" class="text longfield" />
+                                            <input type="text" name="textfield_apellido" id="textfield_apellido" class="text longfield" maxlength="40" />
                                         </label></td>
                                 </tr>
 
@@ -134,7 +134,7 @@ echo form_open('registro/create_member', $atributos);
                                 <tr>
                                     <td class="label">CI/Pasaporte</td>
                                     <td colspan="3"><label>
-                                            <input type="text" name="textfield_cedula" id="textfield_cedula" class="text longfield" />
+                                            <input type="text" name="textfield_cedula" id="textfield_cedula" class="text longfield" maxlength="20"/>
                                         </label></td>
                                 </tr>
 
@@ -142,7 +142,7 @@ echo form_open('registro/create_member', $atributos);
                                 <tr>
                                     <td class="label">Correo</td>
                                     <td colspan="3"><label>
-                                            <input type="text" name="textfield_correo" id="textfield_correo" class="text longfield" />
+                                            <input type="text" name="textfield_correo" id="textfield_correo" class="text longfield" maxlength="50"/>
                                         </label></td>
                                 </tr>
 
@@ -153,7 +153,7 @@ echo form_open('registro/create_member', $atributos);
                                 <tr>
                                     <td class="label">F. Nacimiento</td>
                                     <td colspan="3"><label>
-                                            <input type="text" name="datepicker" id="datepicker"  class="text longfield" />
+                                            <input type="text" name="datepicker" id="datepicker"  class="text longfield" maxlength="10"/>
 
 
                                         </label></td>
@@ -165,7 +165,7 @@ echo form_open('registro/create_member', $atributos);
                                 <tr>
                                     <td class="label">Pais</td>
                                     <td colspan="3"><label>
-                                            <input type="text" name="textfield_pais" id="textfield_pais" class="text longfield" />
+                                            <input type="text" name="textfield_pais" id="textfield_pais" class="text longfield" maxlength="50"/>
                                         </label></td>
                                 </tr>
 
@@ -173,7 +173,7 @@ echo form_open('registro/create_member', $atributos);
                                 <tr>
                                     <td class="label">Ciudad</td>
                                     <td colspan="3"><label>
-                                            <input type="text" name="textfield_ciudad" id="textfield_ciudad" class="text longfield" />
+                                            <input type="text" name="textfield_ciudad" id="textfield_ciudad" class="text longfield" maxlength="50"/>
                                         </label></td>
                                 </tr>
 
@@ -181,7 +181,7 @@ echo form_open('registro/create_member', $atributos);
                                 <tr>
                                     <td class="label">Código Postal</td>
                                     <td colspan="3"><label>
-                                            <input type="text" name="textfield_codigo" id="textfield_codigo" class="text longfield" />
+                                            <input type="text" name="textfield_codigo" id="textfield_codigo" class="text longfield" maxlength="8"/>
                                         </label></td>
                                 </tr>
 
@@ -189,7 +189,7 @@ echo form_open('registro/create_member', $atributos);
                                 <tr>
                                     <td class="label">Dirección</td>
                                     <td colspan="3"><label>
-                                            <input type="text" name="textfield_direccion" id="textfield_direccion" class="text longfield" />
+                                            <input type="text" name="textfield_direccion" id="textfield_direccion" class="text longfield" maxlength="100"/>
                                         </label></td>
                                 </tr>
 
