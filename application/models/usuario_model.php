@@ -2,14 +2,16 @@
 
 Class Usuario_Model extends CI_Model {
     
-    private $email = '';
+    
     private $nombre = '';
     private $apellido = '';
+    private $cedula = '';
     private $fecha_nac = '';
     private $fecha_registro = '';
     private $direccion = '';
     private $zona_postal = '';
     private $id_usuario = '';
+    private $correo = '';
     private $estado_usuario = '';
     
     function __construct() {
@@ -40,14 +42,18 @@ Class Usuario_Model extends CI_Model {
     public function setFechaRegistro($fecha_registro) {
         $this->fecha_registro = $fecha_registro;
     }
-
-    public function getEmail() {
-        return $this->email;
+    
+   
+     public function getCorreo() {
+        return $this->correo;
     }
 
-    public function setEmail($email) {
-        $this->email = $email;
+    public function setCorreo($correo) {
+        $this->correo = $correo;
     }
+    
+    
+   
 
     public function getDireccion() {
         return $this->direccion;
@@ -81,6 +87,16 @@ Class Usuario_Model extends CI_Model {
         $this->apellido = $apellido;
     }
     
+    
+    public function getCedula() {
+        return $this->cedula;
+    }
+    
+    public function setCedula($cedula) {
+        $this->cedula = $cedula;
+    }
+    
+   
     public function getEstadoUsuario() {
         return $this->estado_usuario;
     }
@@ -114,12 +130,14 @@ Class Usuario_Model extends CI_Model {
 
         $this->setNombre($row2->nombre);
         $this->setApellido($row2->apellido);
-        $this->setEmail($row2->correo);
+        $this->setCedula($row2->cedula);
+        $this->setCorreo($row2->correo);
         $this->setId_user($row2->id_usuario);
         $this->setFechaNac($row2->fecha_nac);
         $this->setFechaRegistro($row2->fecha_registro);
         $this->setDireccion($row2->direccion);
         $this->setZonaPostal($row2->zona_postal);
+        $this->setEstadoUsuario($row2->estado_usuario);
 
         return $row2;
     }
@@ -132,7 +150,53 @@ Class Usuario_Model extends CI_Model {
         
         return $query->result(); 
     }
+    
+    
+    
+    
+    function modificar($idUsuario){
+        
+        $this->load->helper('string');
+	
+        $data = array(   
+            'zona_postal' => $this->input->post('nuevo_codigo'),
+            'direccion' => $this->input->post('nuevo_direccion')
+       );
+                    
+              	$this->db->where ('id_usuario', $idUsuario);
+                $this->db->update('usuario', $data);
+       return true;
+              
+		}
+                
+                
+                
+                
+                
+                
+                
+                
+                
+    function registrar_pago($idUsuario){
+        
+		$this->load->helper('string');
+		$forma_de_pago = array(
+			'num_tarjeta_credito' => $this->input->post('textfield_numero'),
+			'fecha_venc' => $this->input->post('datepicker'),
+                        'marca' => $this->input->post('textfield_marca'),
+                        'cod_tarjeta' => $this->input->post('textfield_codigo'),
+                        'nombre_tarjeta' => $this->input->post('textfield_nombre'),
+                        'documento_identidad' => "textfield_documento",
+                        'fk_usuario' => $idUsuario
+                 );
+                
+                
+		$insert = $this->db->insert('forma_de_pago', $forma_de_pago);
+		return true;
+        
+    }
+                
+    }
 
-}
 
-?>
+

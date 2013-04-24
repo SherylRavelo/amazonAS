@@ -43,7 +43,7 @@ class Usuario extends CI_Controller {
     }
     
     
-    function viewModificarUsuario($idUsuario) {
+   function viewModificarUsuario($idUsuario) {
         $data = array();
         $data['idUsuario'] = $idUsuario;
         
@@ -51,7 +51,10 @@ class Usuario extends CI_Controller {
         $usuario = $this->usuario_model->getUser($idUsuario);
         $data['nombre'] = $this->usuario_model->getNombre();
         $data['apellido'] = $this->usuario_model->getApellido();
-        $data['email'] = $this->usuario_model->getEmail();
+        $data['correo'] = $this->usuario_model->getCorreo();
+        $data['estado_usuario'] = $this->usuario_model->getEstadoUsuario();
+        $data['cedula'] = $this->usuario_model->getCedula();
+        $data['email'] = $this->usuario_model->getCorreo();
         $data['fecha_nac'] = $this->usuario_model->getFechaNac();
         $data['fecha_registro'] = $this->usuario_model->getFechaRegistro();
         $data['direccion'] = $this->usuario_model->getDireccion();
@@ -61,39 +64,97 @@ class Usuario extends CI_Controller {
     }
     
     
+    
     function modificarUsuario($idUsuario) {
 
-        print_r("HEYY");
-        /*
-        $nombre = $this->input->post('name_signup');
-        $apellido = $this->input->post('lastname_signup');
-        $email = $this->input->post('email_signup');
-        
-        // se realiza llamada al model para que se modificquen los datos del usuario
-        $booleano = $this->usuario_model->modificar($username, $nombre, $apellido, $email);
+        $booleano = $this->usuario_model->modificar($idUsuario);
         if ($booleano == true) {
-            // si se realizo la modificacion regresar al index
-            redirect('/homeuser/index');
+           
+            $this->sendmeail($idUsuario);
         } else
-        // caso de gente repetido
-            echo "esta repedito";
-        */
+        {
+            $this->load->view ('usuario_modificar');
+        }
+      
+    }
+    
+    
+    function sendmeail($idUsuario){
+        
+       $nombre = $this->input->post('nuevo_nombre');
+       $apellido = $this->input->post('nuevo_apellido');
+       $correo = $this->input->post('nuevo_correo');
+       $fecha_nac = $this->input->post('nuevo_fnacimiento');
+       $estado_usuario = $this->input->post('nuevo_status');
+       $fecha_registro = $this->input->post('nuevo_fregistro');
+       $zona_postal = $this->input->post('nuevo_codigo');
+       $direccion = $this->input->post('nuevo_direccion');
+
+                  				
+        $config = Array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'tiendavirtualamazonas@gmail.com',
+            'smtp_pass' => 'tiendavirtual'
+        );
+
+        $this->load->library('email', $config);
+        $this->email->set_newline("\r\n");
+
+        $this->email->from('tiendavirtualamazonas@gmail.com', 'amazonAS');
+        $this->email->to($correo);
+        $this->email->subject('Datos Actualizados');
+        //$this->email->message('Thank you for registering. To activate you\'re account go to this url ' . base_url() . 'login/account_activation/' . $nick . '/'. $activation_code);
+
+
+        $this->email->message(
+                "Tus datos en amazonAS han sido actualizados: " .
+                
+                "Tus nuevos datos:" .
+                
+                "Nombre: " . $nombre . "  " .
+                "Apellido: " . $apellido . "  " .
+                "Email: " . $correo . "  " .
+                "Fecha Nacimiento: " . $fecha_nac . "  " .
+                "Fecha de Registro: " . $fecha_registro  . "  " .
+                "Estado de cuenta: " . $estado_usuario . "  " .
+                "Dirección: " . $direccion . "  " .
+                "Codigo Postal: " . $zona_postal . "  " 
+                
+        );
+
+        if ($this->email->send()) {
+        
+            $this->load->view('actualizacion_exitosa');
+        } else {
+            show_error($this->email->print_debugger());
+        }
+        
     }
     
     
     
     
     
-    
-    
-    
-    function registrarFormaDePago($idUsuario){
+    function registrar_forma_de_pago($idUsuario){
+        
+        $booleano = $this->usuario_model->registrar_pago($idUsuario);
+        /*if ($booleano == true) {
+           $this->sendmeail();
+        } else
+        {
+            $this->load->view ('usuario_modificar');
+        }*/
+        
         
         
     }
     
+  
     
     
+      
 
 }
 

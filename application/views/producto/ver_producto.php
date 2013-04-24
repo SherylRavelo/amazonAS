@@ -145,6 +145,15 @@
                             <?php }else { ?>
                             <div class="listingbtns"> <span class="listbuttons"> <?php echo anchor('pedido/carritoDeCompras/'.$idProducto, "Añadir al Carrito", array('title' => 'Añadir')); ?></span> </div>
                             <?php } ?>
+                            
+                            
+                            
+                            
+                            
+                              <a href="https://twitter.com/share" class="twitter-share-button" data-url="" data-text="Te invito a chequear este producto: " data-lang="es" data-hashtags="TiendaAmazonAS">Twittear</a>   
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='http://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                            
+                            
                             <!--
                             <div id="tabs">
                                 <ul>

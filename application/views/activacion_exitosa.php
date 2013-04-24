@@ -38,16 +38,10 @@
         <?php $this->load->helper('html'); ?>
         <div id="wrap">
             <div id="topbar">
-                <ul>    
-                    <?php if ($idUsuario != null) {?>
-                    <li class="current"><?php echo anchor('homeusuario/index/' . $idUsuario, "Inicio", array('title' => 'Inicio')); ?></li>
+                <ul>    <li class="current"><a href="#">Inicio</a></li>
 
-                    <li><?php echo anchor('home/sobre_nosotros/'.$idUsuario.'/'.$nombreUser, 'Sobre Nosotros', array('title' => 'Sobre Nosotros')); ?></li>
-                    <?php }  else { ?>
-                    <li class="current"><?php echo anchor('home/index/', "Inicio", array('title' => 'Inicio')); ?></li>
-                    <li><?php echo anchor('home/sobre_nosotros', 'Sobre Nosotros', array('title' => 'Sobre Nosotros')); ?></li>
-                   <?php }?>
-                    
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><a href="#">Contáctanos</a></li>
                     <li><a href="#">Mi Cuenta</a></li>
                     <li><a href="#">Ayuda &amp; Soporte</a></li>
                     <li></li>
@@ -63,10 +57,10 @@
                         <h2><img src="images/create_indi_usr.jpg" alt="Individual User" width="25" height="22" /> Opciones de Usuario</h2>   
                     </div>
                     <div >
-                       <?php echo anchor('usuario/index/' . $idUsuario . '/modificar', 'Modificar Datos de Usuario', array('title' => 'Modificar')); ?>
+                        <?php echo anchor('usuario/index/' . $idUsuario . '/modificar', 'Modificar Datos de Usuario', array('title' => 'Modificar')); ?>
                         <br></br>
-                         <?php echo anchor('usuario/registrar_forma_de_pago/' . $idUsuario , 'Registrar Forma de Pago'); ?>
-                        <br></br>
+                        
+                        <?php echo anchor('usuario/registrarFormaDePago/' . $idUsuario , 'Registrar Forma de Pago'); ?>
 
                     </div>
                 </div>
@@ -77,10 +71,9 @@
             echo heading('Perfil del usuario', 1);
             ?>
 
-            <h2>Welcome <?php echo $minombre; ?>!</h2>
-            
+            <h3>Su cuenta ya se encuentra activa. ¡A comprar!</h3>
             <br />
-            <?php echo "  El correo es   =  " . $email; ?>
+            
             <div id="footer">
                 <div id="upperfooter"> <a href="#">Inicio</a> | <a href="#">Search</a> | <a href="#">Register</a> | <a href="#">Pro Agent Account</a> | <a href="#">About Us</a> | <a href="#">Contact Us</a> |<a href="#"> Privacy Policy</a> <a href="#">Terms Of Use</a> | <a href="#">Advertise With Us</a> </div>
                 <div id="lowerfooter"> <span class="backtotop"> <a href="#">Volver arriba</a> </span>

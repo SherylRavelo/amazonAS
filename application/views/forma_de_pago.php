@@ -1,4 +1,6 @@
 
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -10,6 +12,27 @@
         <link href="/amazonAS/css/forms.css" rel="stylesheet" type="text/css" />
         <script src="/amazonAS/js/jquery.js" type="text/javascript"></script>
 
+
+
+
+        <link rel="stylesheet" href="/amazonAS/css/jquery-ui.css" />
+
+        <script src="/amazonAS/js/jquery-1.9.1.js" type="text/javascript"></script>
+
+        <script src="/amazonAS/js/jquery-ui.js"></script>
+
+
+
+
+
+        <script>
+            $(function() {
+                $("#datepicker").datepicker();
+
+                $("#datepicker").datepicker("option", {dateFormat: "yy/mm/dd"});
+
+            });
+        </script>
 
 
 
@@ -29,7 +52,7 @@
                 <ul>    <li class="current"><a href="#">Inicio</a></li>
 
                     <li><a href="#">Sobre Nosotros</a></li>
-                    <li><a href="#">ContActanos</a></li>
+                    <li><a href="#">ContÃ¡ctanos</a></li>
                     <li><a href="#">Mi Cuenta</a></li>
                     <li><a href="#">Ayuda &amp; Soporte</a></li>
                     <li></li>
@@ -70,105 +93,77 @@
 
 
 
+            <?php
+            if ($valor_mensaje == 2) {
+                echo $mensaje;
+            }
+            ?>
+
+
+
+
             <div id="content">
                 <div id="home_main"><div id="search"> 
                         <div class="tab">
-                            <h2>Actualizacion de Datos</h2> 
+                            <h2>Forma de Pago</h2> 
                         </div>
                         <div class="container">
-
-
-
-
-                            <?php
-                            $atributos = array('id' => 'form_registrarPago');
-                            echo form_open('/usuario/modificarUsuario/' . $idUsuario, $atributos);
-                            ?>
-
-
-
+<?php
+$atributos = array('id' => 'form1');
+echo form_open('usuario/registrar_forma_de_pago', $atributos);
+?>
                             <table class="search_form" style="width:100%; border:none;">
                                 <tr>
-                                    <td class="label">Nombre</td>
+                                    <td class="label">N° Tarjeta de Crédito</td>
                                     <td colspan="3"><label>
-                                            <input type="text"  readonly="readonly" name="nuevo_nombre" id="nuevo_nombre" class="text longfield" value="<?php echo $nombre; ?>"/>
+                                            <input type="text" name="textfield_numero" id="textfield_numero" class="text longfield" maxlength="40" />
                                         </label></td>
                                 </tr>
+                                
+                                
+                                <tr>
+                                    <td class="label">F. Vencimiento</td>
+                                    <td colspan="3"><label>
+                                            <input type="text" name="datepicker" id="datepicker"  class="text longfield" maxlength="10"/>
+
+
+                                        </label></td>
+                                </tr>
+                                
 
 
 
                                 <tr>
-                                    <td class="label">Apellido</td>
+                                    <td class="label">Marca</td>
                                     <td colspan="3"><label>
-                                            <input type="text" readonly="readonly" name="nuevo_apellido" id="nuevo_apellido" class="text longfield" value="<?php echo $apellido; ?>"/>
+                                            <input type="text" name="textfield_marca" id="textfield_marca" class="text longfield" maxlength="40" />
                                         </label></td>
                                 </tr>
-
 
 
                                 <tr>
-                                    <td class="label">Cedula</td>
+                                    <td class="label">Codigo Tarjeta</td>
                                     <td colspan="3"><label>
-                                            <input type="text" readonly="readonly" name="nuevo_cedula" id="nuevo_cedula" class="text longfield" value="<?php echo $cedula; ?>"/>
+                                            <input type="text" name="textfield_codigo" id="textfield_codigo" class="text longfield" maxlength="20"/>
                                         </label></td>
                                 </tr>
-
 
 
                                 <tr>
-                                    <td class="label">F. Nacimiento</td>
+                                    <td class="label">Nombre Tarjeta</td>
                                     <td colspan="3"><label>
-                                            <input type="text" readonly="readonly" name="nuevo_fnacimiento" id="nuevo_fnacimiento" class="text longfield" value="<?php echo $fecha_nac ?>"/>
+                                            <input type="text" name="textfield_nombre" id="textfield_nombre" class="text longfield" maxlength="50"/>
                                         </label></td>
                                 </tr>
-
 
 
                                 <tr>
-                                    <td class="label">F. Registro</td>
+                                    <td class="label">Documento Identidad</td>
                                     <td colspan="3"><label>
-                                            <input type="text" readonly="readonly" name="nuevo_fregistro" id="nuevo_fregistro" class="text longfield" value="<?php echo $fecha_registro; ?>"/>
+                                            <input type="text" name="textfield_documento" id="textfield_documento" class="text longfield" maxlength="50"/>
                                         </label></td>
                                 </tr>
 
-
-
-
-                                <tr>
-                                    <td class="label">Direccion</td>
-                                    <td colspan="3"><label>
-                                            <input type="text" name="nuevo_direccion" id="nuevo_direccion" class="text longfield" value="<?php echo $direccion; ?>"/>
-                                        </label></td>
-                                </tr>
-
-
-
-                                <tr>
-                                    <td class="label">Codigo Postal</td>
-                                    <td colspan="3"><label>
-                                            <input type="text" name="nuevo_codigo" id="nuevo_codigo" class="text longfield" value="<?php echo $zona_postal; ?>"/>
-                                        </label></td>
-                                </tr>
-
-
-
-
-
-                                <tr>
-                                    <td class="label">Estado de cuenta</td>
-                                    <td colspan="3"><label>
-                                            <input type="text" readonly="readonly" name="nuevo_status" id="nuevo_status" class="text longfield" value="<?php echo $estado_usuario; ?>"/>
-                                        </label></td>
-                                </tr>
-
-
-
-                                <tr>
-                                    <td class="label">Correo</td>
-                                    <td colspan="3"><label>
-                                            <input type="text" readonly="readonly" name="nuevo_correo" id="nuevo_correo" class="text longfield" value="<?php echo $correo; ?>"/>
-                                        </label></td>
-                                </tr>
 
 
 
