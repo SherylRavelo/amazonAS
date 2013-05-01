@@ -48,11 +48,12 @@
     <body>
         <?php $this->load->helper('html'); ?>
         <div id="wrap">
-            <div id="topbar">
-                <ul>    <li class="current"><a href="#">Inicio</a></li>
+       <div id="topbar">
+                <ul>    
+                    <li class="current"><?php echo anchor('home/index/', "Inicio", array('title' => 'Inicio')); ?></li>
 
-                    <li><a href="#">Sobre Nosotros</a></li>
-                    <li><a href="#">ContÃ¡ctanos</a></li>
+                    <li><?php echo anchor('home/sobre_nosotros', 'Sobre Nosotros', array('title' => 'Sobre Nosotros')); ?></li>
+                    
                     <li><a href="#">Mi Cuenta</a></li>
                     <li><a href="#">Ayuda &amp; Soporte</a></li>
                     <li></li>
@@ -89,28 +90,17 @@
                 </div>
             </div>
 
-
-
-
-
-            <?php
-            if ($valor_mensaje == 2) {
-                echo $mensaje;
-            }
-            ?>
-
-
-
-
             <div id="content">
                 <div id="home_main"><div id="search"> 
                         <div class="tab">
                             <h2>Forma de Pago</h2> 
                         </div>
                         <div class="container">
-<?php
+
+ 
+                            <?php
 $atributos = array('id' => 'form1');
-echo form_open('usuario/registrar_forma_de_pago', $atributos);
+echo form_open('usuario/registrar_forma_de_pago/' . $idUsuario, $atributos);
 ?>
                             <table class="search_form" style="width:100%; border:none;">
                                 <tr>

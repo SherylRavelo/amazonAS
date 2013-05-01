@@ -142,6 +142,20 @@ Class Usuario_Model extends CI_Model {
         return $row2;
     }
     
+    function getEmailById($id) {
+        $sql = "SELECT correo ";
+        $sql .= "FROM usuario ";
+        $sql .= "WHERE id_usuario = $id ";
+        $query = $this->db->query($sql,array($id));
+        
+        return $query->result(); 
+    
+        
+    }
+    
+    
+    
+    
     function getUsuarioByEmail($mail) {
         $sql = "SELECT id_usuario, nombre, apellido, correo, fecha_nac, fecha_registro, direccion, estado_usuario, zona_postal, fk_lugar ";
         $sql .= "FROM usuario ";
@@ -186,12 +200,12 @@ Class Usuario_Model extends CI_Model {
                         'marca' => $this->input->post('textfield_marca'),
                         'cod_tarjeta' => $this->input->post('textfield_codigo'),
                         'nombre_tarjeta' => $this->input->post('textfield_nombre'),
-                        'documento_identidad' => "textfield_documento",
+                        'documento_identidad' => $this->input->post('textfield_documento'),
                         'fk_usuario' => $idUsuario
                  );
                 
                 
-		$insert = $this->db->insert('forma_de_pago', $forma_de_pago);
+		$this->db->insert('forma_de_pago', $forma_de_pago);
 		return true;
         
     }

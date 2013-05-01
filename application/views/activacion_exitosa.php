@@ -37,17 +37,20 @@
     <body>
         <?php $this->load->helper('html'); ?>
         <div id="wrap">
+            
             <div id="topbar">
-                <ul>    <li class="current"><a href="#">Inicio</a></li>
+                <ul>    
+                    <li class="current"><?php echo anchor('home/index/', "Inicio", array('title' => 'Inicio')); ?></li>
 
-                    <li><a href="#">Sobre Nosotros</a></li>
-                    <li><a href="#">Contáctanos</a></li>
-                    <li><a href="#">Mi Cuenta</a></li>
+                    <li><?php echo anchor('home/sobre_nosotros', 'Sobre Nosotros', array('title' => 'Sobre Nosotros')); ?></li>
+                    
                     <li><a href="#">Ayuda &amp; Soporte</a></li>
                     <li></li>
                 </ul>
             </div>
-            <div id="header">
+            
+            
+         <div id="header">
                 <div id="sitename">
                     <h1 id="logo">AmazonAS</h1>
                 </div>
@@ -57,21 +60,28 @@
                         <h2><img src="images/create_indi_usr.jpg" alt="Individual User" width="25" height="22" /> Opciones de Usuario</h2>   
                     </div>
                     <div >
-                        <?php echo anchor('usuario/index/' . $idUsuario . '/modificar', 'Modificar Datos de Usuario', array('title' => 'Modificar')); ?>
+                       <?php echo anchor('usuario/index/' . $idUsuario . '/modificar', 'Modificar Datos de Usuario', array('title' => 'Modificar')); ?>
                         <br></br>
-                        
-                        <?php echo anchor('usuario/registrarFormaDePago/' . $idUsuario , 'Registrar Forma de Pago'); ?>
+                         <?php echo anchor('usuario/registrar_forma_de_pago/' . $idUsuario , 'Registrar Forma de Pago'); ?>
+                        <br></br>
 
                     </div>
                 </div>
                 
             </div>
+            
+            
+            
             <?php
             //$this->load->helper('html');
-            echo heading('Perfil del usuario', 1);
+            //echo heading('Perfil del usuario', 1);
             ?>
 
-            <h3>Su cuenta ya se encuentra activa. ¡A comprar!</h3>
+            <h3>Su cuenta ya se encuentra activa. ¡A comprar! <?php echo $this->session->userdata('name')?> <?php echo anchor('home', 'Regresar');?></h3>
+            
+            
+            
+            
             <br />
             
             <div id="footer">

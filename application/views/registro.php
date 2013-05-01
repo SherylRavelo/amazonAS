@@ -9,11 +9,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Compra los mejores Productos | AmazonAS Venezuela </title>
 
+        
         <link href="/amazonAS/css/layoutregistro.css" rel="stylesheet" type="text/css" />
         <link href="/amazonAS/css/forms.css" rel="stylesheet" type="text/css" />
         <script src="/amazonAS/js/jquery.js" type="text/javascript"></script>
 
 
+        
 
 
         <link rel="stylesheet" href="/amazonAS/css/jquery-ui.css" />
@@ -49,12 +51,12 @@
     <body>
         <?php $this->load->helper('html'); ?>
         <div id="wrap">
-            <div id="topbar">
-                <ul>    <li class="current"><a href="#">Inicio</a></li>
-
-                    <li><a href="#">Sobre Nosotros</a></li>
-                    <li><a href="#">ContÃ¡ctanos</a></li>
-                    <li><a href="#">Mi Cuenta</a></li>
+            
+            
+             <div id="topbar">
+                <ul>    
+                    <li class="current"><?php echo anchor('home/index/', "Inicio", array('title' => 'Inicio')); ?></li>
+                    <li><?php echo anchor('home/sobre_nosotros', 'Sobre Nosotros', array('title' => 'Sobre Nosotros')); ?></li>
                     <li><a href="#">Ayuda &amp; Soporte</a></li>
                     <li></li>
                 </ul>
@@ -94,11 +96,14 @@
 
 
 
-            <?php
+            <h3><?php
             if ($valor_mensaje == 2) {
                 echo $mensaje;
             }
-            ?>
+            ?></h3>
+            
+            
+            <br></br>
 
 
 

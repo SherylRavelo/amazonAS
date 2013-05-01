@@ -89,7 +89,7 @@ class Usuario extends CI_Controller {
        $fecha_registro = $this->input->post('nuevo_fregistro');
        $zona_postal = $this->input->post('nuevo_codigo');
        $direccion = $this->input->post('nuevo_direccion');
-
+       $data['idUsuario'] = $idUsuario;
                   				
         $config = Array(
             'protocol' => 'smtp',
@@ -125,8 +125,8 @@ class Usuario extends CI_Controller {
         );
 
         if ($this->email->send()) {
-        
-            $this->load->view('actualizacion_exitosa');
+            
+            $this->load->view('actualizacion_exitosa', $data);
         } else {
             show_error($this->email->print_debugger());
         }
@@ -135,17 +135,25 @@ class Usuario extends CI_Controller {
     
     
     
-    
+    function cargar_view_pago($idUsuario){
+       
+        
+       $data['idUsuario'] = $idUsuario;
+       $data['marca'] = $this->input->post('textfield_marca');
+       $this->load->view('forma_de_pago', $data);
+       
+    }
     
     function registrar_forma_de_pago($idUsuario){
         
+        $data['idUsuario'] = $idUsuario;
+        $this->load->model('usuario_model');
         $booleano = $this->usuario_model->registrar_pago($idUsuario);
-        /*if ($booleano == true) {
-           $this->sendmeail();
-        } else
-        {
-            $this->load->view ('usuario_modificar');
-        }*/
+       
+        
+        $this->load->view('forma_de_pago_registrada', $data);
+        //$this->send_mail_pago($idUsuario);
+        
         
         
         
@@ -154,8 +162,55 @@ class Usuario extends CI_Controller {
   
     
     
-      
 
+    function send_mail_pago($idUsuario){
+        
+        
+       //$correo = $this->usuario_model->getEmailById($idUsuario);
+       
+       
+       $num_tarjeta_credito = $this->input->post('textfield_numero');
+       $fecha_venc = $this->input->post('datepicker');
+       $marca = $this->input->post('textfield_marca');
+       $cod_tarjeta = $this->input->post('textfield_codigo');
+       $nombre_tarjeta = $this->input->post('textfield_nombre');
+       $documento_identidad = $this->input->post('textfield_documento');
+       $fk_usuario = $idUsuario;
+       
+                  				
+        $config = Array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'tiendavirtualamazonas@gmail.com',
+            'smtp_pass' => 'tiendavirtual'
+        );
+
+        $this->load->library('email', $config);
+        $this->email->set_newline("\r\n");
+
+        $this->email->from('tiendavirtualamazonas@gmail.com', 'amazonAS');
+        $this->email->to('tiendavirtualamazonas@gmail.com');
+        $this->email->subject('Nueva forma de pago registrada');
+        //$this->email->message('Thank you for registering. To activate you\'re account go to this url ' . base_url() . 'login/account_activation/' . $nick . '/'. $activation_code);
+
+
+        $this->email->message(
+                "Usted ha registrado la siguiente forma de pago: " .
+                
+                               
+                "Número de tarjeta: " . $num_tarjeta_credito . "  " .
+                "Fecha de vencimiento: " . $fecha_venc . "  " .
+                "Marca: " . $marca . "  " .
+                "Código de Tarjeta: " . $cod_tarjeta . "  " .
+                "Nombre de Tarjeta: " . $nombre_tarjeta  . "  " .
+                "Documento de identidad: " . $documento_identidad . "  " 
+                
+        );
+        
+        $this->email->send();
+        
+    }
 }
 
 ?>

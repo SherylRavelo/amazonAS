@@ -1,3 +1,5 @@
+
+
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 session_start(); 
 
@@ -12,6 +14,7 @@ class Perfil extends CI_Controller {
 
     private $client;
     private $service;
+    
 
     function __construct() {
         parent::__construct();
@@ -50,6 +53,14 @@ class Perfil extends CI_Controller {
         $datos = json_decode($cod);
         $email = $datos->email;
         $this->session->set_userdata('email', $email);
+        
+        
+        
+        
+        
+        
+        
+        
 
         if ($this->client->createAuthUrl()) {
 
@@ -78,7 +89,8 @@ class Perfil extends CI_Controller {
     }
 
     function index() {
-
+        
+        
         $autenticacion_gmail = $this->autenticacion();
 
 
@@ -90,28 +102,20 @@ class Perfil extends CI_Controller {
 
             if ($query == 1) { // if the user's credentials validated...
 
-
-
-
-
                 $array_user = array();
                 $array_user = $this->usuario_model->getUsuarioByEmail($this->session->userdata('email'));
-
-
 
                 $data['idUsuario'] = $array_user[0]->id_usuario;
                 var_dump($array_user[0]->id_usuario);
 
-
                 /* Pasar los datos a la vista */
-
                 $data['minombre'] = $this->session->userdata('minombre');
                 $data['email'] = $this->session->userdata('email');
                 $array_user = array();
                 $array_user = $this->usuario_model->getUsuarioByEmail($this->session->userdata('email'));
                 $data['idUsuario'] = $array_user[0]->id_usuario;
+                
                 $data['nombreUser'] = $array_user[0]->nombre;
-
                 $data['valor_mensaje'] = 1;
 
                 $this->load->view('perfil', $data);
@@ -119,18 +123,18 @@ class Perfil extends CI_Controller {
 
 
                 if ($query == 0) {
+                        
+                    
                     $this->load->helper(array('form'));
                     $this->load->model('categoria');
                     $data['categorias'] = $this->categoria->getCategorias();
-                    $data['mensaje'] = "Su cuenta no ha sido activada, por favor verifique su correo para activarla";
+                    $data['mensaje'] = "Su cuenta no ha sido activada, por favor verifique su correo para activarla.";
                     $this->load->view('error_login', $data);
                 } else {
-                    $this->load->helper(array('form'));
-                    $this->load->model('categoria');
-                    $data['categorias'] = $this->categoria->getCategorias();
-                    $data['valor_mensaje'] = 2;
                     $data['mensaje'] = "¡Usted no se encuentra registrado!";
+                    $data['valor_mensaje'] = 2;  
                     $this->load->view('registro', $data);
+                    
                 }
             }
         }
@@ -142,6 +146,8 @@ class Perfil extends CI_Controller {
       session_destroy();
       redirect('home', 'refresh');
       } */
-}
+    
+    }
+
 
 ?>

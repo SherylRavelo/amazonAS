@@ -65,7 +65,7 @@
                     <div >
                        <?php echo anchor('usuario/index/' . $idUsuario . '/modificar', 'Modificar Datos de Usuario', array('title' => 'Modificar')); ?>
                         <br></br>
-                         <?php echo anchor('usuario/registrar_forma_de_pago/' . $idUsuario , 'Registrar Forma de Pago'); ?>
+                         <?php echo anchor('usuario/cargar_view_pago/' . $idUsuario , 'Registrar Forma de Pago'); ?>
                         <br></br>
 
                     </div>

@@ -39,11 +39,11 @@
         <?php $this->load->helper('html'); ?>
         <div id="wrap">
             <div id="topbar">
-                <ul>    <li class="current"><a href="#">Inicio</a></li>
+                <ul>    
+                    <li class="current"><?php echo anchor('home/index/', "Inicio", array('title' => 'Inicio')); ?></li>
 
-                    <li><a href="#">Sobre Nosotros</a></li>
-                    <li><a href="#">Contáctanos</a></li>
-                    <li><a href="#">Mi Cuenta</a></li>
+                    <li><?php echo anchor('home/sobre_nosotros', 'Sobre Nosotros', array('title' => 'Sobre Nosotros')); ?></li>
+                    
                     <li><a href="#">Ayuda &amp; Soporte</a></li>
                     <li></li>
                 </ul>
@@ -53,25 +53,11 @@
                     <h1 id="logo">AmazonAS</h1>
                 </div>
                 <div id="shoutout"><img src="/amazonAS/images/joinnow_shoutout.jpg" alt="Join Now! It's Free" width="168" height="126" /></div>
-                <div id="useractions">
-                    <div id="headings"> 
-                        <h2><img src="images/create_indi_usr.jpg" alt="Individual User" width="25" height="22" /> Opciones de Usuario</h2>   
-                    </div>
-                    <div >
-                        <?php echo anchor('usuario/index/' . $idUsuario . '/modificar', 'Modificar Datos de Usuario', array('title' => 'Modificar')); ?>
-
-                    </div>
-                </div>
-                
             </div>
             
-            
-            
-            
-            <?php
-            echo $mensaje;
-            ?>
-            
+            <br></br>
+                  <h3><?php echo $mensaje;?> <?php echo anchor('home', 'Regresar');?></h3>
+            <br></br>
             <div id="footer">
                 <div id="upperfooter"> <a href="#">Inicio</a> | <a href="#">Search</a> | <a href="#">Register</a> | <a href="#">Pro Agent Account</a> | <a href="#">About Us</a> | <a href="#">Contact Us</a> |<a href="#"> Privacy Policy</a> <a href="#">Terms Of Use</a> | <a href="#">Advertise With Us</a> </div>
                 <div id="lowerfooter"> <span class="backtotop"> <a href="#">Volver arriba</a> </span>

@@ -78,7 +78,7 @@
             ?>
 
             
-            <h3>Un correo ha sido enviado con la actualización de sus datos. </h3>
+  <h3>Se ha registrado una forma de pago. Los datos de este registro han sido enviados a su correo.</h3>
             
             
             

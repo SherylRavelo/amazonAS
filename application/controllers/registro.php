@@ -132,7 +132,7 @@ class Registro extends CI_Controller {
         $reg_confirm = $this->registro_model->confirm_registration($nombre, $activation_code);
         if ($reg_confirm) {
             //$data['main_content'] = 'account_activated';
-            $this->load->view('activo');
+            $this->load->view('activacion_exitosa');
         } else {
             echo 'you have failed to register';
         }
