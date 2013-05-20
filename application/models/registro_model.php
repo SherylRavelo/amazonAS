@@ -51,37 +51,21 @@ class Registro_model extends CI_Model {
 	 * @access   public
 	 * @return   BD query
 	 */
-	function create_member()
+	function create_member($nombre, $apellido, $cedula, $correo, $fecha_nac, $zona_postal, $direccion)
 	{
             $fecha_sistema = date("Y-m-d");
          
-
 		$this->load->helper('string');
 		$new_member_insert_data = array(
-			'nombre' => $this->input->post('textfield_nombre'),
-			'apellido' => $this->input->post('textfield_apellido'),
-                    
-                    'cedula' => $this->input->post('textfield_cedula'),
-                    
-                    'correo' => $this->input->post('textfield_correo'),
-                    
-                    'fecha_nac' => $this->input->post('datepicker'),
-                    
-                     
+			'nombre' => $nombre,
+			'apellido' => $apellido,           
+                    'cedula' => $cedula,
+                    'correo' => $correo,
+                    'fecha_nac' => $fecha_nac,
                     'estado_usuario' => "inactivo",
-                    
-                    
                     'fecha_registro ' => $fecha_sistema,
-                    
-                    
-                    'zona_postal' => $this->input->post('textfield_codigo'),
-                    
-                
-                    'direccion' => $this->input->post('textfield_direccion'),
-                    
-                  
-                    
-                
+                    'zona_postal' => $zona_postal,
+                    'direccion' => $direccion,
 			'codigo_activacion' => random_string('alnum',20)	
                    					
 		);
@@ -96,8 +80,12 @@ class Registro_model extends CI_Model {
                 log_message('info', 'Se ha registrado un nuevo usuario en el sistema: '.$nombrelog.' '.$apellidolog);
                 
             
-                
-		return $insert;
+                if ($insert){
+                return true;
+                }else
+                {
+                    return false;
+                }
 	}
 	
 	/**

@@ -26,7 +26,7 @@ class Registro extends CI_Controller {
         $this->form_validation->set_rules('textfield_nombre', 'Nombre', 'trim|required');
         $this->form_validation->set_rules('textfield_apellido', 'Apellido', 'trim|required');
         $this->form_validation->set_rules('textfield_cedula', 'Cedula', 'trim|required');
-        $this->form_validation->set_rules('textfield_correo', 'Correo', 'trim|required|valid_email');
+        $this->form_validation->set_rules($this->input->post('textfield_correo'), 'Correo', 'trim|required|valid_email');
         $this->form_validation->set_rules('textfield_direccion', 'Direccion', 'trim|required');
         $this->form_validation->set_rules('textfield_pais', 'Pais', 'trim|required');
         $this->form_validation->set_rules('textfield_ciudad', 'Ciudad', 'trim|required');
@@ -39,14 +39,22 @@ class Registro extends CI_Controller {
 
             $data['categorias'] = $this->categoria->getCategorias();
             $this->load->view('registro', $data);
-
-
-            //$this->index();
+            
         } else {
             $this->load->model('registro_model');
             
-
-            if ($query = $this->registro_model->create_member()) {
+            
+            $nombre =  $this->input->post('textfield_nombre');
+            $apellido= $this->input->post('textfield_apellido');
+            $cedula = $this->input->post('textfield_cedula');
+            $correo = $this->input->post('textfield_correo');
+            $fecha_nac = $this->input->post('datepicker');
+            $zona_postal = $this->input->post('textfield_codigo');
+            $direccion = $this->input->post('textfield_direccion');
+			
+            
+     
+            if ($query = $this->registro_model->create_member($nombre, $apellido, $cedula, $correo, $fecha_nac, $zona_postal, $direccion)) {
                 
                 $this->sendmeail();
             } else {

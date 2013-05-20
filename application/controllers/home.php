@@ -29,6 +29,16 @@ class Home extends CI_Controller {
         
     }
     
+   
+function test(){
+	$this->load->library('unit_test');
+    $suma = 10+2;
+    $esperado = 12;
+    $this->unit->run($suma, $esperado);
+    echo $this->unit->report();
+	
+}
+    
     
     
 
