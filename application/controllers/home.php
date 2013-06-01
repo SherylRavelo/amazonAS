@@ -29,15 +29,40 @@ class Home extends CI_Controller {
         
     }
     
+    
    
-function test(){
-	$this->load->library('unit_test');
-    $suma = 10+2;
-    $esperado = 12;
-    $this->unit->run($suma, $esperado);
-    echo $this->unit->report();
-	
-}
+    public function servicio_web($idUsuario = null, $nombreUser = null){
+        
+        
+        $data['idUsuario'] = $idUsuario;
+        $data['nombreUser'] = $nombreUser;
+        $this->load->helper(array('form'));
+        $data['categorias'] = $this->categoria->getCategorias();
+        $data['valor_mensaje'] = 3;
+        $this->load->view('servicioweb',$data);
+  
+    }
+    
+    
+    
+    
+    public function buscador_api($idUsuario = null, $nombreUser = null){
+        
+        
+        $data['idUsuario'] = $idUsuario;
+        $data['nombreUser'] = $nombreUser;
+        $this->load->helper(array('form'));
+        $data['categorias'] = $this->categoria->getCategorias();
+        $data['valor_mensaje'] = 3;
+        $data['mensaje']="";
+        $this->load->view('buscadorapi',$data);
+  
+    }
+    
+    
+    
+   
+
     
     
     

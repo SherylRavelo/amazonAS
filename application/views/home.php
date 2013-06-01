@@ -20,7 +20,7 @@
 
                     <li><?php echo anchor('home/sobre_nosotros', 'Sobre Nosotros', array('title' => 'Sobre Nosotros')); ?></li>
                     
-                    <li><a href="#">Ayuda &amp; Soporte</a></li>
+                    <li><?php echo anchor('home/servicio_web/', 'Servicio Web', array('title' => 'Servicio Web')); ?></li>
                     <li></li>
                 </ul>
             </div>

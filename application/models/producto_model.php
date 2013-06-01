@@ -43,8 +43,8 @@ Class Producto_Model extends CI_Model {
         //$sql .= "order by precio_unit asc;";
         $query = null;
         
-        var_dump("minimo = ".$min);
-        var_dump("maximo = ".$max);
+        //var_dump("minimo = ".$min);
+        //var_dump("maximo = ".$max);
         if ($min != '' and $max != '') {
             $sql .= "and precio_unit > ? and precio_unit < ? ";
             $sql .= "order by precio_unit asc LIMIT ? , ? ";
