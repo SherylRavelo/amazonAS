@@ -11,11 +11,16 @@ class Api extends REST_Controller {
     function metodos_get() {
 
 
-        if ($this->get('palabra') == null) {
-            $data['mensaje'] = "Sin palabra(s) que buscar";
-            $this->load->view('buscadorapi', $data);
-        }
+        if ($this->get('palabra') == "") {
+            $data['mensaje'] = "Campo Palabra(Obligatorio) vacío.";
+            $data['idUsuario'] = $this->session->userdata('idUsuario');
+            $data['nombreUser'] = $this->session->userdata('nombreUser');
 
+            $this->load->helper('form');
+            $this->load->view('buscadorapi', $data);
+            }
+            else
+            {
 
         if ($this->get('nropagina') == null && ($this->get('nroporpagina') == null)) {
             //Por Palabra
@@ -41,6 +46,7 @@ class Api extends REST_Controller {
             $this->buscar_palabra_por_ambas_get();
         }
     }
+    }
     
 
     //Devuelve los 10 primeros productos encontrados. (Primera página)
@@ -56,7 +62,7 @@ class Api extends REST_Controller {
                    
             $this->response($lista, 200); // 200 being the HTTP response code
         } else {
-            $this->response(array('error' => 'No existen productos en ese estado'), 404);
+            $this->response(array('error' => 'No se encontraron productos para mostrar'), 404);
         }
     }
 
@@ -90,7 +96,7 @@ class Api extends REST_Controller {
         if ($lista_final) {
             $this->response($lista_final, 200); // 200 being the HTTP response code
         } else {
-            $this->response(array('error' => 'No existen productos con este nombre'), 404);
+            $this->response(array('error' => 'No se encontraron productos para mostrar'), 404);
         }
     }
 
@@ -110,7 +116,7 @@ class Api extends REST_Controller {
             
             
         } else {
-            $this->response(array('error' => 'No existen productos con este nombre'), 404);
+            $this->response(array('error' => 'No se encontraron productos para mostrar'), 404);
         }
     }
 
@@ -148,7 +154,7 @@ class Api extends REST_Controller {
         if ($lista_final) {
             $this->response($lista_final, 200); // 200 being the HTTP response code
         } else {
-            $this->response(array('error' => 'No existen productos con este nombre'), 404);
+            $this->response(array('error' => 'No se encontraron productos para mostrar'), 404);
         }
     }
     

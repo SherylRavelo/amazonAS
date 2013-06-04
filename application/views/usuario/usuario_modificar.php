@@ -44,14 +44,21 @@
     <body>
         <?php $this->load->helper('html'); ?>
         <div id="wrap">
-            <div id="topbar">
-                <ul>    
+           <div id="topbar">
+                <ul> 
+                    <?php if ($idUsuario != null) {?>
                     <li class="current"><?php echo anchor('homeusuario/index/' . $idUsuario, "Inicio", array('title' => 'Inicio')); ?></li>
+
                     <li><?php echo anchor('home/sobre_nosotros/'.$idUsuario.'/'.$nombreUser, 'Sobre Nosotros', array('title' => 'Sobre Nosotros')); ?></li>
-                    
-                    
                     <li><?php echo anchor('perfil/miCuenta/'.$idUsuario, 'Mi Cuenta', array('title' => 'Mi Cuenta')); ?></li>
-                    <li><a href="#">Ayuda &amp; Soporte</a></li>
+                    
+                    <?php }  else { ?>
+                    <li class="current"><?php echo anchor('home/index/', "Inicio", array('title' => 'Inicio')); ?></li>
+                    <li><?php echo anchor('home/sobre_nosotros', 'Sobre Nosotros', array('title' => 'Sobre Nosotros')); ?></li>
+                    <li><?php echo anchor('home/servicio_web', 'Servicio Web', array('title' => 'Servicio Web')); ?></li>
+                   <?php }?>
+                    
+                    
                     
                     <li></li>
                 </ul>

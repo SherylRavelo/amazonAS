@@ -10,7 +10,7 @@
     <body>
         <?php $this->load->helper('html'); ?>
         <div id="wrap">
-            <div id="topbar">
+              <div id="topbar">
                 <ul> 
                     <?php if ($idUsuario != null) {?>
                     <li class="current"><?php echo anchor('homeusuario/index/' . $idUsuario, "Inicio", array('title' => 'Inicio')); ?></li>

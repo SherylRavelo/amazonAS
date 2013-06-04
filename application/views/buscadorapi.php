@@ -135,7 +135,6 @@
 
                             <textarea id="textarea_resultado" name="resultado" rows="10" cols="115" readonly="readonly">
 
-Salida aquí
 
                             </textarea>
 

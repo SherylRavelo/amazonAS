@@ -89,6 +89,9 @@ http://(direccion IP)/amazonAS/api/ <br />
 * nropagina (Opcional): Nro. específico de página a consultar.<br />
 
 * nroporpagina (Opcional): Nro. de productos listados en el resultado de la consulta.<br />
+
+* formato (Opcional): Formato de salida de los resultados.<br />
+
 <br />
 
 
@@ -138,7 +141,7 @@ listando los productos contenidos en la página "nropagina" con la cantidad de p
 
 
 
-<h4>Llamar métodos:</h4>
+<h4>Llamar métodos</h4>
 <br />
 Para llamar a los métodos se agrega el nombre de dicho método a la dirección URL base separados por "/", por ejemplo: 
 <br />
@@ -150,7 +153,7 @@ La dirección anterior está llamando al método buscar_palabra.
 <br />
 <br />
 
-<h4>Enviar argumentos:</h4>
+<h4>Enviar argumentos</h4>
 <br />
 
 Los argumentos se envían seguidamente del nombre del método, separados por "/"
@@ -181,6 +184,36 @@ de página a mostrar "3".
 <br />
 <br />
 
+
+
+<h4>Formatos de Salida</h4>
+<br />
+
+
+* xml 
+<br />
+* json
+<br />
+* jsonp
+<br />
+* php
+<br />
+* html
+<br />
+* csv
+<br />
+
+<br />
+
+
+<h4>Mensajes de error</h4>
+<br />
+Cuando no se encuentran productos se devuelve el mensaje: "No se encontraron productos para mostrar".
+
+
+<br />
+<br />
+<br />
                                 
                                 
                                  

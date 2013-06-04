@@ -24,7 +24,7 @@ h1#logo { font: bold 44px Tahoma, Geneva, sans-serif; color:#368291;}
 	background: url(../images/hotbg.jpg) repeat;
 }
 
-#search {background:url(../images/searchbg.jpg); height:919px;/*255px;*//*fondo azul oscuro largo*/; width: 948px;} /*height:301px;*/
+#search {background:url(../images/searchbg.jpg); height:1070px;/*255px;*//*fondo azul oscuro largo*/; width: 948px;} /*height:301px;*/
 .hot {background:url(../images/hotbg.jpg); height:300px;/*301px;*/}
 
 #topcategorieslink {background:url(../images/categoriesbg.jpg); height:44px; margin-bottom:8px;}
@@ -32,7 +32,7 @@ h1#logo { font: bold 44px Tahoma, Geneva, sans-serif; color:#368291;}
 	background:#E3F6FC url(../images/searchbottom.jpg) center bottom no-repeat;
         
         /*largo de azul claro*/
-	height: 850px;/*200px;*/ /*height:255px;*/ 
+	height: 997px;/*200px;*/ /*height:255px;*/ 
         
         /*ancho de azul claro*/
 	width:  940px;
