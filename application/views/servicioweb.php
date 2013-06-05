@@ -17,6 +17,7 @@
 
                     <li><?php echo anchor('home/sobre_nosotros/'.$idUsuario.'/'.$nombreUser, 'Sobre Nosotros', array('title' => 'Sobre Nosotros')); ?></li>
                     <li><?php echo anchor('perfil/miCuenta/'.$idUsuario, 'Mi Cuenta', array('title' => 'Mi Cuenta')); ?></li>
+                    <li><?php echo anchor('home/servicio_web/'. $idUsuario. '/'. $nombreUser, 'Servicio Web', array('title' => 'Servicio Web')); ?></li>
                     
                     <?php }  else { ?>
                     <li class="current"><?php echo anchor('home/index/', "Inicio", array('title' => 'Inicio')); ?></li>
@@ -44,7 +45,7 @@
                 <?php }  else { ?>
                 <div id="useractions">
                     <div id="headings"> 
-                        <h2><img src="/amazonAS/images/create_indi_usr.jpg" alt="Individual User" width="25" height="22" /> <a href="#">Crear cuenta</a> </h2>   
+                        <h2><img src="/amazonAS/images/create_indi_usr.jpg" alt="Individual User" width="25" height="22" /> <?php echo anchor('registro', "Crear Cuenta", array('title' => 'registro')); ?></h2>   
                     </div>
                     <div id="login">
                         <p><strong> ¿Ya estás registrado en AmazonAS?</strong> Ingresa aquí con tu cuenta Google</p>
@@ -220,11 +221,11 @@ Cuando no se encuentran productos se devuelve el mensaje: "No se encontraron pro
                                  
                             </p>
                             
-                            
+                       
                             
                             <p>  
                                <h4>  Explorar API:    
-                    <?php echo anchor('home/buscador_api/', "Consultar API", array('title' => 'Consultar API')); ?> </h4> 
+                    <?php echo anchor('home/buscador_api/'. $idUsuario. '/'. $nombreUser, "Consultar API", array('title' => 'Consultar API')); ?> </h4> 
                     
                 </ul>
                                    

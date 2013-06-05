@@ -7,46 +7,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require APPPATH . '/libraries/REST_Controller.php';
 
 class Api extends REST_Controller {
-
-    function metodos_get() {
-
-
-        if ($this->get('palabra') == "") {
-            $data['mensaje'] = "Campo Palabra(Obligatorio) vacío.";
-            $data['idUsuario'] = $this->session->userdata('idUsuario');
-            $data['nombreUser'] = $this->session->userdata('nombreUser');
-
-            $this->load->helper('form');
-            $this->load->view('buscadorapi', $data);
-            }
-            else
-            {
-
-        if ($this->get('nropagina') == null && ($this->get('nroporpagina') == null)) {
-            //Por Palabra
-            $this->buscar_palabra_get();
-        }
-
-
-        if ($this->get('nropagina') != null && ($this->get('nroporpagina') == null)) {
-            //Por Nro. Página    
-            $this->buscar_palabra_por_nropagina_get();
-        }
-
-
-
-        if ($this->get('nropagina') == null && ($this->get('nroporpagina') != null)) {
-            //Por Nro. Por Página
-            $this->buscar_palabra_por_nroporpagina_get();
-        }
-
-
-        if ($this->get('nropagina') != null && ($this->get('nroporpagina') != null)) {
-            //Por Nro. Pagina y Nro.Por Página
-            $this->buscar_palabra_por_ambas_get();
-        }
-    }
-    }
     
 
     //Devuelve los 10 primeros productos encontrados. (Primera página)

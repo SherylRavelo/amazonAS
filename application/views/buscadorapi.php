@@ -18,6 +18,7 @@
 
                         <li><?php echo anchor('home/sobre_nosotros/' . $idUsuario . '/' . $nombreUser, 'Sobre Nosotros', array('title' => 'Sobre Nosotros')); ?></li>
                         <li><?php echo anchor('perfil/miCuenta/' . $idUsuario, 'Mi Cuenta', array('title' => 'Mi Cuenta')); ?></li>
+                        <li><?php echo anchor('home/servicio_web/'. $idUsuario. '/'. $nombreUser, 'Servicio Web', array('title' => 'Servicio Web')); ?></li>
 
                     <?php } else { ?>
                         <li class="current"><?php echo anchor('home/index/', "Inicio", array('title' => 'Inicio')); ?></li>
@@ -31,42 +32,40 @@
                     <li></li>
                 </ul>
             </div>
-            <div id="header">
+         <div id="header">
                 <div id="sitename">
                     <h1 id="logo">AmazonAS</h1>
                 </div>
                 <div id="shoutout"><img src="/amazonAS/images/joinnow_shoutout.jpg" alt="Join Now! It's Free" width="168" height="126" /></div>
-
-                <?php if ($idUsuario != null) { ?>
-                    <div id="useractions">
-                        <div id="headings"> 
-                            <h2><img src="/amazonAS/images/create_indi_usr.jpg" alt="Individual User" width="25" height="22" /> <?php echo "$nombreUser"; ?></h2>   
-                        </div>
+                
+                <?php if ($idUsuario != null) {?>
+                <div id="useractions">
+                    <div id="headings"> 
+                        <h2><img src="/amazonAS/images/create_indi_usr.jpg" alt="Individual User" width="25" height="22" /> <?php echo "$nombreUser"; ?></h2>   
                     </div>
-                <?php } else { ?>
-                    <div id="useractions">
-                        <div id="headings"> 
-                            <h2><img src="/amazonAS/images/create_indi_usr.jpg" alt="Individual User" width="25" height="22" /> <a href="#">Crear cuenta</a> </h2>   
-                        </div>
-                        <div id="login">
-                            <p><strong> ¿Ya estás registrado en AmazonAS?</strong> Ingresa aquí con tu cuenta Google</p>
-                            <div id="loginform">
-                                <?php /* echo form_open('perfil'); */ ?> <!--<form action="#"> -->
+                </div>
+                <?php }  else { ?>
+                <div id="useractions">
+                    <div id="headings"> 
+                        <h2><img src="/amazonAS/images/create_indi_usr.jpg" alt="Individual User" width="25" height="22" /> <?php echo anchor('registro', "Crear Cuenta", array('title' => 'registro')); ?></h2>   
+                    </div>
+                    <div id="login">
+                        <p><strong> ¿Ya estás registrado en AmazonAS?</strong> Ingresa aquí con tu cuenta Google</p>
+                        <div id="loginform">
+                            <?php echo form_open('perfil'); ?> <!--<form action="#"> -->
                                 <div class="formblock">
                                     <input type="image" src="/amazonAS/images/g+32.png" name="button" id="button" value="Submit" />
                                 </div>
-
+                                
                                 <div class="clear">&nbsp;</div>
-
-                                </form>
-                            </div>
-
+                                
+                            </form>
                         </div>
+
                     </div>
-                <?php } ?>
+                </div>
+                <?php }?>
             </div>
-
-
 
 
 
@@ -79,15 +78,16 @@
                         </div>
                         <div class="container">
                             <?php
-                            $atributos = array('id' => 'form1', 'method' => 'get');
-                            echo form_open('api/metodos', $atributos);
+                            $atributos = array('id' => 'form1');
+                            $oculto = array('idUsuario' => $idUsuario,'nombreUser' => $nombreUser);
+                            echo form_open('rest_client/metodos', $atributos, $oculto);
                             ?>
                             <table class="search_form" style="width:100%; border:none;">
 
                                 <br />
                                 <br />
 
-                                <h4>Llene los campos según el criterio de búsqueda deseado: <?php echo $mensaje; ?></h4>
+                                <h4>Llene los campos según el criterio de búsqueda deseado: <?php if (isset($mensaje)){ echo $mensaje;} ?></h4>
                                 <br />
 
                                 <tr>
@@ -134,10 +134,16 @@
 
 
                             <textarea id="textarea_resultado" name="resultado" rows="10" cols="115" readonly="readonly">
+<?php
 
+if (isset($salida)){
+echo '<pre>';
+print_r($salida);
+echo '</pre>';
 
+}
+?>
                             </textarea>
-
 
 
 

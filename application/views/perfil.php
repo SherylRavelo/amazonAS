@@ -44,6 +44,7 @@
 
                     <li><?php echo anchor('home/sobre_nosotros/'.$idUsuario.'/'.$nombreUser, 'Sobre Nosotros', array('title' => 'Sobre Nosotros')); ?></li>
                     <li><?php echo anchor('perfil/miCuenta/'.$idUsuario, 'Mi Cuenta', array('title' => 'Mi Cuenta')); ?></li>
+                    <li><?php echo anchor('home/servicio_web/'. $idUsuario. '/'. $nombreUser, 'Servicio Web', array('title' => 'Servicio Web')); ?></li>
                     
                     <?php }  else { ?>
                     <li class="current"><?php echo anchor('home/index/', "Inicio", array('title' => 'Inicio')); ?></li>

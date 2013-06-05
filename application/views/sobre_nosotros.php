@@ -44,7 +44,7 @@
                 <?php }  else { ?>
                 <div id="useractions">
                     <div id="headings"> 
-                        <h2><img src="/amazonAS/images/create_indi_usr.jpg" alt="Individual User" width="25" height="22" /> <a href="#">Crear cuenta</a> </h2>   
+                        <h2><img src="/amazonAS/images/create_indi_usr.jpg" alt="Individual User" width="25" height="22" /> <?php echo anchor('registro', "Crear Cuenta", array('title' => 'registro')); ?></h2>   
                     </div>
                     <div id="login">
                         <p><strong> ¿Ya estás registrado en AmazonAS?</strong> Ingresa aquí con tu cuenta Google</p>
