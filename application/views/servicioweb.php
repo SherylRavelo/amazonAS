@@ -210,7 +210,10 @@ de página a mostrar "3".
 <h4>Mensajes de error</h4>
 <br />
 Cuando no se encuentran productos se devuelve el mensaje: "No se encontraron productos para mostrar".
-
+<br />
+Cuando el número de página a mostrar es un valor negativo devuelve el mensaje: "Nro. de Página no válido(negativo)".
+<br />
+Cuando el número de productos por página a mostrar es un valor negativo devuelve el mensaje: "Nro. de Productos por Página no válido(negativo)".
 
 <br />
 <br />

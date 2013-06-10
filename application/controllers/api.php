@@ -38,6 +38,9 @@ class Api extends REST_Controller {
         $num_productos = $this->producto_model->getNumProductoByPalabra($palabras);
         $lista = $this->producto_model->getProductosByPalabra($num_productos, 0, $palabras);
 
+        if ($nropagina < 0){
+              $this->response(array('error' => 'Nro. de Página no válido(negativo)'), 404);
+          }
 
         if ($nropagina * 10 >= $num_productos) {
 
@@ -58,17 +61,25 @@ class Api extends REST_Controller {
         } else {
             $this->response(array('error' => 'No se encontraron productos para mostrar'), 404);
         }
+        
+        
     }
 
     //Devuelve los primeros N productos encontrados. (Primera página)
     function buscar_palabra_por_nroporpagina_get() {
-
+        
         $inicio = $this->get('nroporpagina') + 0;
+        
+          if ($inicio < 0){
+              $this->response(array('error' => 'Nro. de Productos por Página no válido(negativo)'), 404);
+          }
+          
 
         $palabras = preg_split("/[\s,]+/", $this->get('palabra'));
         $this->load->model('producto_model');
         $lista = $this->producto_model->getProductosByPalabra($inicio, 0, $palabras);
-
+        
+          
         if ($lista) {
             $this->response($lista, 200); // 200 being the HTTP response code
             
@@ -92,7 +103,13 @@ class Api extends REST_Controller {
         $num_productos = $this->producto_model->getNumProductoByPalabra($palabras);
         $lista = $this->producto_model->getProductosByPalabra($num_productos, 0, $palabras);
 
-
+          if ($nropagina < 0){
+              $this->response(array('error' => 'Nro. de Página no válido(negativo)'), 404);
+          }
+          
+          if ($nroporpagina < 0){
+              $this->response(array('error' => 'Nro. de Productos por Página no válido(negativo)'), 404);
+          }
 
         if ($nropagina * $nroporpagina > $num_productos) {
 
@@ -118,7 +135,8 @@ class Api extends REST_Controller {
         }
     }
     
-    
-}
+    }
+
+
 
 ?>
