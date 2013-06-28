@@ -7,9 +7,11 @@ class Producto extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('producto_model');
+        $this->load->model('formadepago_model');
         $this->load->model('multimedia');
         $this->load->helper(array('form'));
         $this->load->library('javascript');
+        $this->load->library('cart');
         //$this->load->library('jquery');
     }
 
@@ -59,6 +61,59 @@ class Producto extends CI_Controller {
         $this->load->view('producto/ver_producto',$data);
             
         
+    }
+    
+    
+    public function carritoDeCompras($idUsuario=null, $nombreUser=null, $idProducto=null) {
+        $data = array();
+        /*
+        if ($idProducto == null) {
+            $idProducto = $idProducto->id;
+            var_dump($idProducto);
+        } */
+        
+        if ($idUsuario != null) {
+            $array_formadepago = $this->formadepago_model->getFormadepago($idUsuario);
+            
+            if ($array_formadepago != null) {
+                
+                $array_producto = $this->producto_model->getProductosById($idProducto);
+            
+                $nombre = @ereg_replace("[^A-Za-z0-9 ]", "", $array_producto[0]->nombre);
+                //var_dump($nombre);
+                if ($idProducto != null) {
+                $data = array(
+                    'id' => $idProducto,
+                    'qty' => 1,
+                    'price' => $array_producto[0]->precio_unit,
+                    'name' => $nombre
+                );
+
+                $this->cart->insert($data);
+                }
+                $data['idUsuario'] = $idUsuario;
+                $data['nombreUser'] = $nombreUser;
+                $data['formadepago'] = $array_formadepago;
+
+                
+                //var_dump($data);
+                $this->load->view('producto/ver_carrito', $data);
+            } else {
+                $data['idUsuario'] = null;
+                $data['nombreUser'] = null;
+                $data['mensaje'] = "Debe asignar una tarjeta de crédito para poder ver el carrito de compras.";
+
+                $this->load->view('aviso', $data);
+            }
+            
+        } else {
+            $data['idUsuario'] = null;
+            $data['nombreUser'] = null;
+            $data['mensaje'] = "Necesita ingresar al sistema para poder usar el carrito de compra ";
+            
+            $this->load->view('aviso', $data);
+            //print_r("Necesita ingresar al sistema para poder usar el carrito de compra");
+        }
     }
     
     

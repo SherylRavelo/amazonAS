@@ -35,7 +35,7 @@
     </head>
 
     <body>
-        <?php $this->load->helper('html'); ?>
+        <?php $this->load->helper('html'); ?> 
         <div id="wrap">
              <div id="topbar">
                 <ul> 
@@ -70,6 +70,8 @@
                        <?php echo anchor('usuario/index/' . $idUsuario . '/modificar', 'Modificar Datos de Usuario', array('title' => 'Modificar')); ?>
                         <br></br>
                          <?php echo anchor('usuario/index/' . $idUsuario . '/pago', 'Registrar Forma de Pago', array('title' => 'Forma de Pago')); ?>
+                        <br></br> 
+                        <?php echo anchor('producto/carritoDeCompras/'. $idUsuario . '/' . $nombreUser, 'Ver Carrito', array('title' => 'Ver Carrito')); ?>
                         <br></br>
                         <li class="current"><?php echo anchor('home/index/', "Cerrar Sesión", array('title' => 'Logout')); ?></li>
 

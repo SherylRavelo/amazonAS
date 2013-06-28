@@ -4,6 +4,10 @@ session_start();
 include_once( 'C:\wamp\www\amazonAS\application\libraries\google-api-php-client\src\Google_Client.php' );
 include_once( 'C:\wamp\www\amazonAS\application\libraries\google-api-php-client\src\contrib\Google_PlusService.php' );
 
+//include_once( 'C:\xampp\htdocs\amazonAS\application\libraries\google-api-php-client\src\Google_Client.php' );
+//include_once( 'C:\xampp\htdocs\amazonAS\application\libraries\google-api-php-client\src\contrib\Google_PlusService.php' );
+
+
         const REDIRECT_URL = 'http://localhost/amazonAS/index.php/perfil';
         const CLIENT_ID = '607139587180-e3b5rc95t8nasf8de8v5b0dnuptbb3pe.apps.googleusercontent.com';
         const CLIENT_SECRET = 'sHs_q0KOckzbYJTAkpSW4eV7';
@@ -17,6 +21,7 @@ class Perfil extends CI_Controller {
         parent::__construct();
         $this->load->model('usuario_model');
         $this->load->model('lugar_model');
+        $this->load->library('cart');
     }
 
     

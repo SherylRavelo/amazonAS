@@ -142,9 +142,9 @@
                             <p class="price">Precio: Bs.F <?php echo $precio; ?></p>
                             <br />
                             <?php if ($idUsuario != null) {?>
-                            <div class="listingbtns"> <span class="listbuttons"> <?php echo anchor('pedido/carritoDeCompras/'.$idProducto.'/'. $idUsuario.'/'.$nombreUser, "Añadir al Carrito", array('title' => 'Añadir')); ?></span> </div>
+                            <div class="listingbtns"> <span class="listbuttons"> <?php echo anchor('producto/carritoDeCompras/'. $idUsuario.'/'.$nombreUser. '/'.$idProducto, "Añadir al Carrito", array('title' => 'Añadir')); ?></span> </div>
                             <?php }else { ?>
-                            <div class="listingbtns"> <span class="listbuttons"> <?php echo anchor('pedido/carritoDeCompras/'.$idProducto, "Añadir al Carrito", array('title' => 'Añadir')); ?></span> </div>
+                            <div class="listingbtns"> <span class="listbuttons"> <?php echo anchor('producto/carritoDeCompras/', "Añadir al Carrito", array('title' => 'Añadir')); ?></span> </div>
                             <?php } ?>
                             
                             
