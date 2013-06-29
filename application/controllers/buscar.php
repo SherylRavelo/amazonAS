@@ -16,14 +16,90 @@ class Buscar extends CI_Controller {
         
     }
 
+     function soap_productos($url, $busqueda='', $pagina='1', $numArticulo=999) {
+         
+        
+        $parametros = array(
+            'busqueda'=>$busqueda,
+            'pagina'=>$pagina,
+            'numArticulo'=>$numArticulo,
+        );
+        
+        
+        $soapclient = new soapclient($url);
+        ob_start();
+        $soapclient->call( "BusquedaProducto"  ,$parametros);
+        $content= ob_get_clean();
+        
+        $ret=xml2Array($content);
+        
+        $result=$ret["s:Envelope"]["s:Body"]["BusquedaProductoResponse"]["BusquedaProductoResult"]["a:Producto"];
+        
+        $ret=array();
+        foreach ($result as $key => $value) {
+            $categoria_nombre=($value['a:Categoria']["a:Nombre"]);
+            $categoria_id=($value['a:Categoria']["a:Id"]);
+            $cantidad=($value['a:Cantidad']);
+            $descripcion=($value['a:Descripcion']);
+            $id=($value['a:Id']);
+            $imagenDetalle=($value['a:ImagenDetalle']);
+            $imagenMiniatura=($value['a:ImagenMiniatura']);
+            $nombre=($value['a:Nombre']);
+            $precio=($value['a:Precio']);
+            $ret[]=array(
+                    'id'=>$id,
+                    'nombre'=>$nombre,
+                    'categoria_nombre'=>$categoria_nombre,
+                    'categoria_id'=>$categoria_id,
+                    'descripcion'=>$descripcion,
+                    'cantidad'=>$cantidad,
+                    'imagenDetalle'=>$imagenDetalle,
+                    'imagenMiniatura'=>$imagenMiniatura,
+                    'precio'=>$precio
+                );
+        }
+        return $ret;
+        
+    }
+    public function syncSoap(){
+        $this->load->library("NuSoap");
+        $this->load->library("xml2array");
+
+        $busqueda=$this->input->post('palabra_clave');
+        $productos=$this->soap_productos("http://localhost/wsdl?wsdl",$busqueda);
+        
+        
+        foreach ($productos as $producto) {
+            $imgDetalle="http://localhost".$producto['imagenDetalle'];
+            $imgThumb="http://localhost".$producto['imagenMiniatura'];
+            $uname=$producto['nombre'].'_'.$producto['id'];
+            $data=array(
+                'precio_unit'=>$producto['precio'],
+                'cantidad'=>$producto['cantidad'],
+                'nombre'=>$uname,
+                'descripcion'=>$producto['descripcion'],
+                'detalle'=>'N/A',
+                'stock'=>'si',
+                'estado_producto'=>'nuevo',
+            );
+            if(  $this->producto_model->getNumProductoByPalabra(array($uname)) <= 0){
+                $fk_producto=$this->producto_model->insertar($data);
+                $this->producto_model->insertarDetalleVacio($fk_producto);
+                
+            }
+        }
+    }
+    
     public function index() {
 
+        $this->syncSoap();
         /* Inicializar la sesion */
         $this->session->unset_userdata('estadoProducto');
         $this->session->unset_userdata('categoria');
         $this->session->unset_userdata('min');
         $this->session->unset_userdata('max');
         $this->session->unset_userdata('palabra');
+        
         
         /* Cliente */
         $this->session->set_userdata('idUsuario', $this->input->post('idUsuario'));
@@ -84,7 +160,6 @@ class Buscar extends CI_Controller {
      * @author Sheryl Ravelo
      */
     public function productos() {
-
         $opciones = array();
         $desde = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
@@ -435,7 +510,8 @@ class Buscar extends CI_Controller {
         */
         
         $this->pagination->initialize($opciones);
-
+        
+        
         //var_dump($this->producto->getProductos($opciones['per_page'], $desde));
         $data['lista'] = $this->producto_model->getProductosByPalabra($opciones['per_page'], $desde, $palabras);
         //$data['lista'] = $this->producto->getProductosByEstado($opciones['per_page'], $desde);

@@ -15,6 +15,19 @@ Class Producto_Model extends CI_Model {
 
         return $query->result(); 
     }
+    
+    function insertarDetalleVacio($fk_producto){
+        
+        $this->db->insert('detalle_producto', array(
+                        'fk_producto'=>$fk_producto
+            )); 
+        return $this->db->insert_id();
+    }
+
+    function insertar($data){
+        $this->db->insert('producto', $data); 
+        return $this->db->insert_id();
+    }
 
     function getNumProducto() {
         return $this->db->count_all('producto');
@@ -126,7 +139,7 @@ Class Producto_Model extends CI_Model {
             }
         }
         $sql .= ") LIMIT ? , ? ";
-
+        
         $query = $this->db->query($sql,array((int)$start,$limit));
         
         return $query->result(); 
