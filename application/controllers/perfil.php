@@ -131,7 +131,28 @@ class Perfil extends CI_Controller {
 
                 $data['valor_mensaje'] = 1;
 
-                $this->load->view('perfil', $data);
+               
+			   
+			   
+			   
+			      $movil =  $this->session->userdata('num');
+         
+        if ($movil == 0){
+                       $this->session->set_userdata(array('usuario' => $email));
+                $fk_usuario = $array_user[0]->id_usuario;
+                $this->session->set_userdata(array('fk_usuario' => $fk_usuario));
+                
+            
+			
+            redirect(base_url('movil#pg2','refresh'));
+            
+        }
+        else{
+            $this->load->view('perfil', $data);
+        }
+
+                    
+			   
             } else {
 
 

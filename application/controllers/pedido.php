@@ -13,6 +13,7 @@ class Pedido extends CI_Controller {
         $this->load->library('cart');
         $this->load->model('producto_model');
         $this->load->model('formadepago_model');
+		$this->load->model('compra_model');
     }
 
     public function index() {
@@ -85,6 +86,17 @@ class Pedido extends CI_Controller {
         //var_dump($idProducto);
         
     }
+	
+	
+	
+	
+	public function consultarCompras(){
+        
+                $fk_usuario = $this->session->userdata('fk_usuario');               
+                $this->compra_model->consultarCompras($fk_usuario);
+               redirect(base_url('movil#pg3','refresh'));
+    }
+    
     
 
 }

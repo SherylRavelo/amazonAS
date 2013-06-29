@@ -36,7 +36,12 @@
                     <div id="login">
                         <p><strong> ¿Ya estás registrado en AmazonAS?</strong> Ingresa aquí con tu cuenta Google</p>
                         <div id="loginform">
-                            <?php echo form_open('perfil'); ?> <!--<form action="#"> -->
+                            <?php 
+							
+							 $formulario = array('id' => 'form1');
+                            $this->session->set_userdata(array('num' => 1));
+							
+							echo form_open('perfil'); ?> <!--<form action="#"> -->
                                 <div class="formblock">
                                     <input type="image" src="/amazonAS/images/g+32.png" name="button" id="button" value="Submit" />
                                 </div>

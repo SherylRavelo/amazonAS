@@ -8,6 +8,7 @@ class Home extends CI_Controller {
         parent::__construct();
         $this->load->model('categoria');
         $this->load->helper(array('form'));
+		$this->load->model('compra_model');
     }
 
     public function index() {
@@ -58,6 +59,19 @@ class Home extends CI_Controller {
         $this->load->view('buscadorapi',$data);
   
     }
+	
+	
+	 public function consultarTienda(){
+        
+        
+        
+          //$fk_usuario = $this->session->userdata('fk_usuario');               
+                $this->compra_model->consultarTienda();
+                
+               
+               redirect(base_url('movil#pg4','refresh'));
+    }
+    
     
     
     

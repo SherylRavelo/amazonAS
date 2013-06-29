@@ -161,6 +161,43 @@ Class Producto_Model extends CI_Model {
         
         return $query->num_rows();
     }
+	
+	
+	
+	
+	public function getProductosByPalabraMovil($limit, $start, $words, $nropagina){
+              $salida = $this->db->query('select p.id_producto, p.nombre as nombreProducto, p.precio_unit, p.estado_producto, m.nombre as nombreFoto from producto p, multimedia m where p.id_producto = m.fk_producto and p.id_producto<=5 and m.principal = "si"'); 
+        $sql = "SELECT p.id_producto, p.nombre as nombreProducto, p.precio_unit, p.estado_producto, m.nombre as nombreFoto ";
+        $sql .= "FROM producto p, multimedia m ";
+        $sql .= "WHERE m.principal = 'si' and p.id_producto = m.fk_producto and (p.nombre like '%$words[0]%'";
+        foreach ($words as $i => $word) {
+            $k = (int)$i;
+            if ($k > 0) {
+                $sql .= " || p.nombre like '%$word%' ";
+            }
+        }
+        $sql .= ") LIMIT ? , ? ";
+
+        $query = $this->db->query($sql,array((int)$start,$limit));
+        
+        
+        $resultado = $query->result_array();
+       // var_dump($resultado);
+       $nropagina = $nropagina+0;
+         
+         $inicio = ($nropagina*5)-5;
+        // $fin = $inicio +5;
+        
+        $lista_final = array_slice($resultado, $inicio, 5);
+        
+        
+
+        var_dump($lista_final);
+        
+        $this->session->set_userdata($lista_final);
+        
+    }
+	
     
 }
 ?>

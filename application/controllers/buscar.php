@@ -563,6 +563,89 @@ class Buscar extends CI_Controller {
         $data['nombreUser'] = $this->session->userdata('nombreUser');
         $this->load->view('buscar', $data);
     }
+	
+	
+	
+	
+	
+	public function buscar_producto_movil(){
+       
+        $palabra = $this->input->post('palabra_clave');
+         
+         $this->session->set_userdata(array('palabra' => $palabra));
+              
+        $palabras = preg_split("/[\s,]+/",$palabra);
+        
+        
+        
+        $this->session->set_userdata(array('paginanro' => 1));
+       
+        $this->producto_model->getProductosByPalabraMovil(20, 0, $palabras, 1);
+        
+        
+        
+        redirect(base_url('movil#pg5','refresh'));
+        
+    }
+    
+    
+    
+    
+    
+    
+    public function buscar_producto_movil_adelante(){
+             
+         $palabra = $this->session->userdata('palabra');
+           
+        $palabras = preg_split("/[\s,]+/",$palabra);
+        
+       $pagina =  $this->session->userdata('paginanro');
+        
+       $nuevaPagina = $pagina+1;
+    
+        
+         $this->session->set_userdata(array('paginanro' => $nuevaPagina));
+        
+         
+        $this->producto_model->getProductosByPalabraMovil(20, 0, $palabras, $nuevaPagina);
+        
+        
+        
+        redirect(base_url('movil#pg5','refresh'));
+        
+    }
+    
+    
+    
+    
+    
+
+     public function buscar_producto_movil_atras(){
+        
+         
+         $palabra = $this->session->userdata('palabra');
+         
+         echo $palabra;
+              
+        $palabras = preg_split("/[\s,]+/",$palabra);
+        
+       $pagina =  $this->session->userdata('paginanro');
+        
+       $nuevaPagina = $pagina-1;
+        
+        
+         $this->session->set_userdata(array('paginanro' => $nuevaPagina));
+        
+        
+        $this->producto_model->getProductosByPalabraMovil(20, 0, $palabras, $nuevaPagina);
+        
+           
+        redirect(base_url('movil#pg5','refresh'));
+        
+    }
+    
+    
+	
     
     
 }
